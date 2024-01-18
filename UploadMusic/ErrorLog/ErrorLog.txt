@@ -1,0 +1,2363 @@
+Start Insert  Photographer Details Tbl_PhotographerProfile 
+-----------------------------------------------------------
+PhotographerID   1047
+-----------------------------------------------------------
+RegistrationID 1062
+-----------------------------------------------------------
+@PhotographerID  1047
+-----------------------------------------------------------
+@Name  sdfgs
+-----------------------------------------------------------
+@PhoneNo  2541685416
+-----------------------------------------------------------
+@PhoneNo2  
+-----------------------------------------------------------
+@PhotographerAddress  fdgfdg
+-----------------------------------------------------------
+@Email  dsgfdsh.shd@gjsfn.cv
+-----------------------------------------------------------
+@About  dsgfd
+-----------------------------------------------------------
+@CurrentLocation  sdgfsg
+-----------------------------------------------------------
+@AlsoShootIn  dsgsfd
+-----------------------------------------------------------
+@PaymentOption  
+-----------------------------------------------------------
+@Equipments  
+-----------------------------------------------------------
+@ServiceDescription  
+-----------------------------------------------------------
+@StudioName  
+-----------------------------------------------------------
+@TeamSize  Between 6 to 15
+-----------------------------------------------------------
+@Website  
+-----------------------------------------------------------
+@Product  
+-----------------------------------------------------------
+@ServiceOffered  Kids, Baby Shoots,Birthday & family events,Fashion & Portfolio
+-----------------------------------------------------------
+@LanguageKnown  
+-----------------------------------------------------------
+@YearOfExperience  0
+-----------------------------------------------------------
+@Achievement  
+-----------------------------------------------------------
+@YoutubeLink  
+-----------------------------------------------------------
+@FacebookLink  
+-----------------------------------------------------------
+@InstagramLink  
+-----------------------------------------------------------
+@GoogleMap  
+-----------------------------------------------------------
+@RegistrationID  1062
+-----------------------------------------------------------
+@actionType  Insert
+-----------------------------------------------------------
+Start Passing Parameters To Insert_Registration
+-----------------------------------------------------------
+Before Saving Photographer Details In Tbl_PhotographerProfile 
+-----------------------------------------------------------
+End Insert  Photographer Details Tbl_PhotographerProfile 
+-----------------------------------------------------------
+Start: Insert CoverImage in Photographer Profile 
+-----------------------------------------------------------
+Start: Passing Paramters To UpdateCoverImage 
+-----------------------------------------------------------
+Start: Before Saving Paramters To UpdateCoverImage 
+-----------------------------------------------------------
+SuccessFlag2 : Y
+-----------------------------------------------------------
+End:Insert CoverImage in Photographer Profile 
+-----------------------------------------------------------
+Start:Insert Logo Image in Photographer Profile 
+-----------------------------------------------------------
+Start:Insert Owner Photo in Photographer Profile 
+-----------------------------------------------------------
+Start:Update Login details of complete profile 
+-----------------------------------------------------------
+Before:Saving Parameters To UpdateCompleteProfile 
+-----------------------------------------------------------
+End:Update Login details of complete profile 
+-----------------------------------------------------------
+SuccessFlag1Y
+-----------------------------------------------------------
+SuccessFlag1Y
+-----------------------------------------------------------
+SuccessFlag1Y
+-----------------------------------------------------------
+SuccessFlag1Y
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Compressing Images According To Dimensions
+-----------------------------------------------------------
+HomeController-UploadImage-Compressing Images According To Dimensions-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage- PathList Returned Successfully
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Compressing Images According To Dimensions
+-----------------------------------------------------------
+HomeController-UploadImage-Compressing Images According To Dimensions-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage- PathList Returned Successfully
+-----------------------------------------------------------
+HomeController-ImageUpload-Check for insert or update order no ,validity
+-----------------------------------------------------------
+HomeController-ImageUpload-End Check for insert or update order no ,validity
+-----------------------------------------------------------
+HomeController-ImageUpload-Check Email based on PhotographerID
+-----------------------------------------------------------
+HomeController-ImageUpload-Check Email based on PhotographerID
+-----------------------------------------------------------
+HomeController-ImageUpload-Generating SecurityCode on Insert
+-----------------------------------------------------------
+HomeController-ImageUpload-End Generating SecurityCode on Insert
+-----------------------------------------------------------
+HomeController-ImageUpload-Insert Or Update Ebook
+-----------------------------------------------------------
+HomeController-ImageUpload-Insert Or Update Ebook
+-----------------------------------------------------------
+HomeController-ImageUpload-Saving Bytes and Path of Images
+-----------------------------------------------------------
+HomeController-ImageUpload-End Saving Bytes and Path of Images
+-----------------------------------------------------------
+HomeController-ImageUpload-Sending Email of PhotoBook Creation
+-----------------------------------------------------------
+HomeController-ImageUpload-Sending Email of PhotoBook Creation
+-----------------------------------------------------------
+HomeController-ImageUpload-Delete From Temp Folder
+-----------------------------------------------------------
+HomeController-ImageUpload-End Delete From Temp Folder
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Compressing Images According To Dimensions
+-----------------------------------------------------------
+HomeController-UploadImage-Compressing Images According To Dimensions-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage- PathList Returned Successfully
+-----------------------------------------------------------
+HomeController-ImageUpload-Check for insert or update order no ,validity
+-----------------------------------------------------------
+HomeController-ImageUpload-End Check for insert or update order no ,validity
+-----------------------------------------------------------
+HomeController-ImageUpload-Check Email based on PhotographerID
+-----------------------------------------------------------
+HomeController-ImageUpload-Check Email based on PhotographerID
+-----------------------------------------------------------
+HomeController-ImageUpload-Generating SecurityCode on Insert
+-----------------------------------------------------------
+HomeController-ImageUpload-End Generating SecurityCode on Insert
+-----------------------------------------------------------
+HomeController-ImageUpload-Insert Or Update Ebook
+-----------------------------------------------------------
+HomeController-ImageUpload-Insert Or Update Ebook
+-----------------------------------------------------------
+HomeController-ImageUpload-Saving Bytes and Path of Images
+-----------------------------------------------------------
+HomeController-ImageUpload-End Saving Bytes and Path of Images
+-----------------------------------------------------------
+HomeController-ImageUpload-Sending Email of PhotoBook Creation
+-----------------------------------------------------------
+HomeController-ImageUpload-Sending Email of PhotoBook Creation
+-----------------------------------------------------------
+HomeController-ImageUpload-Delete From Temp Folder
+-----------------------------------------------------------
+HomeController-ImageUpload-End Delete From Temp Folder
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Compressing Images According To Dimensions
+-----------------------------------------------------------
+HomeController-UploadImage-Compressing Images According To Dimensions-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage- PathList Returned Successfully
+-----------------------------------------------------------
+HomeController-ImageUpload-Check for insert or update order no ,validity
+-----------------------------------------------------------
+HomeController-ImageUpload-End Check for insert or update order no ,validity
+-----------------------------------------------------------
+HomeController-ImageUpload-Check Email based on PhotographerID
+-----------------------------------------------------------
+HomeController-ImageUpload-Check Email based on PhotographerID
+-----------------------------------------------------------
+HomeController-ImageUpload-Generating SecurityCode on Insert
+-----------------------------------------------------------
+HomeController-ImageUpload-End Generating SecurityCode on Insert
+-----------------------------------------------------------
+HomeController-ImageUpload-Insert Or Update Ebook
+-----------------------------------------------------------
+HomeController-ImageUpload-Insert Or Update Ebook
+-----------------------------------------------------------
+HomeController-ImageUpload-Saving Bytes and Path of Images
+-----------------------------------------------------------
+HomeController-ImageUpload-End Saving Bytes and Path of Images
+-----------------------------------------------------------
+HomeController-ImageUpload-Sending Email of PhotoBook Creation
+-----------------------------------------------------------
+HomeController-ImageUpload-Sending Email of PhotoBook Creation
+-----------------------------------------------------------
+HomeController-ImageUpload-Delete From Temp Folder
+-----------------------------------------------------------
+HomeController-ImageUpload-End Delete From Temp Folder
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Saving Cropped Images To Temp Path
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Cropping Image Into Equal Parts
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Check saving photobook to temppath
+-----------------------------------------------------------
+HomeController-UploadImage-Check Gettiing File Name without Extension
+-----------------------------------------------------------
+HomeController-UploadImage-Check cover = firstpage || cover == lastpage
+-----------------------------------------------------------
+HomeController-UploadImage-Checking If Image is firstpage or lastpage or coverpad
+-----------------------------------------------------------
+HomeController-UploadImage-Compressing Images According To Dimensions
+-----------------------------------------------------------
+HomeController-UploadImage-Compressing Images According To Dimensions-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage-Adding Images To PathList-Completed
+-----------------------------------------------------------
+HomeController-UploadImage- PathList Returned Successfully
+-----------------------------------------------------------
+HomeController-ImageUpload-Check for insert or update order no ,validity
+-----------------------------------------------------------
+HomeController-ImageUpload-End Check for insert or update order no ,validity
+-----------------------------------------------------------
+HomeController-ImageUpload-Check Email based on PhotographerID
+-----------------------------------------------------------
+HomeController-ImageUpload-Check Email based on PhotographerID
+-----------------------------------------------------------
+HomeController-ImageUpload-Generating SecurityCode on Insert
+-----------------------------------------------------------
+HomeController-ImageUpload-End Generating SecurityCode on Insert
+-----------------------------------------------------------
+HomeController-ImageUpload-Insert Or Update Ebook
+-----------------------------------------------------------
+HomeController-ImageUpload-Insert Or Update Ebook
+-----------------------------------------------------------
+HomeController-ImageUpload-Saving Bytes and Path of Images
+-----------------------------------------------------------
+HomeController-ImageUpload-End Saving Bytes and Path of Images
+-----------------------------------------------------------
+HomeController-ImageUpload-Sending Email of PhotoBook Creation
+-----------------------------------------------------------
+HomeController-ImageUpload-Sending Email of PhotoBook Creation
+-----------------------------------------------------------
+HomeController-ImageUpload-Delete From Temp Folder
+-----------------------------------------------------------
+HomeController-ImageUpload-End Delete From Temp Folder
+-----------------------------------------------------------
+Time: 29-09-2020 04:30:10 PM
+-----------------------------------------------------------
+Message: Parameter is not valid.
+StackTrace:    at System.Drawing.Bitmap..ctor(Int32 width, Int32 height, PixelFormat format)
+   at System.Drawing.Bitmap..ctor(Image original, Int32 width, Int32 height)
+   at UploadMusic.Utility.Utility.Compressimage(String sourcePath, String targetPath, Int32 height, Int32 width) in F:\Pixthon\UploadMusic\UploadMusic\UploadMusic\Utility\Utility.cs:line 185
+Source: System.Drawing
+TargetSite: Void .ctor(Int32, Int32, System.Drawing.Imaging.PixelFormat)
+-----------------------------------------------------------
+
+Time: 29-09-2020 04:30:11 PM
+-----------------------------------------------------------
+Message: Parameter is not valid.
+StackTrace:    at System.Drawing.Bitmap..ctor(Int32 width, Int32 height, PixelFormat format)
+   at System.Drawing.Bitmap..ctor(Image original, Int32 width, Int32 height)
+   at UploadMusic.Utility.Utility.Compressimage(String sourcePath, String targetPath, Int32 height, Int32 width) in F:\Pixthon\UploadMusic\UploadMusic\UploadMusic\Utility\Utility.cs:line 185
+Source: System.Drawing
+TargetSite: Void .ctor(Int32, Int32, System.Drawing.Imaging.PixelFormat)
+-----------------------------------------------------------
+
+Time: 07-10-2020 01:02:10 PM
+-----------------------------------------------------------
+Message: Failure sending mail.
+StackTrace:    at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at UploadMusic.Utility.Utility.SendEmail(String To, String From, String mailbody, String Subject) in F:\Pixthon\UploadMusic\UploadMusic\UploadMusic\Utility\Utility.cs:line 44
+Source: System
+TargetSite: Void Send(System.Net.Mail.MailMessage)
+-----------------------------------------------------------
+

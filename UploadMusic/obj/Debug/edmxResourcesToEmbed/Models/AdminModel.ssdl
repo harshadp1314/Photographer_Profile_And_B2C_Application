@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PixthonPhotographyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Tbl_ImagePortFolio">
+    <Key>
+      <PropertyRef Name="ImagePortFolioID" />
+    </Key>
+    <Property Name="ImagePortFolioID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ImageBytes" Type="varbinary(max)" />
+    <Property Name="PhotographerID" Type="int" />
+  </EntityType>
+  <EntityType Name="Tbl_PhotographerProfile">
+    <Key>
+      <PropertyRef Name="PhotographerID" />
+    </Key>
+    <Property Name="PhotographerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="PhoneNo" Type="varchar" MaxLength="15" />
+    <Property Name="PhotographerAddress" Type="varchar(max)" />
+    <Property Name="Email" Type="varchar" MaxLength="25" />
+    <Property Name="About" Type="varchar(max)" />
+    <Property Name="CurrentLocation" Type="varchar" MaxLength="150" />
+    <Property Name="AlsoShootIn" Type="varchar" MaxLength="200" />
+    <Property Name="ProductAndServices" Type="varchar(max)" />
+    <Property Name="PaymentOption" Type="varchar(max)" />
+    <Property Name="CreatedOn" Type="date" />
+    <Property Name="ModifiedOn" Type="date" />
+    <Property Name="Equipments" Type="varchar(max)" />
+    <Property Name="CoverImage" Type="varbinary(max)" />
+    <Property Name="ServiceDescription" Type="varchar(max)" />
+    <Property Name="StudioName" Type="varchar" MaxLength="300" />
+    <Property Name="Logo" Type="varbinary(max)" />
+    <Property Name="TeamSize" Type="varchar" MaxLength="40" />
+    <Property Name="Website" Type="varchar" MaxLength="1000" />
+    <Property Name="Product" Type="varchar(max)" />
+    <Property Name="ServiceOffered" Type="varchar(max)" />
+    <Property Name="LanguageKnown" Type="varchar(max)" />
+    <Property Name="YearOfExperience" Type="varchar" MaxLength="400" />
+    <Property Name="Achievement" Type="varchar(max)" />
+    <Property Name="OwnerPhotograph" Type="varbinary(max)" />
+    <Property Name="FacebookLink" Type="varchar" MaxLength="6000" />
+    <Property Name="InstagramLink" Type="varchar" MaxLength="6000" />
+    <Property Name="GoogleMap" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="Tbl_VideoPortFolio">
+    <Key>
+      <PropertyRef Name="VideoPortFolioID" />
+    </Key>
+    <Property Name="VideoPortFolioID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VideoBytes" Type="varbinary(max)" />
+    <Property Name="PhotographerID" Type="int" />
+  </EntityType>
+  <Association Name="FK__Tbl_Image__Photo__3493CFA7">
+    <End Role="Tbl_PhotographerProfile" Type="Self.Tbl_PhotographerProfile" Multiplicity="0..1" />
+    <End Role="Tbl_ImagePortFolio" Type="Self.Tbl_ImagePortFolio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_PhotographerProfile">
+        <PropertyRef Name="PhotographerID" />
+      </Principal>
+      <Dependent Role="Tbl_ImagePortFolio">
+        <PropertyRef Name="PhotographerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Tbl_Video__Photo__37703C52">
+    <End Role="Tbl_PhotographerProfile" Type="Self.Tbl_PhotographerProfile" Multiplicity="0..1" />
+    <End Role="Tbl_VideoPortFolio" Type="Self.Tbl_VideoPortFolio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_PhotographerProfile">
+        <PropertyRef Name="PhotographerID" />
+      </Principal>
+      <Dependent Role="Tbl_VideoPortFolio">
+        <PropertyRef Name="PhotographerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PixthonPhotographyModelStoreContainer">
+    <EntitySet Name="Tbl_ImagePortFolio" EntityType="Self.Tbl_ImagePortFolio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_PhotographerProfile" EntityType="Self.Tbl_PhotographerProfile" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_VideoPortFolio" EntityType="Self.Tbl_VideoPortFolio" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Tbl_Image__Photo__3493CFA7" Association="Self.FK__Tbl_Image__Photo__3493CFA7">
+      <End Role="Tbl_PhotographerProfile" EntitySet="Tbl_PhotographerProfile" />
+      <End Role="Tbl_ImagePortFolio" EntitySet="Tbl_ImagePortFolio" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Tbl_Video__Photo__37703C52" Association="Self.FK__Tbl_Video__Photo__37703C52">
+      <End Role="Tbl_PhotographerProfile" EntitySet="Tbl_PhotographerProfile" />
+      <End Role="Tbl_VideoPortFolio" EntitySet="Tbl_VideoPortFolio" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,25 @@
+﻿@using UploadMusic.Models
+@model IEnumerable<UploadMusic.Models.FileDetailsModel>
+@{
+    ViewBag.Title = "DisplayImages";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>DisplayImages</h2>
+
+
+
+
+<div>
+    
+            @if (Model != null)
+            {
+
+                foreach (FileDetailsModel images in Model)
+                {
+                    <img alt="" src="data:image/png;base64,@Convert.ToBase64String(images.FileData, 0)" style="height:100px;width:100px;" />
+                }
+            }
+     
+
+</div>

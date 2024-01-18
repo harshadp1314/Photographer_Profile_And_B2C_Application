@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PixthonPhotographyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Tbl_ImagePortFolio">
+    <Key>
+      <PropertyRef Name="ImagePortFolioID" />
+    </Key>
+    <Property Name="ImagePortFolioID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ImageBytes" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="PhotographerID" Type="Int32" />
+    <NavigationProperty Name="Tbl_PhotographerProfile" Relationship="Self.FK__Tbl_Image__Photo__3493CFA7" FromRole="Tbl_ImagePortFolio" ToRole="Tbl_PhotographerProfile" />
+  </EntityType>
+  <EntityType Name="Tbl_PhotographerProfile">
+    <Key>
+      <PropertyRef Name="PhotographerID" />
+    </Key>
+    <Property Name="PhotographerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PhoneNo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="PhotographerAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="About" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CurrentLocation" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="AlsoShootIn" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ProductAndServices" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="PaymentOption" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="0" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="0" />
+    <Property Name="Equipments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CoverImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="ServiceDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="StudioName" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="Logo" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="TeamSize" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="Website" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Product" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ServiceOffered" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="LanguageKnown" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="YearOfExperience" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+    <Property Name="Achievement" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="OwnerPhotograph" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="FacebookLink" Type="String" MaxLength="6000" FixedLength="false" Unicode="false" />
+    <Property Name="InstagramLink" Type="String" MaxLength="6000" FixedLength="false" Unicode="false" />
+    <Property Name="GoogleMap" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Tbl_ImagePortFolio" Relationship="Self.FK__Tbl_Image__Photo__3493CFA7" FromRole="Tbl_PhotographerProfile" ToRole="Tbl_ImagePortFolio" />
+    <NavigationProperty Name="Tbl_VideoPortFolio" Relationship="Self.FK__Tbl_Video__Photo__37703C52" FromRole="Tbl_PhotographerProfile" ToRole="Tbl_VideoPortFolio" />
+  </EntityType>
+  <EntityType Name="Tbl_VideoPortFolio">
+    <Key>
+      <PropertyRef Name="VideoPortFolioID" />
+    </Key>
+    <Property Name="VideoPortFolioID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="VideoBytes" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="PhotographerID" Type="Int32" />
+    <NavigationProperty Name="Tbl_PhotographerProfile" Relationship="Self.FK__Tbl_Video__Photo__37703C52" FromRole="Tbl_VideoPortFolio" ToRole="Tbl_PhotographerProfile" />
+  </EntityType>
+  <Association Name="FK__Tbl_Image__Photo__3493CFA7">
+    <End Role="Tbl_PhotographerProfile" Type="Self.Tbl_PhotographerProfile" Multiplicity="0..1" />
+    <End Role="Tbl_ImagePortFolio" Type="Self.Tbl_ImagePortFolio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_PhotographerProfile">
+        <PropertyRef Name="PhotographerID" />
+      </Principal>
+      <Dependent Role="Tbl_ImagePortFolio">
+        <PropertyRef Name="PhotographerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Tbl_Video__Photo__37703C52">
+    <End Role="Tbl_PhotographerProfile" Type="Self.Tbl_PhotographerProfile" Multiplicity="0..1" />
+    <End Role="Tbl_VideoPortFolio" Type="Self.Tbl_VideoPortFolio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_PhotographerProfile">
+        <PropertyRef Name="PhotographerID" />
+      </Principal>
+      <Dependent Role="Tbl_VideoPortFolio">
+        <PropertyRef Name="PhotographerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PixthonPhotographyEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Tbl_ImagePortFolio" EntityType="Self.Tbl_ImagePortFolio" />
+    <EntitySet Name="Tbl_PhotographerProfile" EntityType="Self.Tbl_PhotographerProfile" />
+    <EntitySet Name="Tbl_VideoPortFolio" EntityType="Self.Tbl_VideoPortFolio" />
+    <AssociationSet Name="FK__Tbl_Image__Photo__3493CFA7" Association="Self.FK__Tbl_Image__Photo__3493CFA7">
+      <End Role="Tbl_PhotographerProfile" EntitySet="Tbl_PhotographerProfile" />
+      <End Role="Tbl_ImagePortFolio" EntitySet="Tbl_ImagePortFolio" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Tbl_Video__Photo__37703C52" Association="Self.FK__Tbl_Video__Photo__37703C52">
+      <End Role="Tbl_PhotographerProfile" EntitySet="Tbl_PhotographerProfile" />
+      <End Role="Tbl_VideoPortFolio" EntitySet="Tbl_VideoPortFolio" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

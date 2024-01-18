@@ -1,0 +1,3443 @@
+﻿@model UploadMusic.Models.RegistrationModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<head>
+    <!-- Basic Page Needs -->
+    <meta charset="utf-8">
+    <!--[if IE]>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+    <![endif]-->
+    <title>Photographer Registration Form | Pixthon</title>
+    <meta name="author" content="">
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- Bootstrap  -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/PhotographerProfile/stylesheets/bootstrap.css">
+    <link href="~/Content/select2.min.css" rel="stylesheet" />
+    <!-- Theme Style -->
+    <link rel="stylesheet" type="text/css" href="~/Content/PhotographerProfile/stylesheets/style.css">
+    <!-- Responsive -->
+    <link rel="stylesheet" type="text/css" href="~/Content/PhotographerProfile/stylesheets/responsive.css">
+    <!-- Colors -->
+    <link rel="stylesheet" type="text/css" href="~/Content/PhotographerProfile/stylesheets/colors/color1.css" id="colors">
+    <!-- Session Timeout -->
+
+    <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/css/jquery-idle-hands.css" rel="stylesheet" />
+
+    <!-- Session Timeout -->
+    <!-- Animation Style -->
+    <link rel="stylesheet" type="text/css" href="~/Content/PhotographerProfile/stylesheets/animate.css">
+    <link href="~/Content/sweetalert.min.css" rel="stylesheet" />
+    <link href="~/Content/PhotographerProfile/stylesheets/icofont.css" rel="stylesheet" />
+    <!-- Favicon and touch icons  -->
+    <link href="~/Content/PhotographerProfile/images/logo.png" rel="shortcut icon" style="width:16px;height:16px;">
+    <!-- For AutoComplete States  -->
+
+
+    <style>
+        span {
+            font-weight: bold;
+        }
+    </style>
+    <style type="text/css">
+        .custom-file-input {
+            color: transparent;
+        }
+
+        .custom-file-input {
+            color: transparent;
+        }
+
+            .custom-file-input::-webkit-file-upload-button {
+                visibility: hidden;
+            }
+
+            .custom-file-input::before {
+                content: 'Upload File';
+                color: black;
+                display: inline-block;
+                background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
+                border: 1px solid #999;
+                border-radius: 3px;
+                padding: 5px 8px;
+                outline: none;
+                white-space: nowrap;
+                -webkit-user-select: none;
+                cursor: pointer;
+                text-shadow: 1px 1px #fff;
+                font-weight: 700;
+                font-size: 10pt;
+            }
+
+            .custom-file-input:hover::before {
+                border-color: black;
+            }
+
+            .custom-file-input:active {
+                outline: 0;
+            }
+
+                .custom-file-input:active::before {
+                    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+                }
+
+        body {
+            /*padding: 20px;*/
+        }
+
+        #loadingImg {
+            display: none;
+        }
+
+        .upload-image-preview img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .select2-container .select2-search--inline .select2-search__field {
+            width: 125px !important;
+        }
+    </style>
+</head>
+<body class="header-sticky page-loading">
+
+    <div class="boxed">
+        <!-- Header -->
+        <div class="top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="flat-address">
+                            <div class="custom-info">
+                                <span style="font-size:14px;">Welcome To Pixthon Photographers Profile</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+                        <div id="customopt" class="social-links">
+                            <i class="fa fa-reply"></i> sales@pixthon.com
+                            <i class="fa fa-phone"></i>  +91 7039851605
+                            &nbsp;
+
+                            <a href="https://www.facebook.com/Pixthoncom-339936090122683/" target="_blank">
+                                <i class="fa fa-facebook-official"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/company/pixthon-digital-solutions-pvt-ltd/" target="_blank">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                            <a href="https://www.instagram.com/pixthondigitalsolutions/" target="_blank">
+                                <i class="fa fa-instagram" style="background-color:lightseagreen"></i>
+                            </a>
+
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <div class="dropdown">
+                                    <button class="dropbtn">@User.Identity.Name</button>
+                                    <div class="dropdown-content">
+                                        @if (User.IsInRole("Admin") || User.IsInRole("NonVerifiedPhotographer") || User.IsInRole("VerifiedPhotographer") || User.IsInRole("SuperAdmin"))
+                                        {
+                                            <a href="/ChangePassword/Index">Change Password</a>
+                                            @*if (User.IsInRole("VerifiedPhotographer") || User.IsInRole("Admin") || User.IsInRole("SuperAdmin"))
+                                                {
+                                                    <a id="viewprofile" href="@Url.Action("PhotographerProfile", "PhotographerProfile", new {  PhotographerID = Model.EncodedPhotographerID }) " disabled="disabled"><span>View Photographer Profile</span></a>
+                                                }*@
+                                            <a href="@Url.Action("Logout", "Login")" onclick="Signout()">Logout</a>
+                                        }
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="dropdown">
+                                    <button class="dropbtn">Account</button>
+                                    <div class="dropdown-content">
+
+                                        <a href="@Url.Action("Index","Login")">Login</a>
+                                        <a href="@Url.Action("Register","Login")">Register</a>
+
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- Header -->
+    </div>
+    <!-- Pixthon -->
+    <header id="header" class="header clearfix">
+        <div class="header-wrap clearfix">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <div id="logo" class="logo">
+                            <a href="http://pixthon.com/">
+                                <img src="~/Content/PhotographerProfile/images/logo.png" alt="images" style="height:50px;">
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Pixthon -->
+    @if (User.Identity.IsAuthenticated)
+    {
+        if (User.IsInRole("Admin") || User.IsInRole("NonVerifiedPhotographer") || User.IsInRole("VerifiedPhotographer") || User.IsInRole("SuperAdmin"))
+        {
+            <!-- Registration Form -->
+            <div class="flat-row pad-bottom20px" style="padding-bottom:0px;">
+                <center><h2 style="margin-top:0px;margin-bottom:40px;">Register Now</h2></center>
+
+                <div class="flat-tabs">
+                    <ul class="menu-tabs">
+                        <li id="profile" class="active"><a href="#">Photographer Profile</a></li>
+                        <li id="portfolio"><a href="#">Portfolio</a></li>
+
+                    </ul>
+                    <div class="content-tab">
+                        <!-- Photographer Info Section -->
+                        <div id="profilediv" class="content-inner">
+                            <div class="container">
+
+                                <div class="col-md-12">
+                                    <form id="contactform" method="post" action="#" enctype="multipart/form-data">
+                                        <div class="row">
+                                            <div id="ShowAlert" class="alert alert-danger background-danger" style="display:none">
+                                                <span class="closeBtn" onclick="closeAlertEnquiry(); return false">&times;</span>
+                                                <strong>!</strong>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <span>
+                                                    Email address *
+                                                    <input id="email" name="email" type="text" value="@Model.Email" placeholder="" maxlength="40" style="background:none;">
+                                                </span>
+                                                <span>
+                                                    Name of Studio/Company
+                                                    <input id="studioname" name="company" type="text" value="@Model.StudioName" placeholder="" maxlength="40" style="background:none;">
+                                                </span>
+                                                <br><span>
+                                                    Photograph of Owner
+                                                    <input id="ownerphoto" type="file" class="custom-file-input" name="FileUpload1" accept="image/*">
+                                                    <p class="note">Note:Photograph must be of less than 2 MB</p>
+
+                                                </span><br>
+                                                <div id="divowner" class="upload-image-preview">
+
+                                                </div>
+                                                <span>
+                                                    Years of Experience *
+                                                    <input id="yearofexperience" name="yearofexperience" type="text" value="@Model.YearOfExperience" placeholder="" required="required" style="background:none;" onkeypress="return ValidateNumber(event);" maxlength="2">
+
+                                                </span>
+                                                <span>
+                                                    Type of Events/Photography  *
+                                                </span><br>
+
+                                                <span>
+                                                    <input type="hidden" class="CountryId" />
+                                                    <select class="Country" style="width:100%" multiple></select>
+
+                                                    <br />
+                                                    <input type="hidden" class="Sub1" />
+                                                    <input type="hidden" class="Sub2" />
+                                                    <input type="hidden" class="Sub3" />
+                                                    <input type="hidden" class="Sub4" />
+                                                    <input type="hidden" class="Sub5" />
+                                                    <input type="hidden" class="Sub6" />
+                                                    <input type="hidden" class="Sub7" />
+                                                    <input type="hidden" class="Sub8" />
+
+                                                    @*@foreach (var item in Model.Services)
+                                                        {
+                                                            <input type="hidden" id="@item.ID" />
+                                                            <label>@item.Name</label>
+                                                            <select  class="@item.ID" id="@item.Name" style="width:250px;" multiple>
+                                                                <option>Select State</option>
+                                                            </select>
+                                                            <br/>
+                                                        }*@
+
+                                                </span>
+
+                                                @*<span> *<input id="category" name="email" type="text" value="" placeholder="" required="required" style="background:none;"></span>
+                                                    <input type="hidden" id="categoryid" />
+                                                    <span>Sub Categories *<input id="subcategory" name="email" type="text" value="" placeholder="" required="required" style="background:none;"></span>
+                                                    <input type="hidden" id="subcategoryid" />*@
+
+                                                @*<input type="hidden" class="categoryid" />
+                                                       @foreach (var item in Model.Services)
+                                                       {
+                                                           <input id="@item.ID" value="var item in Model.Services" @item.IsChecked class="form-check-input" name="checkboxlistservice" type="checkbox" style="background:none;" onclick="CheckServices(@item.ID)">
+                                                           <label class="form-check-label" for="defaultCheck1">@item.Name</label><br />
+
+
+                                                    }*@
+
+                                                <div id="dynamic-container" style="border:1px solid #Efefef;margin-bottom:20px;margin-top: 5px;">
+                                                </div>
+
+                                                @*<select class="State" style="width:250px;" multiple>
+                                                    <option>Select Sub-Categories</option>
+                                                    </select>*@
+                                                <br>
+                                                <span>Website Address <input id="website" name="email" type="text" value="@Model.Website" placeholder="" required="required" style="background:none;"></span>
+                                                <span>
+                                                    Facebook Address link <p style="font-size:12px;">(Ex: https://www.facebook.com/pixthondigitalsolutions/)</p> <input id="facebooklink" name="text" type="text" value="@Model.FacebookLink" placeholder="" required="required" style="background:none;">
+
+                                                </span>
+                                                <span>
+                                                    Youtube Channel link <p style="font-size:12px;">(Ex: https://www.youtube.com/channel/UCi6a0hFoH7S0gctUoHrfWSA) </p> <input id="youtubelink" name="text" type="text" value="@Model.YoutubeLink" placeholder="" required="required" style="background:none;">
+
+                                                </span>
+                                                <span>
+                                                    Instagram Address link <p style="font-size:12px;">(Ex: https://www.instagram.com/pixthondigitalsolutions/)</p> <input id="instalink" name="email" type="text" value="@Model.InstaLink" placeholder="" maxlength="5000" style="background:none;">
+
+                                                </span>
+                                                <span>Contact Details 1 *<input id="contact" name="email" type="text" value="@Model.Contact" placeholder="" required="required" style="background:none;" onkeypress="ValidateMobileNo1(event)" maxlength="10"></span>
+                                                <span>Contact Details 2 <input id="contact2" name="email" type="text" value="@Model.Contact2" placeholder="" required="required" style="background:none;" onkeypress="ValidateMobileNo2(event)" maxlength="10"></span>
+
+                                                <span>Choose State *<input id="currentstate" name="email" type="text" value="@Model.CurrentState" placeholder="" required="required" style="background:none;"></span>
+                                                <input type="hidden" id="currentstateid" />
+                                                <span>Current Location/City *<input id="currentlocation" name="email" type="text" value="@Model.CurrentLocation" placeholder="" required="required" style="background:none;"></span>
+                                                <input type="hidden" id="currentlocationid" />
+                                                <span>GoogleMap Location <p style="font-size:12px;word-break: break-all">(Ex: https://www.google.com/maps/place/Pixthon+Digital+Solutions+Pvt+Ltd/@@19.0656027,72.9994134,15z/data=!4m5!3m4!1s0x0:0x48cb8f4c4a3ba7ce!8m2!3d19.0656027!4d72.9994134) </p> <input id="googlemap" name="email" type="text" value="@Model.GoogleMap" placeholder="" required="required" style="background:none;"></span>
+
+                                            </div>
+                                            <div class="col-md-6">
+                                                <span>Photographer Name *<input id="photographername" onkeypress="return Validate(event);" name="name" type="text" value="@Model.PhotographerName" placeholder="" required="required" style="background:none;"></span>
+
+                                                <span>
+                                                    Logo of Studio/Company
+                                                    <input id="logoofcompany" type="file" class="custom-file-input" name="FileUpload1" accept="image/*">
+
+
+                                                </span><div id="divlogo" class="upload-image-preview"></div>
+                                                <p class="note">Note:Photograph must be of less than 2 MB</p>
+                                                <br />
+                                                <span>
+                                                    Photographer Profile Cover(Best Image of Photographer)*
+                                                    <input id="cover" type="file" class="custom-file-input" name="FileUpload1" accept="image/*">
+
+                                                </span><div id="divcover" class="upload-image-preview"></div>
+                                                <p class="note">Note:Photograph must be of 1350 X 450px and less than 4 MB</p>
+                                                <span>About Me(Photographer) *<input id="aboutme" name="about" type="text" value="@Model.AboutMe" placeholder="" maxlength="1000" style="background:none;"></span>
+                                                <span>Language Known <input id="language" name="name" type="text" value="@Model.LanguageKnown" placeholder="" maxlength="500" style="background:none;"></span>
+                                                <span>Preferred Location for Photoshoot *<input id="preferedlocation" name="location" type="text" value="@Model.PreferedLocation" placeholder="" maxlength="500" style="background:none;"></span>
+                                                <span>
+                                                    What Service You Provide *
+                                                </span><br>
+
+                                                @foreach (var item in Model.Work)
+                                                {
+                                                    <div class="radio">
+                                                        <label><input id="@item.ID" value="@item.Name" type="radio" name="checkboxlistwork" @item.IsChecked>@item.Name</label>
+                                                    </div>
+
+                                                    @*<input id="@item.ID" value="@item.Name" @item.IsChecked class="form-check-input" name="checkboxlistteamsize" type="checkbox" style="background:none;">
+                                                        <label class="form-check-label" for="defaultCheck1">@item.Name</label><br />*@
+                                                }
+
+
+                                                <br />
+                                                <span>
+                                                    Team Size *
+                                                </span><br>
+
+                                                @foreach (var item in Model.TeamSize)
+                                                {
+                                                    <div class="radio">
+                                                        <label><input id="@item.ID" value="@item.Name" type="radio" name="checkboxlistteamsize" @item.IsChecked>@item.Name</label>
+                                                    </div>
+                                                    @*<input id="@item.ID" value="@item.Name" @item.IsChecked class="form-check-input" name="checkboxlistteamsize" type="checkbox" style="background:none;">
+                                                        <label class="form-check-label" for="defaultCheck1">@item.Name</label><br />*@
+                                                }
+
+
+                                                <br />
+                                                <input type="hidden" id="nonencodedphotographerid" value="@Model.PhotographerID" />
+                                                <input type="hidden" id="photographerid" value="@Model.EncodedPhotographerID" />
+                                                <span>Equipments/Camera <input id="equipments" name="camera" type="text" value="@Model.Equipments" placeholder="" maxlength="500" style="background:none;"></span>
+                                                <span>Awards or Achievements(if Any)<input id="achievement" name="name" type="text" value="@Model.Achievements" placeholder="" maxlength="5000" style="background:none;"></span>
+
+                                                <span>
+                                                    Address Details *
+                                                    <textarea id="address" name="message" required="required" style="background:none;" value="">@Model.Address</textarea>
+                                                </span>
+                                                <span>Other Products and Services <input id="otherproducts" name="otherproducts" type="text" value="@Model.Products" placeholder="" maxlength="5000" style="background:none;"></span>
+                                            </div>
+                                            <div id='output' style="width:200px;height:400px"></div>
+                                            <br><br>
+
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="col-md-12">
+                                    <center>
+                                        <span class="form-submit">
+                                            <input name="submit" type="button" id="submit" class="submit" value="SAVE" onclick="OnSubmit()">
+                                            <input name="submit" type="button" id="next" class="submit" value="NEXT" onclick="OnNext()">
+                                        </span>
+                                        <div id="divLoader" style="display:none;">
+                                            <img src="~/Images/ajax-loader.gif" alt="Loader" />
+                                        </div>
+                                    </center>
+                                    <br><br>
+                                    <div class="loading-overlay"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Photographer Info Section -->
+                        <!-- Portfolio section -->
+
+                        <div id="portfoliodiv" class="content-inner">
+                            <div class="container">
+                                <div class="col-md-12">
+                                    <form id="contactform" method="post" action="#">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <span>
+                                                    Best of your event images( minimum 1, Maximum 10) (upload here or send on sales@pixthon.com) *
+                                                    <input id="imageportfolio" type="file" class="custom-file-input" multiple name="FileUpload1" accept="image/*">
+                                                </span>  <br>
+                                                <div class="col-md-12 col-sm-12 col-xs-12" style=" background-color:white; height:250px; overflow:scroll; overflow-x: scroll; overflow-y: scroll;">
+                                                    <div class="row" style="width:1000px;">
+                                                        <div class="container12"></div>
+
+                                                    </div>
+                                                </div>
+                                                <p class="note">Note:Photograph should be of 600 X 400px and less than 4 MB each</p>
+
+                                            </div>
+
+                                            <!-- /.col-md-6 -->
+                                            <div class="col-md-12">
+                                                <span>
+                                                    Video Highlight( Maximum 4 Video), (upload here or send on sales@pixthon.com)
+                                                    <br />
+                                                    <input name="submit" type="button" id="videoportfolio" class="submit" value="Add Video">
+                                                    @*<input id="videoportfolio" type="file" class="custom-file-input" multiple name="FileUpload1" accept="video/*">*@
+                                                </span>
+                                                <div class="col-md-12 col-sm-12 col-xs-12" style=" background-color:white; height:250px; overflow:scroll; overflow-x: scroll; overflow-y: scroll;">
+                                                    <div class="row" style="width:1000px;">
+                                                        <div class="container34"></div>
+
+                                                    </div>
+
+                                                </div>
+                                                <p class="note">Ex. https://www.youtube.com/watch?v=7edw7fXpBBQ </p>
+
+                                            </div><br><br><br><br><br><br><br>
+
+                                            <!-- /.col-md-6 -->
+                                            <center>
+                                                <span class="form-submit">
+                                                    <input name="submit" type="button" id="previous" class="submit" value="PREVIOUS" onclick="OnPrevious()">
+                                                    <input name="submit" type="button" id="finish" class="submit" value="SUBMIT" onclick="OnFinish()">
+
+                                                </span>
+                                                <div id="divLoader1" style="display:none;">
+                                                    <img src="~/Images/ajax-loader.gif" alt="Loader" />
+                                                </div>
+                                            </center>
+
+
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Portfolio Section -->
+                    </div>
+                </div>
+
+            </div>
+            @*<button>Add new select</button>
+                <div id="dynamic-container">
+
+                </div>*@
+            <!-- Registration Form -->
+            if (User.IsInRole("Admin") || User.IsInRole("SuperAdmin"))
+            {
+                <br>
+                <center>
+                    <a class="btn btn-success" style="margin-bottom: 20px;" href="@Url.Action("Index","Admin")">Back To Upload Photobook List</a>
+                </center>
+
+            }
+
+            <p style="padding-left:20px;">
+                @*<b>
+                        Note:<br />
+                        Select on GoogleMap / Youtube Share -> Embed Map / Embed Video<br />
+                        And copy the iframe
+                    </b>*@
+            </p>
+        }
+
+    }
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-widgets">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="widget widget_text">
+                            <div class="textwidget">
+                                <p style="text-align:justify;">Pixthon is one stop solutions for the photography and customisaton products . We are always happy to help in the best possible way.</p>
+                                <p style="text-align:justify;">Be it photo books, album designing or website designing, Pixthon has everything sorted for you.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="widget widget_nav_menu">
+                            <div class="menu-footer-menu-container">
+                                <ul class="ft-menu">
+                                    <li><a href=@Url.Action("Index","PhotographerProfile")>View Photobook</li>
+                                    <li><a href=@Url.Action("Register","Login")>Registration</a></li>
+                                    <li><a href=@Url.Action("Index","Login")>Log In</a></li>
+                                    <li><a href=@Url.Action("Contact","Home")>Contact Us</a></li>
+
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="widget widget_mc4wp_form_widget">
+                            <address class="location">
+                                <i class="fa fa-map-marker"></i> <b>Pixthon Digital Solutions Pvt Ltd.</b><br>
+                                Plot No. 39/3, 16th Floor/1605,<br>
+                                Haware Infotech Park, Sector 30A,<br>
+                                Vashi, Navi Mumbai,<br>
+                                Maharashtra-400703
+                            </address>
+                            <i class="fa fa-phone"></i> <b>+91 7039851605</b> <br>
+                            <i class="fa fa-envelope"></i><b> sales@pixthon.com</b>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="social-links">
+
+                            <a href="https://www.facebook.com/Pixthoncom-339936090122683/" target="_blank">
+                                <i class="fa fa-facebook-official"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/company/pixthon-digital-solutions-pvt-ltd/" target="_blank">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                            <a href="https://www.instagram.com/pixthondigitalsolutions/" target="_blank">
+                                <i class="fa fa-instagram" style="background-color:lightseagreen"></i>
+                            </a>
+                        </div>
+                    </div><!-- /.col-md-12 -->
+                    <div class="col-md-12">
+                        <div class="copyright">
+                            <div class="copyright-content">
+                                © 2020 | Design By <a href="#">Pixthon</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer -->
+    <!-- Go Top -->
+    <a class="go-top">
+        <i class="fa fa-chevron-up"></i>
+    </a>
+    <!-- Go Top -->
+    <!-- Javascript -->
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="~/Content/js/jquery-ui.min.js"></script>
+    <!-- Session Timeout -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/basil.js/0.4.10/basil.min.js"></script>
+    <script src="~/Content/js/jquery-idle-hands.js"></script>
+
+    <!-- Session Timeout -->
+
+    <script src="~/Scripts/select2.min.js"></script>
+    <script src="~/Scripts/select2.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery.easing.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/bootstrap.min.js"></script>
+    <script src="~/Content/js/sweetalert.min.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/owl.carousel.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery-waypoints.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery.fancybox.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery.cookie.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/gmap3.min.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/parallax.js"></script>
+    <!-- <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/switcher.js"></script> -->
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/smoothscroll.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery-validate.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/main.js"></script>
+    <!-- Revolution Slider -->
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery.themepunch.tools.min.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery.themepunch.revolution.min.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/slider.js"></script>
+
+
+    <script>
+        //$(function () {
+        //    $("button").on("click", function () {
+        //        $("#dynamic-container").append($("<select><select/>"));
+        //    });
+
+        //    // select the target node
+        //    var target = document.getElementById('dynamic-container');
+
+        //    if (target) {
+        //        // create an observer instance
+        //        var observer = new MutationObserver(function (mutations) {
+        //            //loop through the detected mutations(added controls)
+        //            mutations.forEach(function (mutation) {
+        //                //addedNodes contains all detected new controls
+        //                if (mutation && mutation.addedNodes) {
+        //                    mutation.addedNodes.forEach(function (elm) {
+        //                        //only apply select2 to select elements
+        //                        if (elm && elm.nodeName === "SELECT") {
+        //                            $(elm).select2();
+        //                        }
+        //                    });
+        //                }
+        //            });
+        //        });
+
+        //        // pass in the target node, as well as the observer options
+        //        observer.observe(target, {
+        //            childList: true
+        //        });
+
+        //        // later, you can stop observing
+        //        //observer.disconnect();
+        //    }
+        //});
+        function setCookie(cname, cvalue, exdays) {
+            var d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            var expires = "expires=" + d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+        $(document).ready(function ()
+        {
+
+            if (sessionStorage.getItem('Email') != null) {
+                setCookie("username", sessionStorage.getItem('Email'), 365);
+                console.log('Session', sessionStorage.getItem('Email'));
+               // $('#customopt').append(sessionStorage.getItem('Email'))
+              //  $('#customopt').append("<a class='btn btn-success' style='margin-right: 14px;' href='/ChangePassword/Index'>Change Password</a><a class='btn btn-success' style='margin-right: 14px;' href='@Url.Action("PhotographerProfile", "PhotographerProfile", new { obj1 = Model.EncodedPhotographerID, PhotographerID = Model.EncodedPhotographerID })'><span>View Photographer Profile</span></a><a class='btn btn-success' href='#' onclick='Signout()'><span>Sign Out</span></a>");
+            } else {
+                window.location.href = '@Url.Action("Index", "Login")';
+            }
+
+            if ($("#email").val() != "" ) {
+                $("#email").attr("disabled", "disabled");
+            }
+
+
+
+            if (@Model.PhotographerID != 0)
+            {
+                $("#viewprofile").removeAttr("disabled");
+                GetImages('@Model.EncodedPhotographerID');
+                GetVideo('@Model.EncodedPhotographerID');
+                GetCover('@Model.EncodedPhotographerID');
+                GetLogo('@Model.EncodedPhotographerID');
+                GetOwner('@Model.EncodedPhotographerID');
+                        }
+
+
+            //#region  Upload Photos
+            $("#ownerphoto").change(function () {
+                var fileData = new FormData();
+                var files = $("#ownerphoto").get(0).files;
+
+                //File Type
+                var fileType = files[0].type;
+                var validImageTypes = ["image/jpeg", "image/png", "image/bmp", "image/jpg"];
+                if ($.inArray(fileType, validImageTypes) < 0) {
+                    $("#ownerphoto").val("");
+                    alert('Uploaded File Must Be Image');
+                    return false;
+                }
+                else {
+
+                    //Validating Image Size
+                    var validateFileSize = parseFloat(files[0].size / 1024).toFixed(2);
+                    alert('File Size Is ' + validateFileSize + "KB");
+                    if (validateFileSize > 2000) {
+                        $("#ownerphoto").val("");
+                        alert('Image Size Must Be Less Than 2 MB');
+                        return false;
+                    }
+
+                    //Initiate the FileReader object.
+                    var reader = new FileReader();
+                    //Read the contents of Image File.
+                    reader.readAsDataURL(files[0]); //or fileUploader.files[0]
+                    reader.onload = function (e) {
+                        //Initiate the JavaScript Image object.
+                        var image = new Image();
+                        //Set the Base64 string return from FileReader as source.
+                        image.src = e.target.result;
+                        image.onload = function () {
+                            //Determine the Height and Width.
+                            var height = this.height;
+                            var width = this.width;
+                            //if (height > 150 || width > 150) {
+                            //    alert("Height and Width must not exceed 150 X 150 px.");
+                            //    return false;
+                            //}
+                            //alert("Uploaded image has valid Height and Width.");
+                            fileData.append("ownerphotofile", files[0]);
+                            if (files && files[0]) {
+                                var reader = new FileReader();
+
+                                reader.onload = function (e) {
+                                    var img = $('<img>').attr('src', e.target.result);
+                                    $('#divowner').html(img);
+
+                                };
+
+                                reader.readAsDataURL(files[0]);
+                            }
+
+                        };
+                    }
+                }
+
+            });
+            $("#logoofcompany").change(function () {
+                var fileData = new FormData();
+
+                var files = $("#logoofcompany").get(0).files;
+                var fileType = files[0].type;
+                var validImageTypes = ["image/jpeg", "image/png", "image/bmp", "image/jpg"];
+                if ($.inArray(fileType, validImageTypes) < 0) {
+                    $("#logoofcompany").val("");
+                    alert('Uploaded File Must Be Image');
+
+                    return false;
+                }
+                else {
+
+                    //Validating Image Size
+                    var validateFileSize = parseFloat(files[0].size / 1024).toFixed(2);
+                    alert('File Size Is ' + validateFileSize + "KB");
+                    if (validateFileSize > 2000) {
+                        $("#logoofcompany").val("");
+                        alert('Image Size Must Be Less Than 2 MB');
+                        return false;
+                    }
+
+                    //Initiate the FileReader object.
+                    var reader = new FileReader();
+                    //Read the contents of Image File.
+                    reader.readAsDataURL(files[0]); //or fileUploader.files[0]
+                    reader.onload = function (e) {
+                        //Initiate the JavaScript Image object.
+                        var image = new Image();
+                        //Set the Base64 string return from FileReader as source.
+                        image.src = e.target.result;
+                        image.onload = function () {
+                            //Determine the Height and Width.
+                            var height = this.height;
+                            var width = this.width;
+                            //if (height > 150 || width > 150) {
+                            //    alert("Height and Width must not exceed 150 X 150 px.");
+                            //    return false;
+                            //}
+                            //alert("Uploaded image has valid Height and Width.");
+                            fileData.append("logophotofile", files[0]);
+                            if (files && files[0]) {
+                                var reader = new FileReader();
+
+                                reader.onload = function (e) {
+                                    var img = $('<img>').attr('src', e.target.result);
+                                    $('#divlogo').html(img);
+
+                                };
+
+                                reader.readAsDataURL(files[0]);
+                            }
+                           // return true;
+                        };
+                    }
+                }
+
+            });
+            $("#cover").change(function () {
+                var fileData = new FormData();
+                var files = $("#cover").get(0).files;
+
+                var fileType = files[0].type;
+                var validImageTypes = ["image/jpeg", "image/png", "image/bmp", "image/jpg"];
+                if ($.inArray(fileType, validImageTypes) < 0) {
+                    $("#cover").val("");
+                    swal("Failed To Upload","Uploaded File Must Be Image Type","error");
+                    return false;
+                }
+                else {
+
+                    //Validating Image Size
+                    var validateFileSize = parseFloat(files[0].size / 1024).toFixed(2);
+                    alert('File Size Is ' + validateFileSize + "KB");
+                    if (validateFileSize > 4000) {
+                        $("#cover").val("");
+                        swal("Failed To Upload","Image Size Must Be Less Than 4 MB","error");
+                        return false;
+                    }
+
+                    //Initiate the FileReader object.
+                    var reader = new FileReader();
+                    //Read the contents of Image File.
+                    reader.readAsDataURL(files[0]); //or fileUploader.files[0]
+                    reader.onload = function (e) {
+                        //Initiate the JavaScript Image object.
+                        var image = new Image();
+                        //Set the Base64 string return from FileReader as source.
+                        image.src = e.target.result;
+                        image.onload = function () {
+                            //Determine the Height and Width.
+                            var height = this.height;
+                            var width = this.width;
+                            console.log(height)
+                            console.log(width)
+                            if (height != 450 || width != 1350) {
+                                $("#cover").val("");
+                                swal("Failed To Upload","Width and Height must not exceed 1350 X 450 px respectively.","error");
+                                return false;
+                            }
+
+                            //swal("Success", "Uploaded image has valid Height and Width.", "success");
+                            fileData.append("coverfile", files[0]);
+                            if (files && files[0]) {
+                                var reader = new FileReader();
+
+                                reader.onload = function (e) {
+                                    var img = $('<img>').attr('src', e.target.result);
+                                    $('#divcover').html(img);
+
+                                };
+
+                                reader.readAsDataURL(files[0]);
+                            }
+                        };
+
+                    }
+                }
+
+            });
+            $("#imageportfolio").change(function () {
+
+                var matched = $(".container12 *");
+                //alert("Number of elements in content div = " + matched.length);
+                if ((matched.length / 3) > 10) {
+                    $("#imageportfolio").val("");
+                    swal("Failed","Cannot Upload Images you have Already reaches the limit(Maximum 10)","error");
+                    return;
+                }
+                var fileData = new FormData();
+
+                var files = $("#imageportfolio").get(0).files; // this.files[0];
+                if (files.length > 10) {
+                    $("#imageportfolio").val("");
+                    swal("Failed", "Cannot Upload Images you have Already reaches the limit(Maximum 10)", "error");
+                    return;
+                }
+                var totalnooffiles = files.length + (matched.length / 3)
+                if (totalnooffiles > 10) {
+                    $("#imageportfolio").val("");
+                    swal("Failed", "Cannot Upload Images you have Upload 10 images", "error");
+                    return;
+                }
+
+                var photographerid = $('#photographerid').val();
+                fileData.append('PhotographerID', photographerid);
+
+                for (var i = 0; i < files.length; i++) {
+
+
+                    var fileType = files[i].type;
+                    var validImageTypes = ["image/jpeg", "image/png", "image/bmp", "image/jpg"];
+                    if ($.inArray(fileType, validImageTypes) < 0) {
+                        $("#imageportfolio").val("");
+                        alert('Uploaded File Must Be Image');
+                        return false;
+                    }
+                    else {
+
+                        //Validating Image Size
+                        var validateFileSize = parseFloat(files[i].size / 1024).toFixed(2);
+                        //alert('File Size Is ' + validateFileSize + "KB");
+                        if (validateFileSize > 4000) {
+                            $("#imageportfolio").val("");
+                            alert('Image Size Must Be Less Than 4 MB');
+                            return false;
+                        }
+
+                        //Initiate the FileReader object.
+                        var reader = new FileReader();
+                        //Read the contents of Image File.
+                        reader.readAsDataURL(files[i]);
+                        reader.onload = function (e) {
+                            //Initiate the JavaScript Image object.
+                            var image = new Image();
+                            //Set the Base64 string return from FileReader as source.
+                            image.src = e.target.result;
+                            image.onload = function () {
+                                //Determine the Height and Width.
+                                var height = this.height;
+                                var width = this.width;
+                                //if (height > 600 || width > 400) {
+                                //    alert("Height and Width must not exceed 600 X 400 px.");
+                                //    return false;
+                                //}
+                               // alert("Uploaded image has valid Height and Width.");
+
+
+                               // return true;
+                            };
+                        }
+                        fileData.append('imageportfolio', files[i]);
+                    }
+
+
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Registration/UploadImage",
+                    dataType: "json",
+                    contentType: false, // Not to set any content header
+                    processData: false, // Not to process data
+                    data: fileData,
+                    success: function (result, status, xhr) {
+                        //alert("Success in uploading Images");
+                        //alert(result);
+                        if (result.result == "Error") {
+                            $("#imageportfolio").val("");
+                            swal("Try Again!", "First fill Photographer Profile and Click On Save!", "error");
+                            return false;
+                        }
+                        console.log(result)
+
+                        var total_file = document.getElementById("imageportfolio").files.length;
+
+
+                        for (var i = 0; i < result.length; i++) {
+
+                            var count = $('.container12 .content').length;
+                            count = Number(count) + 1;
+                            //$('.container12').append("<div class='col-md-2 content' id='content_image" + count + "' ><img class='imageheight' src='" + result[i] + "'  style='float: left; display: inline; padding: 10px;' /><a class='delete  button scheme2' id='delete_" + count + "' style='margin-left:10px;width:140px;'>Delete</a></div>");
+                            $('.container12').append("<div class='col-md-2 col-sm-2 col-xs-2 content' id='content_image" + count + "' ><img class='imageheight' src='" + result[i] + "'  style='float: left; display: inline; padding: 10px;' /><a class='delete  button scheme2' id='delete_" + count + "' style='margin-left:10px;width:140px;'>Delete</a></div>");
+                        }
+                        $("#imageportfolio").val("");
+
+                    },
+                    error: function (xhr, status, error) {
+                        alert(status);
+                    }
+                });
+
+
+
+            });
+            // Remove Image
+            $('.container12').on('click', '.content .delete', function () {
+
+                var id = this.id;
+                var split_id = id.split('_');
+                var num = split_id[1];
+
+                // Get image source
+                var imgElement_src = $('#content_image' + num + ' img').attr("src");
+                var deleteFile = confirm("Do you really want to Delete?");
+                if (deleteFile == true) {
+                    // AJAX request
+                    $.ajax({
+                        url: '/Registration/DeleteImage',
+                        type: 'post',
+                        data: { path: imgElement_src, PhotographerID: $('#photographerid').val()},
+                        success: function (response) {
+
+                            // Remove
+                            if (response == 1) {
+                                $('#content_image' + num).remove();
+                            } else if (response == 0) {
+                                swal("Try Again!", "Unable to Delete Photo!", "error");
+                            }
+
+                        }
+                    });
+                }
+            });
+            $("#videoportfolio").click(function () {
+                var matched = $(".container34 *");
+                //alert("Number of elements in content div = " + matched.length);
+                if ((matched.length / 3) > 3) {
+                    $("#videoportfolio").val("");
+                    swal("Failed", "Cannot Upload Videos you have Already reaches the limit", "error");
+                    return;
+                }
+
+
+
+
+
+                $("#videoportfolio").attr("value", "Add Youtube Video Link");
+                var fileData = new FormData();
+
+                var photographerid = $('#photographerid').val();
+                fileData.append('PhotographerID', photographerid);
+                var count = $('.container34 .content1').length;
+                count = Number(count) + 1;
+
+
+
+                $('.container34').append("<div class='col-md-2 col-sm-2 col-xs-2 content1' id='content_video" + count + "' ><input type='text' class='videoIframe' id='content_txtVideo" + count + "'/><a class='delete button scheme2' id='delete_" + count + "' style='margin-left:10px;width:140px;'>Delete</a></div>");
+
+                //var matched = $(".content1 *");
+                //alert("Number of elements in content div = " + matched.length);
+            });
+            // Remove Video
+            $('.container34').on('click', '.content1 .delete', function () {
+
+                var id = this.id;
+                var split_id = id.split('_');
+                var num = split_id[1];
+
+                // Get image source
+                //var imgElement_src = $('#content_video' + num + ' img').attr("src");
+               // var imgElement_src = $('#content_video' + num + '').html();
+              //  var calendarDiv = document.getElementsByClassName("calendar")[0];
+                var imgElement_src = $('#content_video' + num + '')[0];
+                if ($('#content_video' + num + ' iframe').length == 0) {
+                    $('#content_video' + num).remove();
+                    return;
+                }
+
+                var x = imgElement_src.getElementsByTagName("iframe")[0].getAttribute("src");
+                //var x = document.getElementsByTagName("iframe")[0].getAttribute("src");
+                //imgElement_src = imgElement_src.split('<a')[0];
+                //imgElement_src = imgElement_src.replace(/\'/g, "").toString();
+                //imgElement_src = imgElement_src.replace('allowfullscreen=""', "allowfullscreen")
+                //imgElement_src = String(imgElement_src).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+
+                console.log("Delete Iframe", (x));
+                var deleteFile = confirm("Do you really want to Delete Video?");
+                if (deleteFile == true) {
+                    // AJAX request
+                   // var googlemap = String(imgElement_src).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+                    $.ajax({
+                        url: '/Registration/DeleteVideo',
+                        type: 'post',
+                        data: { path: x, PhotographerID: $('#photographerid').val() },
+                        success: function (response) {
+
+                            // Remove
+                            if (response == 1) {
+                                $('#content_video' + num).remove();
+                            }
+                           // window.location.reload();
+                        }
+                    });
+                }
+            });
+             //#endregion  Upload Photos
+
+            console.log($(".CountryId").val());
+
+            $(".Country").select2({
+                placeholder: "Select Categories",
+                theme: "classic",
+                width: "auto",
+                allowClear: true,
+                minimumResultsForSearch: -1,
+                ajax: {
+                    url: "/Registration/GetCategories",
+                    dataType: "json",
+                    data: function (params) {
+                        return {
+                            id: 0,
+                            searchTerm: params.term
+                        };
+                    },
+                    processResults: function (data, params) {
+
+                        return {
+                            results: data
+                        };
+                    }
+                }
+            });
+
+            $(".Country").on("change", function () {
+               console.log( $(".CountryId").val());
+
+                var CounrtyID = $(this).val();
+                $(".CountryId").val(CounrtyID);
+
+                //var ServiceOffered=$(".CountryId").text();
+                var ServiceOffered = $(".CountryId").text();
+
+                var selectedServices = $('.Country option:selected').toArray().map(item => item.text).join();
+                console.log("selectedServices", selectedServices);
+
+                $(".CountryId").text(selectedServices);
+
+
+
+
+                //$(".Country option:selected").each(function () {
+                //    var $this = $(this);
+                //    if ($this.length) {
+                //        var selectedServices = $this.text();
+                //        console.log("selectedServices", selectedServices);
+                //    }
+                //});
+                //var applycomma = false;
+                //if ($(this).text() != "") {
+                //    applycomma = true;
+                //}
+                //if (CounrtyID.length >= 2) {
+                //    if (applycomma == true) {
+                //        ServiceOffered += ","
+                //        ServiceOffered += $(this).text();
+                //    }
+                //} else {
+                //    ServiceOffered = $(this).text();
+                //}
+
+                //var comma=ServiceOffered.toString();
+                //$(".CountryId").val(CounrtyID);
+                //$(".CountryId").text(comma);
+                //var textBoxVal = $(".CountryId").text();
+
+              //For Getting Selected Services
+                //console.log("Selected Services", $("select option:selected"));
+                //var selectedServices = $("select option:selected").map(function () {
+                //    return $(this).text();
+                //}).get().join(',');
+                //$(".CountryId").text(selectedServices);
+                //localStorage.setItem('ServicesOffered', selectedServices);
+
+
+                console.log('ServiceOffered', ServiceOffered);
+
+                if (CounrtyID != null) {
+
+                    ////#region Demo Code
+
+                    //$(".CountryId option:selected").remove();
+
+                    //$('.Country').select2({
+                    //    allowClear: true,
+                    //    minimumResultsForSearch: -1,
+                    //    width: 600
+                    //});
+
+                    //// override the select2 open event
+                    //$('.Country').on('select2:open', function () {
+                    //    // get values of selected option
+                    //    var values = $(this).val();
+                    //    console.log("Fiddle Values", values);
+                    //    // get the pop up selection
+                    //    var pop_up_selection = $('.select2-results_options');
+
+                    //    if (values != null) {
+                    //        // hide the selected values
+                    //        pop_up_selection.find("li[aria-selected=true]").hide();
+
+                    //    } else {
+                    //        // show all the selection values
+                    //        pop_up_selection.find("li[aria-selected=true]").show();
+                    //    }
+
+                    //});
+
+                    ////#endregion
+
+
+                CounrtyID.forEach(function (item) {
+
+                    if (item == '1') {
+                        if ($("select").hasClass("1") == true) {
+                            //$('.1').select2('destroy');
+                            //$('.1').remove();
+                            BindingSubCategoriesWedding();
+
+                        } else {
+                            if ($("select").hasClass("1") == false) {
+                                $("#dynamic-container").append($("<select class='1' multiple style='width: 100%' onchange='ChangeEvent1(this)'><select/>"));
+                                $(".1").select2({
+                                    placeholder: "Weddings & Pre-Wedding",
+                                    theme: "classic",
+                                    width: "100%",
+                                    ajax: {
+                                        url: "/Registration/GetSubCategories?CountryIDs=" + 1,
+                                        dataType: "json",
+                                        data: function (params) {
+                                            return {
+                                                id: "0",
+                                                searchTerm: params.term
+                                            };
+                                        },
+                                        processResults: function (data, params) {
+                                            return {
+                                                results: data
+                                            };
+                                        }
+                                    }
+                                });
+                            }
+
+                        }
+
+                    }
+                    else {
+                        if (CounrtyID.includes("1") == false) {
+                            if ($("select").hasClass("1") == true) {
+                                $('.1').select2('destroy');
+                                $('.1').remove();
+                            }
+                        }
+
+                    }
+
+                    if (item == '2') {
+                        if ($("select").hasClass("2") == true) {
+                            //$('.2').select2('destroy');
+                            //$('.2').remove();
+                            BindingSubCategoriesCorporate();
+
+                        } else {
+                            if ($("select").hasClass("2") == false) {
+                                $("#dynamic-container").append($("<select class='2' multiple style='width: 100%' onchange='ChangeEvent2()'><select/>"));
+                                $(".2").select2({
+                                    placeholder: "Corporate & Products",
+                                    theme: "classic",
+                                    ajax: {
+                                        url: "/Registration/GetSubCategories?CountryIDs=" + 2,
+                                        dataType: "json",
+                                        data: function (params) {
+                                            return {
+                                                id: "0",
+                                                searchTerm: params.term
+                                            };
+                                        },
+                                        processResults: function (data, params) {
+                                            return {
+                                                results: data
+                                            };
+                                        }
+                                    }
+                                });
+                            }
+
+                        }
+
+                    }
+                    else {
+                        if (CounrtyID.includes("2") == false) {
+                            if ($("select").hasClass("2") == true) {
+                                $('.2').select2('destroy');
+                                $('.2').remove();
+                            }
+                        }
+
+                    }
+
+                    if (item == '3') {
+                        if ($("select").hasClass("3") == true) {
+                            //$('.3').select2('destroy');
+                            //$('.3').remove();
+                            BindingSubCategoriesKid();
+
+                        } else {
+                            $("#dynamic-container").append($("<select class='3' multiple style='width: 100%' onchange='ChangeEvent3()'><select/>"));
+                            $(".3").select2({
+                                placeholder: "Kids & Baby Shoots",
+                                theme: "classic",
+                                ajax: {
+                                    url: "/Registration/GetSubCategories?CountryIDs=" + 3,
+                                    dataType: "json",
+                                    data: function (params) {
+                                        return {
+                                            id: "0",
+                                            searchTerm: params.term
+                                        };
+                                    },
+                                    processResults: function (data, params) {
+                                        return {
+                                            results: data
+                                        };
+                                    }
+                                }
+                            });
+                        }
+
+                    }
+                    else {
+                        if (CounrtyID.includes("3") == false) {
+                            if ($("select").hasClass("3") == true) {
+                                $('.3').select2('destroy');
+                                $('.3').remove();
+                            }
+                        }
+
+                    }
+
+                    if (item == '4') {
+                        if ($("select").hasClass("4") == true) {
+                            //$('.4').select2('destroy');
+                            //$('.4').remove();
+                            BindingSubCategoriesBirthday();
+
+                        } else {
+                            $("#dynamic-container").append($("<select class='4' multiple style='width: 100%' onchange='ChangeEvent4()'><select/>"));
+                            $(".4").select2({
+                                placeholder: "Birthday & family events",
+                                theme: "classic",
+                                ajax: {
+                                    url: "/Registration/GetSubCategories?CountryIDs=" + 4,
+                                    dataType: "json",
+                                    data: function (params) {
+                                        return {
+                                            id: "0",
+                                            searchTerm: params.term
+                                        };
+                                    },
+                                    processResults: function (data, params) {
+                                        return {
+                                            results: data
+                                        };
+                                    }
+                                }
+                            });
+                        }
+
+                    }
+                    else {
+                        if (CounrtyID.includes("4") == false) {
+                            if ($("select").hasClass("4") == true) {
+                                $('.4').select2('destroy');
+                                $('.4').remove();
+                            }
+                        }
+
+                    }
+
+                    if (item == '5') {
+                        if ($("select").hasClass("5") == true) {
+                            //$('.5').select2('destroy');
+                            //$('.5').remove();
+                            BindingSubCategoriesFashion();
+
+                        } else {
+                            $("#dynamic-container").append($("<select class='5' multiple style='width: 100%' onchange='ChangeEvent5()'><select/>"));
+                            $(".5").select2({
+                                placeholder: "Fashion & Portfolio",
+                                theme: "classic",
+                                ajax: {
+                                    url: "/Registration/GetSubCategories?CountryIDs=" + 5,
+                                    dataType: "json",
+                                    data: function (params) {
+                                        return {
+                                            id:"0",
+                                            searchTerm: params.term
+                                        };
+                                    },
+                                    processResults: function (data, params) {
+                                        return {
+                                            results: data
+                                        };
+                                    }
+                                }
+                            });
+                        }
+
+                    }
+                    else {
+                        if (CounrtyID.includes("5") == false) {
+                            if ($("select").hasClass("5") == true) {
+                                $('.5').select2('destroy');
+                                $('.5').remove();
+                            }
+                        }
+
+                    }
+
+                    if (item == '6') {
+                        if ($("select").hasClass("6") == true) {
+                            if (CounrtyID.includes("6") == true) {
+                                //$('.6').select2('destroy');
+                                //$('.6').remove();
+                                BindingSubCategoriesCommercial();
+                            }
+
+                        } else {
+                            $("#dynamic-container").append($("<select class='6' multiple style='width: 100%' onchange='ChangeEvent6()'><select/>"));
+                            $(".6").select2({
+                                placeholder: "Commercial",
+                                theme: "classic",
+                                ajax: {
+                                    url: "/Registration/GetSubCategories?CountryIDs=" + 6,
+                                    dataType: "json",
+                                    data: function (params) {
+                                        return {
+                                            id: "0",
+                                            searchTerm: params.term
+                                        };
+                                    },
+                                    processResults: function (data, params) {
+                                        return {
+                                            results: data
+                                        };
+                                    }
+                                }
+                            });
+                        }
+
+                    }
+                    else {
+                        if (CounrtyID.includes("6") == false) {
+                            if ($("select").hasClass("6") == true) {
+                                $('.6').select2('destroy');
+                                $('.6').remove();
+                            }
+                        }
+
+                    }
+
+                    if (item == '7') {
+                        if ($("select").hasClass("7") == true) {
+                            //$('.7').select2('destroy');
+                            //$('.7').remove();
+                            BindingSubCategoriesWildLife();
+
+                        } else {
+                            $("#dynamic-container").append($("<select class='7' multiple style='width: 100%' onchange='ChangeEvent7()'><select/>"));
+                            $(".7").select2({
+                                placeholder: "Wildlife & Nature",
+                                theme: "classic",
+                                ajax: {
+                                    url: "/Registration/GetSubCategories?CountryIDs=" + 7,
+                                    dataType: "json",
+                                    data: function (params) {
+                                        return {
+                                            id: "0",
+                                            searchTerm: params.term
+                                        };
+                                    },
+                                    processResults: function (data, params) {
+                                        return {
+                                            results: data
+                                        };
+                                    }
+                                }
+                            });
+                        }
+
+                    }
+                    else {
+                        if (CounrtyID.includes("7") == false) {
+                            if ($("select").hasClass("7") == true) {
+                                $('.7').select2('destroy');
+                                $('.7').remove();
+                            }
+                        }
+
+                    }
+
+                    if (item == '8' ) {
+                        if ($("select").hasClass("8") == true) {
+                            //$('.8').select2('destroy');
+                            //$('.8').remove();
+                            BindingSubCategoriesOther();
+                        } else {
+                            $("#dynamic-container").append($("<select class='8' multiple style='width: 100%' onchange='ChangeEvent8()'><select/>"));
+                            $(".8").select2({
+                                placeholder: "Other Based on Requirements",
+                                theme: "classic",
+                                ajax: {
+                                    url: "/Registration/GetSubCategories?CountryIDs=" + 8,
+                                    dataType: "json",
+                                    data: function (params) {
+                                        return {
+                                            id: "0",
+                                            searchTerm: params.term
+                                        };
+                                    },
+                                    processResults: function (data, params) {
+                                        return {
+                                            results: data
+                                        };
+                                    }
+                                }
+                            });
+                        }
+
+                    }
+                    else {
+                        if (CounrtyID.includes("8") == false ) {
+                            if ($("select").hasClass("8") == true) {
+                                $('.8').select2('destroy');
+                                $('.8').remove();
+                            }
+                        }
+
+                    }
+
+
+
+
+                })
+                }
+
+            });
+            $("#currentstate").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: "/Registration/SearchState",
+                        type: "POST",
+                        dataType: "json",
+                        data: { Prefix: request.term },
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return { label: item.StateName, value: item.StateID };
+                            }))
+
+                        }
+                    })
+                },
+                minLength:1,
+                focus: function (event, ui) {
+                    // prevent autocomplete from updating the textbox
+                    event.preventDefault();
+                    // manually update the textbox
+                    $(this).val(ui.item.label);
+                    $("#currentstate").val(ui.item.label);
+                },
+                select: function (event, ui) {
+                    // prevent autocomplete from updating the textbox
+                    event.preventDefault();
+                    // manually update the textbox and hidden field
+                    $(this).val(ui.item.label);
+                    $("#currentstate").val(ui.item.label);
+                    $("#currentstateid").val(ui.item.value);
+
+                }
+
+            });
+            $('#currentlocation').autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: "/Registration/SearchCity",
+                        type: "POST",
+                        dataType: "json",
+                        data: { Prefix: request.term, state_code: $("#currentstateid").val() },
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return { label: item.CityName, value: item.CityID };
+                            }))
+
+                        }
+                    })
+                },
+                focus: function (event, ui) {
+                    // prevent autocomplete from updating the textbox
+                    event.preventDefault();
+                    // manually update the textbox
+                    $(this).val(ui.item.label);
+                    $("#currentlocation").val(ui.item.label);
+                },
+                select: function (event, ui) {
+                    // prevent autocomplete from updating the textbox
+                    event.preventDefault();
+                    // manually update the textbox and hidden field
+                    $(this).val(ui.item.label);
+                    $("#currentlocation").val(ui.item.label);
+                    $("#currentlocationid").val(ui.item.value);
+
+                }
+
+            });
+
+            if (@Model.PhotographerID != 0) {
+                BindingCategories();
+                BindingSubCategoriesWedding();
+                BindingSubCategoriesCorporate();
+                BindingSubCategoriesKid();
+                BindingSubCategoriesBirthday();
+                BindingSubCategoriesFashion();
+                BindingSubCategoriesCommercial();
+                BindingSubCategoriesWildLife();
+                BindingSubCategoriesOther();
+            }
+
+        });
+
+        //#region Session Timeout
+
+        $(function () {
+            $.idleHands({
+                //applicationId: 'my_application',
+                heartRate: 5, //Keep Page Alive For The Time Before The Session Expiration Warning Dialog Appears
+                inactivityDialogDuration: 300, //Time For Which Dialog Box Will Stay -300 seconds(5 Minutes)
+                inactivityLogoutUrl: '/Login/Index',
+                maxInactivitySeconds: 1800 //Max Idle Time - 1800 seconds=30 minutes
+            });
+        });
+
+
+        //#endregion
+
+        //#region Categories and SubCategories
+        function BindingCategories() {
+            var arr = [];
+            var arr1 = [];
+            $.ajax({
+                //type: "POST",
+                url: "/Registration/GetCategories",
+                data: {id:"@Model.EncodedPhotographerID"},
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (items) {
+
+                    $.each(items, function (i, item) {
+                        $('.Country').append($('<option>', {
+                            value: item.id,
+                            text: item.text,
+                            selected: item.selected
+                        }));
+                        if (item.selected == true) {
+
+                            arr.push(item.id);
+                            var CityID = arr;
+                            $(".CountryId").val(CityID);
+                            arr1.push(item.text);
+                            var SubCategory = arr1;
+                            $(".CountryId").text(SubCategory);
+                            //var selectedServices5 = $('.CountryId option:selected').toArray().map(item => item.text).join();
+                            //console.log("Category", selectedServices5);
+                            //$(".CountryId").text($(".CountryId").text());
+                            console.log(".CountryId", $(".CountryId").text());
+                        }
+                    });
+                    //$.each(items, function (i, item) {
+                    //    $('.Country').append($('<option>', {
+                    //        value: item.id,
+                    //        text: item.text,
+                    //        selected: item.selected
+                    //    }));
+
+                    //    if (item.selected == true) {
+                    //        var arr = [];
+                    //        var arr1 = [];
+                    //        arr.push(item.id);
+                    //        var CityID = arr;
+                    //        $(".CountryId").val(CityID);
+                    //        arr1.push(item.text);
+                    //        var SubCategory = arr1;
+                    //        $(".CountryId").text(SubCategory);
+
+                    //        var selectedServices5 = $('.CountryId option:selected').toArray().map(item => item.text).join();
+                    //        console.log("selectedServices", selectedServices5);
+                    //        $(".CountryId").text(selectedServices5);
+                    //        console.log(".CountryId", $(".CountryId").text());
+                    //    }
+
+                    //});
+
+                    $(".Country").select2({
+                        placeholder: "Select Categories",
+                        theme: "classic",
+                        width: "auto",
+
+
+                    });
+                },
+                error: function (response) {
+                    swal("Error!", "Failed to Bind Category!", "error");
+                    //alert(response);
+                }
+            });
+
+        }
+
+
+        function BindingSubCategoriesWedding() {
+            var shouldI1 = false;
+            if ($("select").hasClass("1") == false) {
+                $.ajax({
+                //type: "POST",
+               url: "/Registration/GetSubCategories?CountryIDs=" + 1,
+
+                data: {id:"@Model.EncodedPhotographerID"},
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (items) {
+
+                    if (items.length != 0) {
+                        for (var i = 0; i < items.length; i++) {
+                            if (items[i].selected == true) {
+                                shouldI1 = true;
+                            }
+                        }
+                    }
+
+                    if (shouldI1 == true) {
+                        $('.1').select2('destroy');
+                        $('.1').remove();
+                        $("#dynamic-container").append($("<select class='1' multiple style='width: 100%' onchange='ChangeEvent1()'><select/>"));
+                        $.each(items, function (i, item) {
+                            $('.1').append($('<option>', {
+                                value: item.id,
+                                text: item.text,
+                                selected: item.selected
+                            }));
+                            if (item.selected == true) {
+                                var arr = [];
+                                var arr1 = [];
+                                arr.push(item.id);
+                                var CityID = arr;
+                                $(".Sub1").val(CityID);
+                                arr1.push(item.text);
+                                var SubCategory = arr1;
+                                $(".Sub1").text(SubCategory);
+                                var selectedServices5 = $('.1 option:selected').toArray().map(item => item.text).join();
+                                console.log("selectedServices", selectedServices5);
+                                $(".Sub1").text(selectedServices5);
+                                console.log(".Sub1", $(".Sub1").text());
+                            }
+                        });
+                        $(".1").select2({
+                            placeholder: "Select Wedding-Categories",
+                            theme: "classic",
+                            width: "auto",
+
+
+                        });
+                    }
+
+                },
+                error: function (response) {
+                    swal("Error!", "Failed to Wedding Bind Category!", "error");
+                    //alert(response);
+                }
+            });
+            }
+
+
+        }
+        function BindingSubCategoriesCorporate() {
+
+            var shouldI2 = false;
+            if ($("select").hasClass("2") == false) {
+                $.ajax({
+                    //type: "POST",
+                    url: "/Registration/GetSubCategories?CountryIDs=" + 2,
+
+                    data: { id: "@Model.EncodedPhotographerID" },
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (items) {
+                        if (items.length != 0) {
+                            for (var i = 0; i < items.length; i++) {
+                                if (items[i].selected == true) {
+                                    shouldI2 = true;
+                                }
+                            }
+                        }
+
+                        if (shouldI2 == true) {
+                            $('.2').select2('destroy');
+                            $('.2').remove();
+                            $("#dynamic-container").append($("<select class='2' multiple style='width: 100%' onchange='ChangeEvent2()'><select/>"));
+                            $.each(items, function (i, item) {
+                                $('.2').append($('<option>', {
+                                    value: item.value,
+                                    text: item.text,
+                                    selected: item.selected
+                                }));
+                                if (item.selected == true) {
+                                    var arr = [];
+                                    var arr1 = [];
+                                    arr.push(item.id);
+                                    var CityID = arr;
+                                    $(".Sub2").val(CityID);
+                                    arr1.push(item.text);
+                                    var SubCategory = arr1;
+                                    $(".Sub2").text(SubCategory);
+                                    var selectedServices5 = $('.2 option:selected').toArray().map(item => item.text).join();
+                                    console.log("selectedServices", selectedServices5);
+                                    $(".Sub2").text(selectedServices5);
+                                    console.log(".Sub2", $(".Sub2").text());
+                                }
+                            });
+
+                            $(".2").select2({
+                                placeholder: "Select Corporate-Categories",
+                                theme: "classic",
+                                width: "auto",
+
+
+                            });
+                        }
+
+                    },
+                    error: function (response) {
+                        swal("Error!", "Failed to Wedding Bind Category!", "error");
+                        //alert(response);
+                    }
+                });
+            }
+
+        }
+        function BindingSubCategoriesKid() {
+
+            var shouldI3 = false;
+            if ($("select").hasClass("3") == false) {
+                $.ajax({
+                    //type: "POST",
+                    url: "/Registration/GetSubCategories?CountryIDs=" + 3,
+
+                    data: { id: "@Model.EncodedPhotographerID" },
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (items) {
+                        if (items.length != 0) {
+                            for (var i = 0; i < items.length; i++) {
+                                if (items[i].selected == true) {
+                                    shouldI3 = true;
+                                }
+                            }
+                        }
+
+                        if (shouldI3 == true) {
+                            $('.3').select2('destroy');
+                            $('.3').remove();
+                            $("#dynamic-container").append($("<select class='3' multiple style='width: 100%' onchange='ChangeEvent3()'><select/>"));
+                            $.each(items, function (i, item) {
+                                $('.3').append($('<option>', {
+                                    value: item.value,
+                                    text: item.text,
+                                    selected: item.selected
+                                }));
+                                if (item.selected == true) {
+                                    var arr = [];
+                                    var arr1 = [];
+                                    arr.push(item.id);
+                                    var CityID = arr;
+                                    $(".Sub3").val(CityID);
+                                    arr1.push(item.text);
+                                    var SubCategory = arr1;
+                                    $(".Sub3").text(SubCategory);
+                                    var selectedServices5 = $('.3 option:selected').toArray().map(item => item.text).join();
+                                    console.log("selectedServices", selectedServices5);
+                                    $(".Sub3").text(selectedServices5);
+                                    console.log(".Sub3", $(".Sub3").text());
+                                }
+                            });
+
+                            $(".3").select2({
+                                placeholder: "Select Kids-Categories",
+                                theme: "classic",
+                                width: "auto",
+
+
+                            });
+                        }
+
+                    },
+                    error: function (response) {
+                        swal("Error!", "Failed to Wedding Bind Category!", "error");
+                        //alert(response);
+                    }
+                });
+            }
+
+        }
+        function BindingSubCategoriesBirthday() {
+            var shouldI4 = false;
+            if ($("select").hasClass("4") == false) {
+                $.ajax({
+                    //type: "POST",
+                    url: "/Registration/GetSubCategories?CountryIDs=" + 4,
+
+                    data: { id: "@Model.EncodedPhotographerID" },
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (items) {
+                        if (items.length != 0) {
+                            for (var i = 0; i < items.length; i++) {
+                                if (items[i].selected == true) {
+                                    shouldI4 = true;
+                                }
+                            }
+                        }
+
+                        if (shouldI4 == true) {
+                            $('.4').select2('destroy');
+                            $('.4').remove();
+                            $("#dynamic-container").append($("<select class='4' multiple style='width: 100%' onchange='ChangeEvent4()'><select/>"));
+                            $.each(items, function (i, item) {
+                                $('.4').append($('<option>', {
+                                    value: item.value,
+                                    text: item.text,
+                                    selected: item.selected
+                                }));
+                                if (item.selected == true) {
+                                    var arr = [];
+                                    var arr1 = [];
+                                    arr.push(item.id);
+                                    var CityID = arr;
+                                    $(".Sub4").val(CityID);
+                                    arr1.push(item.text);
+                                    var SubCategory = arr1;
+                                    $(".Sub4").text(SubCategory);
+                                    var selectedServices5 = $('.4 option:selected').toArray().map(item => item.text).join();
+                                    console.log("selectedServices", selectedServices5);
+                                    $(".Sub4").text(selectedServices5);
+                                    console.log(".Sub4", $(".Sub4").text());
+                                }
+                            });
+
+                            $(".4").select2({
+                                placeholder: "Select Birthday-Categories",
+                                theme: "classic",
+                                width: "auto",
+
+
+                            });
+                        }
+
+
+
+                    },
+                    error: function (response) {
+                        swal("Error!", "Failed to Wedding Bind Category!", "error");
+                        //alert(response);
+                    }
+                });
+            }
+
+        }
+        function BindingSubCategoriesFashion() {
+
+            var shouldI5 = false;
+            if ($("select").hasClass("5") == false) {
+                $.ajax({
+                    //type: "POST",
+                    url: "/Registration/GetSubCategories?CountryIDs=" + 5,
+
+                    data: { id: "@Model.EncodedPhotographerID" },
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (items) {
+                        if (items.length != 0) {
+                            for (var i = 0; i < items.length; i++) {
+                                if (items[i].selected == true) {
+                                    shouldI5 = true;
+                                }
+                            }
+                        }
+
+                        if (shouldI5 == true) {
+                            $('.5').select2('destroy');
+                            $('.5').remove();
+                            $("#dynamic-container").append($("<select class='5' multiple style='width: 100%' onchange='ChangeEvent5()'><select/>"));
+                            $.each(items, function (i, item) {
+                                $('.5').append($('<option>', {
+                                    value: item.id,
+                                    text: item.text,
+                                    selected: item.selected
+                                }));
+                                if (item.selected==true) {
+                                    var arr = [];
+                                    var arr1 = [];
+                                    arr.push(item.id);
+                                    var CityID = arr;
+                                    $(".Sub5").val(CityID);
+                                    arr1.push(item.text);
+                                    var SubCategory = arr1;
+                                    $(".Sub5").text(SubCategory);
+                                    var selectedServices5 = $('.5 option:selected').toArray().map(item => item.text).join();
+                                    console.log("selectedServices", selectedServices5);
+                                    $(".Sub5").text(selectedServices5);
+                                    console.log(".Sub5", $(".Sub5").text());
+                                }
+
+
+                            });
+
+                            $(".5").select2({
+                                placeholder: "Select Fashion-Categories",
+                                theme: "classic",
+                                width: "auto",
+
+
+                            });
+
+
+
+                        }
+
+
+
+                    },
+                    error: function (response) {
+                        swal("Error!", "Failed to Wedding Bind Category!", "error");
+                        //alert(response);
+                    }
+                });
+            }
+
+        }
+        function BindingSubCategoriesCommercial() {
+
+            var shouldI6 = false;
+            if ($("select").hasClass("6") == false) {
+                $.ajax({
+                    //type: "POST",
+                    url: "/Registration/GetSubCategories?CountryIDs=" + 6,
+
+                    data: { id: "@Model.EncodedPhotographerID" },
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (items) {
+                        if (items.length != 0) {
+                            for (var i = 0; i < items.length; i++) {
+                                if (items[i].selected == true) {
+                                    shouldI6 = true;
+                                }
+                            }
+                        }
+
+                        if (shouldI6 == true) {
+                            $('.6').select2('destroy');
+                            $('.6').remove();
+                            $("#dynamic-container").append($("<select class='6' multiple style='width: 100%' onchange='ChangeEvent6()'><select/>"));
+                            $.each(items, function (i, item) {
+                                $('.6').append($('<option>', {
+                                    value: item.value,
+                                    text: item.text,
+                                    selected: item.selected
+                                }));
+                                if (item.selected == true) {
+                                    var arr = [];
+                                    var arr1 = [];
+                                    arr.push(item.id);
+                                    var CityID = arr;
+                                    $(".Sub6").val(CityID);
+                                    arr1.push(item.text);
+                                    var SubCategory = arr1;
+                                    $(".Sub6").text(SubCategory);
+                                    var selectedServices5 = $('.6 option:selected').toArray().map(item => item.text).join();
+                                    console.log("selectedServices", selectedServices5);
+                                    $(".Sub6").text(selectedServices5);
+                                    console.log(".Sub6", $(".Sub6").text());
+                                }
+                            });
+
+                            $(".6").select2({
+                                placeholder: "Select Commercial-Categories",
+                                theme: "classic",
+                                width: "auto",
+
+
+                            });
+                        }
+
+
+
+                    },
+                    error: function (response) {
+                        swal("Error!", "Failed to Commercial Bind Category!", "error");
+                        //alert(response);
+                    }
+                });
+            }
+
+        }
+        function BindingSubCategoriesWildLife() {
+
+            var shouldI7 = false;
+            if ($("select").hasClass("7") == false) {
+                $.ajax({
+                    //type: "POST",
+                    url: "/Registration/GetSubCategories?CountryIDs=" + 7,
+
+                    data: { id: "@Model.EncodedPhotographerID" },
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (items) {
+                        if (items.length != 0) {
+                            for (var i = 0; i < items.length; i++) {
+                                if (items[i].selected == true) {
+                                    shouldI7 = true;
+                                }
+                            }
+                        }
+
+                        if (shouldI7 == true) {
+                            $('.7').select2('destroy');
+                            $('.7').remove();
+                            $("#dynamic-container").append($("<select class='7' multiple style='width: 100%' onchange='ChangeEvent7()'><select/>"));
+                            $.each(items, function (i, item) {
+                                $('.7').append($('<option>', {
+                                    value: item.value,
+                                    text: item.text,
+                                    selected: item.selected
+                                }));
+                                if (item.selected == true) {
+                                    var arr = [];
+                                    var arr1 = [];
+                                    arr.push(item.id);
+                                    var CityID = arr;
+                                    $(".Sub7").val(CityID);
+                                    arr1.push(item.text);
+                                    var SubCategory = arr1;
+                                    $(".Sub7").text(SubCategory);
+                                    var selectedServices5 = $('.7 option:selected').toArray().map(item => item.text).join();
+                                    console.log("selectedServices", selectedServices5);
+                                    $(".Sub7").text(selectedServices5);
+                                    console.log(".Sub7", $(".Sub7").text());
+                                }
+                            });
+
+                            $(".7").select2({
+                                placeholder: "Select WildLife-Categories",
+                                theme: "classic",
+                                width: "auto",
+
+
+                            });
+                        }
+
+
+                    },
+                    error: function (response) {
+                        swal("Error!", "Failed to WildLife Bind Category!", "error");
+                        //alert(response);
+                    }
+                });
+            }
+
+        }
+        function BindingSubCategoriesOther() {
+            var shouldI8 = false;
+            if ($("select").hasClass("8") == false) {
+                $.ajax({
+                    //type: "POST",
+                    url: "/Registration/GetSubCategories?CountryIDs=" + 8,
+
+                    data: { id: "@Model.EncodedPhotographerID" },
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (items) {
+                        $.each(items, function (i, item) {
+                            if (items.length != 0) {
+                                for (var i = 0; i < items.length; i++) {
+                                    if (items[i].selected == true) {
+                                        shouldI8 = true;
+                                    }
+                                }
+                            }
+
+
+                            if (shouldI8 == true) {
+                                $('.8').select2('destroy');
+                               $('.8').remove();
+                                $("#dynamic-container").append($("<select class='8' multiple style='width: 100%' onchange='ChangeEvent8()'><select/>"));
+                                $.each(items, function (i, item) {
+                                    $('.8').append($('<option>', {
+                                        value: item.value,
+                                        text: item.text,
+                                        selected: item.selected
+                                    }));
+                                    if (item.selected == true) {
+                                        var arr = [];
+                                        var arr1 = [];
+                                        arr.push(item.id);
+                                        var CityID = arr;
+                                        $(".Sub8").val(CityID);
+                                        arr1.push(item.text);
+                                        var SubCategory = arr1;
+                                        $(".Sub8").text(SubCategory);
+                                        var selectedServices5 = $('.8 option:selected').toArray().map(item => item.text).join();
+                                        console.log("selectedServices", selectedServices5);
+                                        $(".Sub8").text(selectedServices5);
+                                        console.log(".Sub8", $(".Sub8").text());
+                                    }
+                                });
+
+
+                                $(".8").select2({
+                                    placeholder: "Select Other-Categories",
+                                    theme: "classic",
+                                    width: "auto",
+
+
+                                });
+                            }
+
+
+                        });
+
+                    },
+                    error: function (response) {
+                        swal("Error!", "Failed to Other Bind Category!", "error");
+                        //alert(response);
+                    }
+                });
+            }
+
+        }
+        //#endregion
+
+        //#region Change Event of SubCategories
+        function ChangeEvent1() {
+
+            var CityID = $('.1').val();
+            $(".Sub1").val(CityID);
+            var SubCategory = $(".1").text();
+            //SubCategory.join(",");
+            $(".Sub1").text(SubCategory);
+
+            //var selectedServices1 = $(".1").text().toArray().map(item => item.text).join();
+            var selectedServices1 = $('.1 option:selected').toArray().map(item => item.text).join();
+            console.log("selectedServices", selectedServices1);
+            $(".Sub1").text(selectedServices1);
+            console.log(".Sub1",$(".Sub1").text());
+
+            //For Getting Selected Services
+            //var selectedServices1 = $("select[class='1']  option:selected").map(function () {
+            //    return $(this).text();
+            //}).get().join(',');
+            //$(".Sub1").text(selectedServices1);
+            //console.log(SubCategory)
+        }
+        function ChangeEvent2() {
+            var CityID = $('.2').val();
+            $(".Sub2").val(CityID);
+            var SubCategory = $(".2").text();
+            $(".Sub2").text(SubCategory);
+
+
+            var selectedServices2 = $('.2 option:selected').toArray().map(item => item.text).join();
+            console.log("selectedServices", selectedServices2);
+            $(".Sub2").text(selectedServices2);
+            console.log(".Sub2", $(".Sub2").text());
+
+
+        }
+        function ChangeEvent3() {
+            var CityID = $('.3').val();
+            $(".Sub3").val(CityID);
+            var SubCategory = $(".3").text();
+            $(".Sub3").text(SubCategory);
+
+            var selectedServices3 = $('.3 option:selected').toArray().map(item => item.text).join();
+            console.log("selectedServices", selectedServices3);
+            $(".Sub3").text(selectedServices3);
+            console.log(".Sub3", $(".Sub3").text());
+
+        }
+        function ChangeEvent4() {
+            var CityID = $('.4').val();
+            $(".Sub4").val(CityID);
+            var SubCategory = $(".4").text();
+            $(".Sub4").text(SubCategory);
+
+            var selectedServices4 = $('.4 option:selected').toArray().map(item => item.text).join();
+            console.log("selectedServices", selectedServices4);
+            $(".Sub4").text(selectedServices4);
+            console.log(".Sub4", $(".Sub4").text());
+
+        }
+        function ChangeEvent5() {
+            var CityID = $('.5').val();
+            $(".Sub5").val(CityID);
+            var SubCategory = $(".5").text();
+            $(".Sub5").text(SubCategory);
+
+            var selectedServices5 = $('.5 option:selected').toArray().map(item => item.text).join();
+            console.log("selectedServices", selectedServices5);
+            $(".Sub5").text(selectedServices5);
+            console.log(".Sub5", $(".Sub5").text());
+
+        }
+        function ChangeEvent6() {
+            var CityID = $('.6').val();
+            $(".Sub6").val(CityID);
+            var SubCategory = $(".6").text();
+            $(".Sub6").text(SubCategory);
+
+            var selectedServices6 = $('.6 option:selected').toArray().map(item => item.text).join();
+            console.log("selectedServices", selectedServices6);
+            $(".Sub6").text(selectedServices6);
+            console.log(".Sub6", $(".Sub6").text());
+
+        }
+        function ChangeEvent7() {
+            var CityID = $('.7').val();
+            $(".Sub7").val(CityID);
+            var SubCategory = $(".7").text();
+            $(".Sub7").text(SubCategory);
+
+            var selectedServices7 = $('.7 option:selected').toArray().map(item => item.text).join();
+            console.log("selectedServices", selectedServices7);
+            $(".Sub7").text(selectedServices7);
+            console.log(".Sub7", $(".Sub7").text());
+
+        }
+        function ChangeEvent8() {
+            var CityID = $('.8').val();
+            $(".Sub8").val(CityID);
+            var SubCategory = $(".8").text();
+            $(".Sub8").text(SubCategory);
+
+            var selectedServices8 = $('.8 option:selected').toArray().map(item => item.text).join();
+            console.log("selectedServices", selectedServices8);
+            $(".Sub8").text(selectedServices8);
+            console.log(".Sub8", $(".Sub8").text());
+
+        }
+        //function CheckServices(id) {
+
+        //    var select = $('<select   id=select_' + id + '" ></select>');
+        //    console.log('Select', select);
+        //    $('#containerdrop').append(select);
+        //    $('#select_' + id).select2({
+        //        placeholder: "Country",
+        //        theme: "classic",
+        //        ajax: {
+        //            url: "/Registration/GetPhototypeList?CountryIDs=" + id,
+        //            type: "POST",
+        //            dataType: "json",
+        //            data: {},
+        //            processResults: function (data, params) {
+        //                return {
+        //                    results: data
+        //                };
+        //            }
+        //        }
+        //    });
+
+
+
+        //    //var teamarray = [];
+        //    //var chkservice = document.getElementsByName("checkboxlistservice");
+        //    //for (var i = 0; i < chkservice.length; i++) {
+        //    //    var value = $(chkservice[i]).attr("value");
+        //    //    var id = $(chkservice[i]).attr("id");
+        //    //    console.log(value);
+        //    //    console.log(id);
+        //    //    teamarray.push(id);
+        //    //    if (chkservice[i].checked) {
+
+
+
+        //            //$('#containerdrop')
+        //            //    .append(
+        //            //        $(document.createElement('label')).prop({
+        //            //            for: value+id
+        //            //        }).html(value +'List: ')
+        //            //    )
+        //            //    .append(
+        //            //        $(document.createElement('select')).prop({
+        //            //            id: id,
+        //            //            name: value,
+        //            //            multiple
+        //            //        })
+        //            //    )
+
+
+        //            //for (const val of teamarray) {
+        //            //    $(id).append($(document.createElement('option')).prop({
+        //            //        value: val,
+        //            //        text: val.charAt(0).toUpperCase() + val.slice(1)
+        //            //    }))
+        //            //}
+
+
+        //    //        isValid = true;
+
+        //    //    }
+
+        //    //}
+        //    //console.log(teamarray)
+        //    //var CounrtyID = teamarray;
+        //    //$(".categoryid").val(CounrtyID);
+        //    //var textBoxVal = $(".categoryid").val();
+        //    //$('#select_' + id).select2({
+        //    //    placeholder: "Country",
+        //    //    theme: "classic",
+        //    //    ajax: {
+        //    //        url: "/Registration/GetPhototypeList?CountryIDs=" + id,
+        //    //        type: "POST",
+        //    //        dataType: "json",
+        //    //        data: function (params) {
+        //    //            console.log('params', params);
+        //    //            return {
+        //    //                searchTerm: params.term
+        //    //            };
+        //    //        },
+        //    //        //data: { "CountryIDs": id, "searchTerm":""},
+        //    //        processResults: function (data, params) {
+        //    //            return {
+        //    //                results: data
+        //    //            };
+        //    //        }
+
+
+        //    //    }
+        //    //});
+        //}
+        //#endregion
+
+        //#region Autocomplete States
+
+        function SearchState() {
+
+            $.ajax({
+                url: '/Registration/SearchState',
+                type: "POST",
+                dataType: "json",
+                data: "",
+                success: function (data, status, xhr) {
+                    console.log(data); // ["John", "Paul", "George", "Ringo"];
+                    $("#currentstate").autocomplete({
+                        source: data,
+                        minLength: 1
+                    });
+
+
+                }
+            });
+
+
+        }
+        function SearchCity() {
+
+            $.ajax({
+                url: '/Registration/SearchCity',
+                type: "POST",
+                dataType: "json",
+                data: "",
+                success: function (data, status, xhr) {
+                    console.log(data); // ["John", "Paul", "George", "Ringo"];
+                    $("#currentlocation").autocomplete({
+                        source: data,
+                        minLength: 1
+                    });
+
+
+                }
+            });
+
+
+        }
+
+        //#endregion
+
+
+        //#region GetImages
+        function GetImages(photographerid) {
+            var fileData = new FormData();
+
+            //var photographerid = photographerid1;
+            fileData.append('PhotographerID', photographerid);
+
+            $.ajax({
+                url: '/Registration/GetImage',
+                type: 'post',
+                dataType: "json",
+                contentType: false, // Not to set any content header
+                processData: false, // Not to process data
+                data: fileData,
+                success: function (result) {
+                    console.log("result", result);
+                    for (var i = 0; i < result.length; i++) {
+                        var count = $('.container12 .content').length;
+                        count = Number(count) + 1;
+
+                        // Show image preview with Delete button
+                        $('.container12').append("<div class='col-md-2 col-sm-2 col-xs-2 content ' id='content_image" + count + "' ><img class='imageheight' src='" + result[i] + "'  style='float: left; display: inline; padding: 10px;' /><a class='delete  button scheme2' id='delete_" + count + "' style='margin-left:10px;width:120px;'>Delete</a></div>");
+
+                    }
+                }
+            });
+
+        }
+        function GetVideo(photographerid) {
+            var fileData = new FormData();
+
+            //var photographerid = photographerid1;
+            fileData.append('PhotographerID', photographerid);
+
+            $.ajax({
+                url: '/Registration/GetVideo',
+                type: 'post',
+                dataType: "json",
+                contentType: false, // Not to set any content header
+                processData: false, // Not to process data
+                data: fileData,
+                success: function (result) {
+                    console.log("result", result);
+                    for (var i = 0; i < result.result.length; i++) {
+                        var count = $('.container34 .content1').length;
+                        count = Number(count) + 1;
+
+                        // Show image preview with Delete button
+
+
+                        $('.container34').append("<div class='col-md-2 col-sm-2 col-xs-2 content1' id='content_video" + count + "' ><iframe width='150' height='100' src='" + result.result[i] + "' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe><a class='delete button scheme2' id='delete_" + count + "' style='margin-left:10px;width:140px;'>Delete</a></div>");
+                        //$('.container34').append("<div class='col-md-2 col-sm-2 col-xs-2 content1' id='content_video" + count + "' ><input type='text' class='videoIframe' id='content_txtVideo" + count + "' value='" + result.result[i] + "'/><a class='delete button scheme2' id='delete_" + count + "' style='margin-left:10px;width:140px;'>Delete</a></div>");
+                        //'<iframe id='content_txtVideo" + count + "' value='" + result.result[i] + "'/>
+                        //$('.container34').append("<div class='col-md-2 col-sm-2 col-xs-2 content1' id='content_video" + count + "' ><video src='" + result.result[i] + "' width='160' height='90' style='float: left;  padding: 10px; ' /><a class='delete button scheme2' id='delete_" + count + "' style='margin-left:10px;width:140px;'>Delete</a></div>");
+                        //$('.container34').append("<div class='col-md-10 content1' id='content_video" + count + "' ><video src='" + result.result[i] + "' width='160' height='90' style='float: left; padding: 10px; ' /><a class='delete button scheme2' id='delete_" + count + "' style='margin-left:10px;width:140px;'>Delete</a></div>");
+
+                        //$("iframe").removeAttr("width");
+                        //$("iframe").removeAttr("height");
+                        //$("iframe").attr("width", "150");
+                        //$("iframe").attr("height", "100");
+                        //$('.container34').append("<div class='col-md-2 content' id='content_image" + count + "' ><video class='imageheight' src='" + result[i] + "' style='float: left; display: inline; padding: 10px;' /><a class='delete  button scheme2' id='delete_" + count + "' style='margin-left:10px;width:140px;'>Delete</a></div>");
+                    }
+                }
+            });
+
+        }
+        function GetCover(photographerid) {
+            var fileData = new FormData();
+            fileData.append('PhotographerID', photographerid);
+
+            $.ajax({
+                url: '/Registration/GetCover',
+                type: 'post',
+                dataType: "json",
+                contentType: false, // Not to set any content header
+                processData: false, // Not to process data
+                data: fileData,
+                success: function (result) {
+                    console.log("result", result);
+                    for (var i = 0; i < result.length; i++) {
+                        var count = $('.container12 .content').length;
+                        count = Number(count) + 1;
+                        var img = $('<img>').attr('src', result[i]);
+                        $('#divcover').html(img);
+
+                    }
+                }
+            });
+
+        }
+        function GetLogo(photographerid) {
+            var fileData = new FormData();
+
+
+            fileData.append('PhotographerID', photographerid);
+
+            $.ajax({
+                url: '/Registration/GetLogo',
+                type: 'post',
+                dataType: "json",
+                contentType: false, // Not to set any content header
+                processData: false, // Not to process data
+                data: fileData,
+                success: function (result) {
+                    console.log("result", result);
+                    for (var i = 0; i < result.length; i++) {
+                        var count = $('.container12 .content').length;
+                        count = Number(count) + 1;
+                        var img = $('<img>').attr('src', result[i]);
+                        $('#divlogo').html(img);
+
+                    }
+                }
+            });
+
+        }
+        function GetOwner(photographerid) {
+            var fileData = new FormData();
+
+            //var photographerid = photographerid1;
+            fileData.append('PhotographerID', photographerid);
+
+            $.ajax({
+                url: '/Registration/GetOwner',
+                type: 'post',
+                dataType: "json",
+                contentType: false, // Not to set any content header
+                processData: false, // Not to process data
+                data: fileData,
+                success: function (result) {
+                    console.log("result", result);
+                    for (var i = 0; i < result.length; i++) {
+                        var count = $('.container12 .content').length;
+                        count = Number(count) + 1;
+                        var img = $('<img>').attr('src', result[i]);
+                        $('#divowner').html(img);
+
+                    }
+                }
+            });
+
+        }
+         //#endregion GetImages
+
+        function YoutubeLink(link) {
+            var url = link;
+            if (url != undefined && url != '') {
+                var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|\?v=)([^#\&\?]*).*/;
+                var match = url.match(regExp);
+                //if (!match || match[2].length != 11) {
+                //    alert("Enter Valid Youtube Link");
+                //    return false;
+                //}
+                if (match && match[2].length == 11) {
+                    //videoIframes.push({ VideoBytes: 'https://www.youtube.com/embed/' + match[2] + '?autoplay=0' });
+                    return true;
+                } else {
+                    alert("Enter Valid Youtube Link");
+                    return false;
+                }
+
+            }
+        }
+
+        function OnFinish() {
+
+            //var matched = $(".content *");
+            //alert("Number of elements in content div = " + matched.length);
+            //var noofimages = matched.length / 2
+            //alert("Number of images in div = " + noofimages);
+
+            //#region Adding Video Iframes To List
+
+            var YoutubeValidation = false;
+            var videoIframes = [];
+           // var googlemap = String($('#googlemap').val()).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+            //fileData.append('GoogleMap', googlemap);
+            console.log($('.videoIframe'));
+            if ($('.videoIframe').length != 0) {
+                $.each($('.videoIframe'), function (i, item) {
+
+                     YoutubeValidation = YoutubeLink($(item).val())
+
+
+
+
+                    //    var video_id = String($(item).val()).split('v=')[1];
+                    //    if (!isNullOrUndefined(video_id) && video_id !="")
+                    //    var ampersandPosition = video_id.indexOf('&');
+                    //if (ampersandPosition != -1) {
+                    //    video_id = video_id.substring(0, ampersandPosition);
+                    //    videoIframes.push({ VideoBytes: video_id });
+                    //} else {
+                    //    alert("Enter Valid Youtube Link");
+                    //    return;
+                    //}
+                    // videoIframes.push({ VideoBytes: String($(item).val()).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;') });
+                });
+            } else {
+                YoutubeValidation = true;
+            }
+
+            console.log('Video Iframes', videoIframes);
+
+            //#endregion Adding Video Iframes To List
+
+            $("#finish").attr("disabled", "disabled");
+            var isvalid = Validation();
+            if (isvalid == true) {
+                $("#finish").removeAttr("disabled");
+                return;
+            }
+            var FileUploadPath = $("#imageportfolio").val();
+            var Extension = FileUploadPath.substring(FileUploadPath.lastIndexOf('.') + 1).toLowerCase();
+            if ($('#photographerid').val() == 0) {
+                $("#finish").removeAttr("disabled");
+                alert("Register the photographer profile");
+                return;
+            }
+
+            //if ($('.container34').is(':empty')) {
+            //    alert('Please select a file for Video PortFolio');
+            //    return;
+            //}
+            if ($('.container12').is(':empty')) {
+                $("#finish").removeAttr("disabled");
+                alert('Please select a file for Image PortFolio');
+                return;
+            }
+            else if (YoutubeValidation == false) {
+                $("#finish").removeAttr("disabled");
+                alert('Please Enter valid Youtube Link');
+                return;
+            }
+            else {
+                var fileData = new FormData();
+
+                 $('#divLoader1').hide();
+                var photographerid = $('#photographerid').val();
+                fileData.append('PhotographerID', photographerid);
+                $.each($('.videoIframe'), function (i, item) {
+
+                    var url = $(item).val()
+                    if (url != undefined && url != '') {
+                        var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|\?v=)([^#\&\?]*).*/;
+                        var match = url.match(regExp);
+                        //if (!match || match[2].length != 11) {
+                        //    alert("Enter Valid Youtube Link");
+                        //    return false;
+                        //}
+                        if (match && match[2].length == 11) {
+                            videoIframes.push({ VideoBytes: 'https://www.youtube.com/embed/' + match[2] + '?autoplay=0' });
+                            //return true;
+                        } else {
+                            alert("Enter Valid Youtube Link");
+                            return false;
+                        }
+
+                    }
+                });
+
+                fileData.append('VideoIframe', JSON.stringify(videoIframes));
+
+
+
+
+
+
+                alert("Photographer Profile is Registered");
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Registration/Finish",
+                    dataType: "json",
+                    contentType: false, // Not to set any content header
+                    processData: false, // Not to process data
+                    data: fileData,
+                    success: function (result, status, xhr) {
+                        $("#finish").removeAttr("disabled");
+                        $('#divLoader1').hide();
+                        //alert("Success", result);
+                        //var photographerid = result.result;
+                        //$('#photographerid').val(photographerid);
+                        //alert('Please fill portfolio', $('#photographerid').val());
+                        if (result.result == "Success") {
+                            $("#imageportfolio").val("");
+                            $("#videoportfolio").val("");
+                            swal("Thank you!", "Photographer Registered Successfully!", "success");
+                            window.location.href = result.url
+                        } else if (result.result == "Error") {
+                            swal("Try Again!", "Error Occured While Photographer Registration!", "error");
+                        } else if (result.result =="NotVerified") {
+                            swal("Thank You!", "Your Data is Submitted Successfully for verification!", "success");
+                        } else if (result.result == "FailedForm") {
+                            swal("Try Again!", "Failed to submit form!", "error");
+                        } else if (result.result == "Error1") {
+                            swal("Try Again!", "First fill Photographer Profile and Click On Save!", "error");
+                        } else if (result.result == "Error2") {
+                            swal("Try Again!", "Again Upload Images for Image Portfolio and Video Portfolio(optional)!", "error");
+                        }
+
+
+
+                    },
+                    error: function (xhr, status, error) {
+                        $("#finish").removeAttr("disabled");
+                        $('#divLoader').hide();
+                        //alert("Error", status);
+                        swal("Try Again!", "Error Occured While Photographer Registration!", "error");
+                    }
+                });
+            }
+
+        }
+
+        function OnSubmit() {
+            $("#submit").attr("disabled", "disabled");
+            var fileData = new FormData();
+
+            var chkwork = document.getElementsByName("checkboxlistwork");
+            var chkteam = document.getElementsByName("checkboxlistteamsize");
+
+            var isvalid = Validation();
+            if (isvalid == false) {
+                return;
+            }
+
+            $('#divLoader').show();
+            var isValid = false;
+            var teamarray = [];
+
+            for (var i = 0; i < chkteam.length; i++) {
+                if (chkteam[i].checked) {
+                    var value = $(chkteam[i]).attr("value");
+                    var id = $(chkteam[i]).attr("id");
+                    console.log(value);
+                    console.log(id);
+                    teamarray.push({ ID: id, Name: value, IsChecked:'checked'});
+
+                    isValid = true;
+
+                }
+
+            }
+            console.log(teamarray)
+            fileData.append('TeamSizestring', JSON.stringify(teamarray));
+
+            //#region Services Provided
+
+            var isValid1 = false;
+            var servicearray = [];
+            for (var i = 0; i < chkwork.length; i++) {
+                if (chkwork[i].checked) {
+                    var value = $(chkwork[i]).attr("value");
+                    var id = $(chkwork[i]).attr("id");
+                    console.log(value);
+                    console.log(id);
+                    servicearray.push({ ID: id, Name: value, IsChecked: 'checked' });
+
+                    isValid1 = true;
+                }
+            }
+
+            console.log('ServiceArray',servicearray)
+            fileData.append('WorkString', JSON.stringify(servicearray));
+
+            //#endregion
+
+            ////console.log(servicearray)
+            //fileData.append('PhotographyCategoriesstring', JSON.stringify(servicearray));
+            console.log('PhotographyCategoriesstring', $(".CountryId").text());
+            //fileData.append('PhotographyCategoriesstring', localStorage.getItem('ServicesOffered'));
+            fileData.append('PhotographyCategoriesstring', $(".CountryId").text());
+
+            fileData.append('SubWedding', $('.Sub1').text());
+            fileData.append('SubCorporate', $('.Sub2').text());
+            fileData.append('SubKid', $('.Sub3').text());
+            fileData.append('SubBirthday', $('.Sub4').text());
+            fileData.append('SubFashion', $('.Sub5').text());
+            fileData.append('SubCommercial', $('.Sub6').text());
+            fileData.append('SubWildlife', $('.Sub7').text());
+            fileData.append('SubOther', $('.Sub8').text());
+
+
+            var totalownerphoto = document.getElementById('ownerphoto').files.length;
+            for (var i = 0; i < totalownerphoto; i++) {
+                var ownerphoto = document.getElementById('ownerphoto').files[i];
+                fileData.append('ownerphotofile', ownerphoto);
+            }
+
+            var totallogo = document.getElementById('logoofcompany').files.length;
+            for (var i = 0; i < totallogo; i++) {
+                var logo = document.getElementById('logoofcompany').files[i];
+                fileData.append('logofile', logo);
+            }
+
+            var totalcover = document.getElementById('cover').files.length;
+            for (var i = 0; i < totalcover; i++) {
+                var cover = document.getElementById('cover').files[i];
+                fileData.append('coverfile', cover);
+            }
+
+            var photographerid = $('#photographerid').val();
+            fileData.append('EncodedPhotographerID', photographerid);
+            var email = $('#email').val();
+            fileData.append('Email', email);
+            var language = $('#language').val();
+            fileData.append('LanguageKnown', language);
+            var photographername = $('#photographername').val();
+            fileData.append('PhotographerName', photographername);
+            var studioname = $('#studioname').val();
+            fileData.append('StudioName', studioname);
+            var aboutme = $('#aboutme').val();
+            fileData.append('AboutMe', aboutme);
+            var yearofexperience = $('#yearofexperience').val();
+            console.log('YearOfExperience', yearofexperience);
+            fileData.append('YearOfExperience', yearofexperience);
+            var equiments = $('#equipments').val();
+            console.log('Equipments', equiments);
+            fileData.append('Equipments', equiments);
+            var preferedlocation = $('#preferedlocation').val();
+            fileData.append('PreferedLocation', preferedlocation);
+            var achievement = $('#achievement').val();
+            fileData.append('Achievements', achievement);
+            var otherproducts = $('#otherproducts').val();
+            fileData.append('Products', otherproducts);
+            var website = $('#website').val();
+            fileData.append('Website', website);
+            var facebooklink = $('#facebooklink').val();
+            fileData.append('FacebookLink', facebooklink);
+            var youtubelink = $('#youtubelink').val();
+            fileData.append('YoutubeLink', youtubelink);
+
+            var instalink = $('#instalink').val();
+            fileData.append('InstaLink', instalink);
+            var contact = $('#contact').val();
+            fileData.append('Contact', contact);
+            var contact2 = $('#contact2').val();
+            fileData.append('Contact2', contact2);
+            var address = $('#address').val();
+            fileData.append('Address', address);
+            var googlemap = "";
+            var str = $('#googlemap').val();
+            if (str ==null || str =="") {
+                googlemap = "";
+            } else {
+
+
+
+                var res = str.replace("@@", "&#64");
+                var matches = res.match(/\/&#64([\d\.,-]+)z\//)[1];
+                var splits = matches.split(',');
+                var lat = splits[0];
+                var long = splits[1];
+                var zoom = splits[2];
+                var url = 'http://maps.google.com/maps?q=' + lat + ',' + long + '&z=' + zoom + '&output=embed';
+                console.log(url);
+                //var res1 = String(res).replace(":", "%3A")
+                //var res2 = String(res1).replace("/", "%2F")
+                //var res3 = String(res2).replace("+", "%2B")
+                //var res4 = String(res3).replace("@@", "%40")
+                //var res5 = String(res4).replace(",", "%2C")
+                //var res6 = String(res5).replace("=", "%3D")
+                //var res7 = String(res6).replace("!", "%21");
+                //"https%3A%2F%2Fwww.google.com%2Fmaps%2Fplace%2FPixthon%2BDigital%2BSolutions%2BPvt%2BLtd%2F%4019.0656027%2C72.9994134%2C15z%2Fdata%3D%214m5%213m4%211s0x0%3A0x48cb8f4c4a3ba7ce%218m2%213d19.0656027%214d72.9994134"
+                // https://www.google.com/maps/place/Pixthon+Digital+Solutions+Pvt+Ltd/@@19.0656027,72.9994134,15z/data=!4m5!3m4!1s0x0:0x48cb8f4c4a3ba7ce!8m2!3d19.0656027!4d72.9994134
+                //$('#output').html('<iframe style = "width:200px;height:400px" src = ' + url + '></iframe>');
+                //var googlemap = String($('#googlemap').val()).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+                //fileData.append('GoogleMap', googlemap);
+                googlemap = encodeURIComponent(str);
+            }
+            console.log(googlemap);
+            fileData.append('GoogleMap', googlemap);
+
+            var currentlocation = $('#currentlocation').val();
+            fileData.append('CurrentLocation', currentlocation);
+
+            var currentstate = $('#currentstate').val();
+            fileData.append('CurrentState', currentstate);
+
+
+
+            for (var key of fileData.entries()) {
+               // console.log(key[0] + ',' + key[1])
+            }
+
+            $.ajax({
+                type: "POST",
+                url: "/Registration/Submit",
+                dataType: "json",
+                contentType: false, // Not to set any content header
+                processData: false, // Not to process data
+                //data: '{rating: ' + JSON.stringify(rating) + ',}'
+                data: fileData,
+                success: function (result, status, xhr) {
+                    $("#submit").removeAttr("disabled");
+                    $('#divLoader').hide();
+                    //console.log(result.result);
+                    //alert("Success", result);
+                    if (result.result == "ALready a Member") {
+                        //console.log($('#photographerid').val());
+                        ShowAlertEnquiry('User already Registered.Please login to Continue');
+                    } else if (result.result == "Error1") {
+                        swal("Failed!", "Server Timeout!", "error");
+
+
+                    } else if (result.result == "Error2") {
+                        swal("Try Again!", "Failed to Register Photographer!", "error");
+
+                    }
+                    else {
+
+                        var photographerid = result.result;
+                        @*//@Model.EncodedPhotographerID=photographerid;*@
+                        $('#photographerid').val(photographerid);
+                        $("#viewprofile").removeAttr("disabled");
+                        swal("Submitted!", "Photographer Information Submitted successfully Please Upload images for Portfolio!", "success");
+                        //alert('Please fill portfolio', $('#photographerid').val());
+                        $("#cover").val("");
+                        $("#logoofcompany").val("");
+                        $("#ownerphoto").val("");
+                    }
+
+
+                    //if (result.result == "Redirect") {
+                    //    swal("Thank you!", "Photographer Registered Successfully!", "success");
+                    //    location.reload(true);
+                    //} else
+
+                },
+                error: function (xhr, status, error) {
+                    $("#submit").removeAttr("disabled");
+                    $('#divLoader').hide();
+                    //alert("Error", status);
+                    swal("Try Again!", "Error Occured While Photographer Registration!", "error");
+                }
+            });
+
+        }
+
+
+
+        //#region Validation
+        function ValidateMobileNo1(event) {
+            $('#contact').val($('#contact').val().replace(/[^\d].+/, ""));
+            if ((event.which < 48 || event.which > 57)) {
+                event.preventDefault();
+            }
+        }
+        function ValidateMobileNo2(event) {
+            $('#contact2').val($('#contact2').val().replace(/[^\d].+/, ""));
+            if ((event.which < 48 || event.which > 57)) {
+                event.preventDefault();
+            }
+        }
+        function ValidateMobileNo(inputtxt) {
+            var phoneno = /^\d{10}$/;
+            if (phoneno.test(inputtxt))
+            {
+                return true;
+            }
+            else {
+
+                return false;
+            }
+        }
+        function ValidateURL(url) {
+        //var url = document.getElementById("url").value;
+            var pattern = /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
+        if (pattern.test(url)) {
+
+            return true;
+        }
+
+            return false;
+        }
+
+        function ValidateFacebookURL(url) {
+            //var url = document.getElementById("url").value;
+            var pattern = /(?:http:\/\/)?(?:www\.)?facebook\.com\/(?:(?:\w)*#!\/)?(?:pages\/)?(?:[\w\-]*\/)*([\w\-]*)/;
+            if (pattern.test(url)) {
+
+                return true;
+            }
+
+            return false;
+        }
+
+        function ValidateYoutubeURL(url) {
+            //var url = document.getElementById("url").value;
+            var pattern = /^(?:https|http)\:\/\/(?:[\w]+\.)?youtube\.com\/(?:c\/|channel\/|user\/)?([a-zA-Z0-9\-]{1,})$/;
+            if (pattern.test(url)) {
+
+                return true;
+            }
+
+            return false;
+        }
+
+        function ValidateInstagramURL(url) {
+            //var url = document.getElementById("url").value;
+            var pattern = /(?:(?:http|https):\/\/)?(?:www\.)?(?:instagram\.com|instagr\.am)\/([A-Za-z0-9-_\.]+)/im;
+            if (pattern.test(url)) {
+
+                return true;
+            }
+
+            return false;
+        }
+
+        function ValidateGoogleMapURL(url) {
+            var res = url.replace("@@", "&#64");
+            //var url = document.getElementById("url").value;
+            var pattern = /\/&#64([\d\.,-]+)z\//;
+            //var pattern = /^https?\:\/\/(www\.)?google\.[a-z]+\/maps\/?\?([^&]+&)*(ll=-?[0-9]{1,2}\.[0-9]+,-?[0-9]{1,2}\.[0-9]+|q=[^&+])+($|&)/;
+            if (pattern.test(res)) {
+
+                return true;
+            }
+
+            return false;
+        }
+
+        function ValidateEmail(mail) {
+            if ((/^\w+([\.-]?\w+)*@@\w+([\.-]?\w+)*(\.\w{2,3})+$/).test(mail)) {
+                return (true)
+            }
+
+            return (false)
+        }
+        //#endregion
+
+
+        //#region Validation
+         function Validation(){
+            var chkwork = document.getElementsByName("checkboxlistwork");
+            var chkteam = document.getElementsByName("checkboxlistteamsize");
+            var msg = "";
+            var serialno = 0;
+            if ($("#email").val() == "") {
+                serialno++;
+                msg += '\n' + serialno + '. ' + 'Please Enter Email';
+
+            }
+            else if (!ValidateEmail($('#email').val())) {
+                serialno++;
+                msg += '\n' + serialno + '. ' + 'You have entered an invalid email address!';
+
+            }
+            if ($("#photographername").val() == "") {
+                serialno++;
+                msg += '\n' + serialno + '. ' + 'Please Enter Name of Photographer';
+
+            }
+            //if ($("#studioname").val() == "") {
+            //    serialno++;
+            //    msg += '\n' + serialno + '. ' + 'Please Enter Name of Studio/COmpany';
+
+            // }
+             if ($('#divcover').is(':empty')) {
+                 serialno++;
+                 msg += '\n' + serialno + '. ' + 'Please select a Cover Image for Profile';
+             }
+            if ($("#aboutme").val() == "") {
+                serialno++;
+                msg += '\n' + serialno + '. ' + 'Please Enter About Photographer';
+
+            }
+            if ($("#yearofexperience").val() == "") {
+                serialno++;
+                msg += '\n' + serialno + '. ' + 'Please Enter No of Years of Experience';
+
+            }
+            if ($("#preferedlocation").val() == "") {
+                serialno++;
+                msg += '\n' + serialno + '. ' + 'Please Enter The Prefered Location of Shooting';
+
+            }
+            if ($("#contact").val() == "") {
+                serialno++;
+                msg += '\n' + serialno + '. ' + 'Please Provide Contact Details';
+
+            }
+            else if (!ValidateMobileNo($('#contact').val())) {
+                serialno++;
+                msg += '\n' + serialno + '. ' + 'Enter 10 Digit Mobile Number!';
+
+             }
+             if ($("#currentstate").val() == "") {
+                 serialno++;
+                 msg += '\n' + serialno + '. ' + 'Please Provide Photographer State';
+
+             }
+            if ($("#currentlocation").val() == "") {
+                serialno++;
+                msg += '\n' + serialno + '. ' + 'Please Provide Photographer Current City';
+
+            }
+            if ($("#address").val() == "") {
+                serialno++;
+                msg += '\n' + serialno + '. ' + 'Please Provide Address Details';
+
+            }
+            if ($("#website").val() != "") {
+                if (!ValidateURL($('#website').val())) {
+                    serialno++;
+                    msg += '\n' + serialno + '. ' + 'You have entered an invalid Website Url!';
+
+                }
+            }
+            if ($("#facebooklink").val() != "") {
+
+                if (!ValidateFacebookURL($('#facebooklink').val())) {
+                    serialno++;
+                    msg += '\n' + serialno + '. ' + 'You have entered an invalid Facebook Url!';
+
+                }
+
+            }
+            if ($("#youtubelink").val() != "") {
+
+                if (!ValidateYoutubeURL($('#youtubelink').val())) {
+                    serialno++;
+                    msg += '\n' + serialno + '. ' + 'You have entered an invalid Youtube Url!';
+
+                }
+
+            }
+            if ($("#instalink").val() != "") {
+                if (!ValidateInstagramURL($('#instalink').val())) {
+                    serialno++;
+                    msg += '\n' + serialno + '. ' + 'You have entered an invalid Instagram Url!';
+
+                }
+
+            }
+             if ($("#googlemap").val() != "") {
+                 if (!ValidateGoogleMapURL($('#googlemap').val())) {
+                     serialno++;
+                     msg += '\n' + serialno + '. ' + 'You have entered an invalid Google Map Url!';
+
+                 }
+
+             }
+
+
+
+
+
+                //else if (ValidateFileUpload($("#cover").val(), 12288)) {
+
+                //    serialno++;
+                //    msg += '\n' + serialno + '. ' + 'Please select a Cover Image of Size 12MB';
+
+                //} else if (Extension == "gif" || Extension == "png" || Extension == "bmp" || Extension == "jpeg" || Extension == "jpg") {
+
+                //    var FileUploadPath = $("#cover").val();
+                //    var Extension = FileUploadPath.substring(FileUploadPath.lastIndexOf('.') + 1).toLowerCase();
+                //    serialno++;
+                //    msg += '\n' + serialno + '. ' + 'Please choose image of type .gif,.png,.jpeg,.jpg,.bmp';
+
+                //}
+
+
+            var isValid = false;
+            var count = 0;
+            for (var i = 0; i < chkteam.length; i++) {
+                if (chkteam[i].checked) {
+
+
+                    isValid = true;
+                    count++;
+                }
+
+            }
+            if (isValid == false || count != 1) {
+                serialno++;
+                msg += '\n' + serialno + '. ' + 'Please Select Only One Option in Team Size';
+             }
+             //if ($(".Sub1").text() == "" && $(".Sub2").text() == "" && $(".Sub3").text() == "" && $(".Sub4").text() == "" && $(".Sub5").text() == "" && $(".Sub6").text() == "" && $(".Sub7").text() == "" && $(".Sub8").text() == "")
+             //{
+             //    serialno++;
+             //    msg += '\n' + serialno + '. ' + 'Please Select Atleast One Type Of Event/Photography';
+             //}
+             if ($(".CountryId").val() == "") {
+                 serialno++;
+                 msg += '\n' + serialno + '. ' + 'Please Select Atleast One Type Of Event';
+
+             }
+            var isValid1 = false;
+             for (var i = 0; i < chkwork.length; i++) {
+                 if (chkwork[i].checked) {
+
+
+                    isValid1 = true;
+                }
+            }
+            if (isValid1 == false) {
+                serialno++;
+                msg += '\n' + serialno + '. ' + 'Please Select Service you provide';
+            }
+             if (serialno != 0) {
+                 $("#submit").removeAttr("disabled");
+                swal("Error", 'Please Fill the Required Details:' + msg, "error");
+                return false;
+             }
+
+        }
+
+        function Validate(e) {
+            var keyCode = e.keyCode || e.which;
+
+
+            //Regex for Valid Characters i.e. Alphabets and Numbers.
+            //var regex = /^[A-Za-z0-9]+$/;
+            //var regex = /^[\w\-\s]+$/;
+            //var regex = /^[a-zA-Z-,]+(\s{0,1}[a-zA-Z-, ])*$/
+            // var regex = /^[a-zA-Z-,](\s{0,1}[a-zA-Z-, ])*[^\s]$/;
+            var regex = /^[a-zA-Z ]*$/;
+            //Validate TextBox value against the Regex.
+            var isValid = regex.test(String.fromCharCode(keyCode));
+            if (!isValid) {
+                // swal("Failed", "Only Alphabets and Numbers allowed.", "error")
+
+            }
+
+            return isValid;
+        }
+        function ValidateNumber(e) {
+            var keyCode = e.keyCode || e.which;
+
+
+            //Regex for Valid Characters i.e. Alphabets and Numbers.
+            //var regex = /^[A-Za-z0-9]+$/;
+            //var regex = /^[\w\-\s]+$/;
+            //var regex = /^[a-zA-Z-,]+(\s{0,1}[a-zA-Z-, ])*$/
+            // var regex = /^[a-zA-Z-,](\s{0,1}[a-zA-Z-, ])*[^\s]$/;
+            var regex = /^[0-9]*$/;
+            //Validate TextBox value against the Regex.
+            var isValid = regex.test(String.fromCharCode(keyCode));
+            if (!isValid) {
+                // swal("Failed", "Only Alphabets and Numbers allowed.", "error")
+
+            }
+
+            return isValid;
+        }
+
+        //#endregion
+
+        //#region
+        function OnNext() {
+            $("#profile").removeAttr("class");
+            $("#portfolio").attr("class", "active");
+
+            document.getElementById('portfoliodiv').style.display = "block";
+            document.getElementById('profilediv').style.display = "none";
+        }
+        function OnPrevious() {
+            $("#portfolio").removeAttr("class");
+            $("#profile").attr("class", "active");
+
+
+            document.getElementById('profilediv').style.display = "block";
+            document.getElementById('portfoliodiv').style.display = "none";
+        }
+        //#endregion
+
+        //#region alert
+        function closeAlertEnquiry() {
+            document.getElementById('ShowAlert').style.display = "none";
+        }
+        function ShowAlertEnquiry(msg_body) {
+            var AlertMsg = $('#ShowAlert');
+            $(AlertMsg).find('strong').html(msg_body);
+            //$(AlertMsg).find('p').html(msg_body);
+            //$(AlertMsg).removeAttr('class');
+            //$(AlertMsg).addClass('alert alert-' + msg_type);
+            $(AlertMsg).show();
+            $('#EnquiryAlert').alert();
+        }
+        //#endregion alert
+
+        function Signout() {
+
+            sessionStorage.clear();
+            document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            //Enter Login Page Location
+            window.location.href='@Url.Action("Index","Login")'
+        }
+
+        //#region Disable Console
+
+        $(window).on('keydown', function (event) {
+            if (event.keyCode == 123) {
+                //alert('Entered F12');
+                return false;
+            }
+            else if (event.ctrlKey && event.shiftKey && event.keyCode == 73) {
+                //alert('Entered ctrl+shift+i')
+                return false;  //Prevent from ctrl+shift+i
+            }
+            else if (event.ctrlKey && event.keyCode == 73) {
+                //alert('Entered ctrl+shift+i')
+                return false;  //Prevent from ctrl+shift+i
+            }
+        });
+
+        $(document).on("contextmenu", function (e) {
+            //alert('Right Click Not Allowed')
+            e.preventDefault();
+        });
+
+        //#endregion
+
+        //#region Not used
+        //function ValidateFileUpload(file, MAX_SIZE) {
+
+        //    var fuData = file;
+        //    var FileUploadPath = fuData.value;
+
+        //    if (fuData.files && fuData.files[0]) {
+
+        //        var size = fuData.files[0].size;
+
+        //        if (size > MAX_SIZE) {
+        //            alert("Maximum file size exceeds");
+        //            return;
+        //        } else {
+        //            var reader = new FileReader();
+
+        //            reader.onload = function (e) {
+        //                $('#blah').attr('src', e.target.result);
+        //            }
+
+        //            reader.readAsDataURL(fuData.files[0]);
+        //        }
+        //    }
+        //}
+        //function Filevalidation(file) {
+        //    const fi = document.getElementById(file);
+        //    // Check if any file is selected.
+        //    if (fi.files.length > 0) {
+        //        for (const i = 0; i > fi.files.length - 1; i++) {
+
+        //            const fsize = fi.files.item(i).size;
+        //            const file = Math.round((fsize / 1024));
+        //            // The size of the file.
+        //            if (file >= 4096) {
+        //                alert(
+        //                    "File too Big, please select a file less than 4mb");
+        //            } else if (file < 2048) {
+        //                alert(
+        //                    "File too small, please select a file greater than 2mb");
+        //            } else {
+        //                document.getElementById('size').innerHTML = '<b>'
+        //                    + file + '</b> KB';
+        //            }
+        //        }
+        //    }
+        //}
+        //#endregion
+
+
+    </script>
+</body>
+</html>

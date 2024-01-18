@@ -1,0 +1,603 @@
+﻿@model UploadMusic.Models.LoginModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<head>
+   
+    <meta charset="utf-8">
+    
+    <title>Login | Pixthon Ebook  </title>
+    <meta name="description" content=" Login to your Pixthon Ebook account. View your profile, Check Ebook, Share your work, and Ebook with the clients. ">
+    <meta name="keyword" content="Online Photobook, About Us, Photobook albums, printed products, photo print online, Photo Album, Wedding album design, Wedding album, Album design,  photo book printing">
+
+    <meta name="author" content="themesflat.com">
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Bootstrap  -->
+    <link rel="stylesheet" type="text/css" href="~/Content/PhotographerProfile/stylesheets/bootstrap.css">
+
+    <!-- Theme Style -->
+    <link rel="stylesheet" type="text/css" href="~/Content/PhotographerProfile/stylesheets/style.css">
+
+    <!-- Responsive -->
+    <link rel="stylesheet" type="text/css" href="~/Content/PhotographerProfile/stylesheets/responsive.css">
+
+    <!-- Colors -->
+    <link rel="stylesheet" type="text/css" href="~/Content/PhotographerProfile/stylesheets/colors/color1.css" id="colors">
+
+    <!-- Animation Style -->
+    <link rel="stylesheet" type="text/css" href="~/Content/PhotographerProfile/stylesheets/animate.css">
+    <link href="~/Content/sweetalert.min.css" rel="stylesheet" />
+    <!-- Favicon and touch icons  -->
+    <link href="~/Content/PhotographerProfile/images/logo.png" rel="shortcut icon" style="width:16px;height:16px;">
+
+   
+</head>
+<body class="header-sticky page-loading">
+
+    <div class="boxed">
+        <!--Header-->
+        <div class="top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="flat-address">
+                            <div class="custom-info">
+                                <span style="font-size:14px;">Welcome To Pixthon Photographers Profile</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="social-links">
+                            <i class="fa fa-reply"></i> sales@pixthon.com
+                            <i class="fa fa-phone"></i>  +91 7039851605
+                            &nbsp;
+                            <a href="https://www.facebook.com/Pixthoncom-339936090122683/" target="_blank">
+                                <i class="fa fa-facebook-official"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/company/pixthon-digital-solutions-pvt-ltd/" target="_blank">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                            <a href="https://www.instagram.com/pixthondigitalsolutions/" target="_blank">
+                                <i class="fa fa-instagram" style="background-color:lightseagreen"></i>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!--Header-->
+        <!--Pixthon-->
+        <header id="header" class="header clearfix">
+            <div class="header-wrap clearfix">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div id="logo" class="logo">
+                                <a href="http://pixthon.com/">
+                                    <img src="~/Content/PhotographerProfile/images/logo.png" alt="images" style="height:50px;">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!--Pixthon-->
+        <!--Login Form-->
+        <div class="flat-row pad-bottom20px">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+
+
+                    </div>
+                    <div class="col-md-6" style="border:2px solid #efefef;padding:30px;padding-top:1px;">
+                        <center><h2>Log in</h2></center>
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+                            @*<form id="contactform" method="post" action="">*@
+                            <div class="row">
+                                <div class="col-md-8" style="width:100%;">
+                                    <div id="ShowAlert" class="alert alert-danger background-danger" style="display:none">
+                                        <span class="closeBtn" onclick="closeAlertEnquiry(); return false">&times;</span>
+                                        <strong>!</strong>
+                                    </div>
+                                    <span><input id="email" name="email" type="email" value="" placeholder="Email" maxlength="40"></span>
+                                    <div class="container-password">
+
+                                        <input id="password" class="password-width" name="phone" type="password" value="" placeholder="Password" maxlength="40"><i class="fa fa-eye " id="togglePassword"></i>
+                                    </div>
+
+                                    <span>
+
+                                        @*<input id="rememberme" type="checkbox"  name="rememberme" style="margin-bottom:15px"> Remember me*@
+                                    </span>
+                                </div>
+
+                            </div>
+
+                        }
+
+                        <button  class="btn btn-info" data-toggle="modal" data-target="#myModal" style="float:right;">Forgot Password ?</button>
+                        <br><br>
+
+                        <center>
+                            <span class="form-submit">
+                                @*<a class="btn btn-primary" href="https://www.instamojo.com/Pixthon/">InstaMojo</a>*@
+                                <input name="submit" type="submit" id="submit" class="submit" value="SUBMIT" onclick="Login()">
+                                <p class="para">Don't have account? <a href="@Url.Action("Register","Login")" style="color:dodgerblue">Click Here</a> To SignUp.</p>
+                            </span>
+                            <div id="divLoader" style="display:none;">
+                                <img src="~/Images/ajax-loader.gif" alt="Loader" />
+                            </div>
+                        </center>
+                    </div>
+                    <div class="col-md-3">
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--Login Form-->
+        <!--Forgot Password Modal-->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header border-bottom-0">
+                        <center> <h5 class="modal-title" id="exampleModalLabel">Forgot Password</h5></center>
+                        <button  class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    @using (Html.BeginForm("ForgotPassword", "Login", FormMethod.Post))
+                    {
+
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="email1">Email address</label>
+                                @Html.TextBox("EmailID", "", new { @class = "form-control", placeholder = "Enter email", required = "required", @maxlength = "40" })
+                                @*<input type="email" class="form-control" id="email1" aria-describedby="emailHelp" placeholder="Enter email">*@
+                                <small id="emailHelp" class="form-text text-muted">Your information is safe with us.</small>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer border-top-0 d-flex justify-content-center">
+                            @*<input type="submit" value="Submit" class="btn btn-success" />*@
+                            <button  class="btn btn-success" onclick="OnSubmit()">Submit</button>
+                            <div id="divLoader1" style="display:none;">
+                                <img src="~/Images/ajax-loader.gif" alt="Loader" />
+                            </div>
+                        </div>
+                    }
+
+
+                </div>
+            </div>
+        </div>
+        <!--Forgot Password Modal-->
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-widgets">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="widget widget_text">
+                            <div class="textwidget">
+                                <p style="text-align:justify;">Pixthon is one stop solutions for the photography and customisaton products . We are always happy to help in the best possible way.</p>
+                                <p style="text-align:justify;">Be it photo books, album designing or website designing, Pixthon has everything sorted for you.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="widget widget_nav_menu">
+                            <div class="menu-footer-menu-container">
+                                <ul class="ft-menu">
+                                    <li><a href=@Url.Action("Index","PhotographerProfile")>View Photobook</li>
+                                    <li><a href=@Url.Action("Register","Login")>Registration</a></li>
+                                    <li><a href=@Url.Action("Index","Login")>Log In</a></li>
+                                    <li><a href=@Url.Action("Contact","Home")>Contact Us</a></li>
+
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="widget widget_mc4wp_form_widget">
+                            <address class="location">
+                                <i class="fa fa-map-marker"></i> <b>Pixthon Digital Solutions Pvt Ltd.</b><br>
+                                Plot No. 39/3, 16th Floor/1605,<br>
+                                Haware Infotech Park, Sector 30A,<br>
+                                Vashi, Navi Mumbai,<br>
+                                Maharashtra-400703
+                            </address>
+                            <i class="fa fa-phone"></i> <b>+91 7039851605</b> <br>
+                            <i class="fa fa-envelope"></i><b> sales@pixthon.com</b>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="social-links">
+
+                            <a href="https://www.facebook.com/Pixthoncom-339936090122683/" target="_blank">
+                                <i class="fa fa-facebook-official"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/company/pixthon-digital-solutions-pvt-ltd/" target="_blank">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                            <a href="https://www.instagram.com/pixthondigitalsolutions/" target="_blank">
+                                <i class="fa fa-instagram" style="background-color:lightseagreen"></i>
+                            </a>
+                        </div>
+                    </div><!-- /.col-md-12 -->
+                    <div class="col-md-12">
+                        <div class="copyright">
+                            <div class="copyright-content">
+                                © 2020 | Design By <a href="#">Pixthon</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer -->
+    <!-- Go Top -->
+    <a class="go-top">
+        <i class="fa fa-chevron-up"></i>
+    </a>
+    <!-- Go Top -->
+    <!-- Javascript -->
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="~/Content/js/jquery-ui.min.js"></script>
+    <script src="~/Content/js/jquery.sessionTimeout.js"></script>
+    <script src="~/Content/js/sweetalert.min.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery.easing.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery-waypoints.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery.cookie.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery-validate.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/gmap3.min.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/parallax.js"></script>
+    <!-- <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/switcher.js"></script> -->
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/smoothscroll.js"></script>
+    @*<script type="text/javascript" src="~/Content/PhotographerProfile/javascript/main.js"></script>*@
+
+    <script>
+        $(document).ready(function () {
+            document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            //RememberMe();
+            sessionStorage.clear();
+
+
+        });
+
+        //#region Submit On Enter
+
+        //$('.input').keypress(function (e) {
+        //    if (e.which == 13) {
+        //        jQuery(this).blur();
+        //        jQuery('#submit').focus().click();
+        //    }
+        //});
+
+        //#endregion
+
+        //#region Show Password
+        const togglePassword = document.querySelector('#togglePassword');
+        const password = document.querySelector('#password');
+        togglePassword.addEventListener('click', function (e) {
+            // toggle the type attribute
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+            // toggle the eye slash icon
+            this.classList.toggle('fa-eye-slash');
+        });
+        //#endregion
+
+        //#region Forgot Password
+        function OnSubmit() {
+
+            var fileData = new FormData();
+
+            var isvalid = Validation1();
+            if (isvalid == false) {
+                return;
+            }
+
+            $('#divLoader1').show();
+
+            var email = $('#EmailID').val();
+            fileData.append('EmailID', email);
+
+
+            for (var key of fileData.entries()) {
+                console.log(key[0] + ',' + key[1])
+            }
+
+            $.ajax({
+                type: "POST",
+                url: "/Login/ForgotPassword",
+                dataType: "json",
+                contentType: false, // Not to set any content header
+                processData: false, // Not to process data
+                data: fileData,
+                success: function (result) {
+                    console.log("Inside Success");
+
+                    $('#myModal').modal('hide');
+                    $('#divLoader1').hide();
+                    console.log(result.result);
+
+                    if (result.result == "Error") {
+                        swal("Try Again!", result.msg, "error");
+                    } else if (result.result == "Success") {
+
+                        swal("Success!", result.msg, "success");
+
+                    }
+                    else if (result.result == "Invalid") {
+
+                        swal("Server Timeout!", " Unable To send Reset Password Link!", "error");
+
+                    }
+
+                },
+                error: function (xhr, status, error) {
+                    $('#divLoader').hide();
+                    //alert("Error", status);
+                    swal("Try Again!", "Error Occured While Sending!", "error");
+                }
+            });
+
+        }
+        //#endregion
+
+        //#region Login
+        function Login() {
+
+            var fileData = new FormData();
+
+            var isvalid = Validation();
+            if (isvalid == false) {
+                return;
+            }
+
+            $('#divLoader').show();
+            var rememberme = document.getElementsByName("rememberme");
+            var isValid = false;
+            var count = 0;
+
+            for (var i = 0; i < rememberme.length; i++) {
+                if (rememberme[i].checked) {
+
+
+                    isValid = true;
+                    count++;
+                }
+
+            }
+
+
+
+
+
+            var email = $('#email').val();
+            fileData.append('Email', email);
+            var password = $('#password').val();
+            fileData.append('Password', password);
+
+            var rememberme = isValid;
+            fileData.append('RememberMe', rememberme);
+            var headers = { __RequestVerificationToken: $('input[name="__RequestVerificationToken"]').val() };
+            for (var key of fileData.entries()) {
+                console.log(key[0] + ',' + key[1])
+            }
+
+            $.ajax({
+                type: "POST",
+                headers: headers,
+                url: "/Login/GetLogin",
+                dataType: "json",
+                contentType: false, // Not to set any content header
+                processData: false, // Not to process data
+                //data: '{rating: ' + JSON.stringify(rating) + ',}'
+                data: fileData,
+                success: function (result, status, xhr) {
+                    $('#divLoader').hide();
+                    console.log(result.result);
+
+                    if (result.result == "Redirect") {
+                        
+                        sessionStorage.setItem('Email', result.email); //For Storing Encrypted Username in Session
+                        sessionStorage.setItem('Token', result.Token);
+                        localStorage.setItem('LocalEmail', $('#email').val());
+                        setCookie("username", sessionStorage.getItem('Email'), 365);
+                        window.location.href = result.url
+                    } else if (result.result == "Invalid") {
+                        ShowAlertEnquiry('Invalid Email or password');
+                    } else if (result.result == "EmailNotVerified") {
+                        ShowAlertEnquiry('Please verify your email first');
+                    }
+
+
+                },
+                error: function (xhr, status, error) {
+                    $('#divLoader').hide();
+                    //alert("Error", status);
+                    swal("Try Again!", "Server Timeout!", "error");
+                }
+            });
+
+        }
+
+        function setCookie(cname, cvalue, exdays) {
+            var d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            var expires = "expires=" + d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+        //#endregion
+
+        //#region Alert
+        function ShowAlertEnquiry(msg_body) {
+            var AlertMsg = $('#ShowAlert');
+            $(AlertMsg).find('strong').html(msg_body);
+            //$(AlertMsg).find('p').html(msg_body);
+            //$(AlertMsg).removeAttr('class');
+            //$(AlertMsg).addClass('alert alert-' + msg_type);
+            $(AlertMsg).show();
+            $('#ShowAlert').alert();
+        }
+        function closeAlertEnquiry() {
+            document.getElementById('ShowAlert').style.display = "none";
+        }
+        //#endregion
+
+        //#region Login Validation
+        function Validation() {
+
+            var msg = "";
+            var serialno = 0;
+            if ($("#email").val() == "") {
+                serialno++;
+                msg += '\n' + serialno + '. ' + 'Please Enter Email';
+
+            }
+            else if (!ValidateEmail($('#email').val())) {
+                serialno++;
+                msg += '\n' + serialno + '. ' + 'You have entered an invalid email address!';
+
+            }
+            if ($("#password").val() == "") {
+                serialno++;
+                msg += '\n' + serialno + '. ' + 'Please enter Password';
+
+            }
+            //else if (!ValidateLength($('#password').val())) {
+            //    serialno++;
+            //    msg += '\n' + serialno + '. ' + 'Password should be minimum of 8 letters!';
+
+            //}
+
+
+
+            if (serialno != 0) {
+                swal("Error", 'Please Fill the Required Details:' + msg, "error");
+                return false;
+            }
+
+        }
+        function Validation1() {
+
+            var msg = "";
+            var serialno = 0;
+            if ($("#EmailID").val() == "") {
+                serialno++;
+                msg += '\n' + serialno + '. ' + 'Please Enter Email';
+
+            }
+            else if (!ValidateEmail($('#EmailID').val())) {
+                serialno++;
+                msg += '\n' + serialno + '. ' + 'You have entered an invalid email address!';
+
+            }
+
+            if (serialno != 0) {
+                swal("Error", 'Please Fill the Required Details:' + msg, "error");
+                return false;
+            }
+
+        }
+        function ValidateEmail(mail) {
+            if ((/^\w+([\.-]?\w+)*@@\w+([\.-]?\w+)*(\.\w{2,3})+$/).test(mail)) {
+                return (true)
+            }
+
+            return (false)
+        }
+        function ValidateLength(password) {
+            if (password.length < 8) {
+                swal("Failed", "Password should be atleast 8 letters", "error")
+                return false;
+            }
+            return (true);
+        }
+        //#endregion
+
+        //#region Remember Me
+
+        //function RememberMe() {
+        //    if (localStorage.getItem('chk_RememberMe') == 'on') {
+        //       // $('#email').val(localStorage.getItem('Email'));
+        //        //$('#password').val(localStorage.getItem('Password'));
+        //    }
+        //    else {
+        //        localStorage.clear();
+        //        localStorage.removeItem('Password');
+        //        localStorage.removeItem('chk_RememberMe');
+        //    }
+        //}
+
+        //function OnFocusEmail() {
+        //    localStorage.clear();
+        //}
+        //#endregion
+
+
+        //#region Disable Console
+
+        $(window).on('keydown', function (event) {
+            if (event.keyCode == 123) {
+                //alert('Entered F12');
+                return false;
+            }
+            else if (event.ctrlKey && event.shiftKey && event.keyCode == 73) {
+                //alert('Entered ctrl+shift+i')
+                return false;  //Prevent from ctrl+shift+i
+            }
+            else if (event.ctrlKey && event.keyCode == 73) {
+                //alert('Entered ctrl+shift+i')
+                return false;  //Prevent from ctrl+shift+i
+            }
+        });
+
+        $(document).on("contextmenu", function (e) {
+            //alert('Right Click Not Allowed')
+            e.preventDefault();
+        });
+            //#endregion
+
+    </script>
+
+</body>
+</html>

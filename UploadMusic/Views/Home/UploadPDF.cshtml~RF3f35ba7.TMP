@@ -1,0 +1,1040 @@
+﻿@model UploadMusic.Models.PhotoBookModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<head>
+    <!-- Basic Page Needs -->
+    <meta charset="utf-8">
+    <!--[if IE]>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+    <![endif]-->
+    <title>Photographer Registration Form | Pixthon</title>
+    <meta name="author" content="">
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- Bootstrap  -->
+    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="~/Content/PhotographerProfile/stylesheets/bootstrap.css">
+    <!-- Theme Style -->
+    <link rel="stylesheet" type="text/css" href="~/Content/PhotographerProfile/stylesheets/style.css">
+    <!-- Responsive -->
+    <link rel="stylesheet" type="text/css" href="~/Content/PhotographerProfile/stylesheets/responsive.css">
+    <!-- Colors -->
+    <link rel="stylesheet" type="text/css" href="~/Content/PhotographerProfile/stylesheets/colors/color1.css" id="colors">
+    <!-- Animation Style -->
+    <link rel="stylesheet" type="text/css" href="~/Content/PhotographerProfile/stylesheets/animate.css">
+    <link href="~/Content/css/sweetalert.min.css" rel="stylesheet" />
+    <link href="~/Content/PhotographerProfile/stylesheets/icofont.css" rel="stylesheet" />
+    <!-- Favicon and touch icons  -->
+    <link href="~/Content/PhotographerProfile/icon/apple-touch-icon-48-precomposed.png" rel="apple-touch-icon-precomposed" sizes="48x48">
+    <link href="~/Content/PhotographerProfile/icon/apple-touch-icon-32-precomposed.png" rel="apple-touch-icon-precomposed">
+    <link href="~/Content/PhotographerProfile/icon/favicon.png" rel="shortcut icon">
+
+    <style>
+        span {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="header-sticky page-loading">
+    <!-- Boxed -->
+    <div class="boxed">
+        <div class="top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="flat-address">
+                            <div class="custom-info">
+                                <span style="font-size:14px;font-weight:normal;">Welcome To Pixthon Photographers Profile</span>
+                            </div>
+                        </div>
+                        <!-- /.flat-address -->
+                    </div>
+                    <!-- /.col-md-8 -->
+                    <div class="col-md-5">
+                        <div class="social-links">
+                            <i class="fa fa-reply"></i> sales@pixthon.com
+                            <i class="fa fa-phone"></i>  +91 7039851605
+                            &nbsp;<a href="#">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                            <a href="#">
+                                <i class="fa fa-facebook-official"></i>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.top -->
+    <!-- Header -->
+    <header id="header" class="header clearfix">
+        <div class="header-wrap clearfix">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <div id="logo" class="logo">
+                            <a href="index.html">
+                                <img src="~/Content/PhotographerProfile/images/logo.png" alt="images" style="height:50px;">
+                            </a>
+                        </div>
+                        <!-- <div class="btn-menu">
+                           <!-- <div class="btn-menu">
+                                <span></span>
+                            </div> -->
+                    </div>
+                    <!-- /.col-md-9 -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container -->
+        </div>
+        <!-- /.header-inner -->
+    </header>
+    <!-- /.header -->
+    <!-- added by srs -->
+    <div class="flat-row pad-bottom20px" style="padding-bottom:0px;">
+        <center><h2 style="margin-top:0px;margin-bottom:40px;">Upload Photos for Photo-E-Book</h2></center>
+        <div class="container">
+            <div class="col-md-12">
+
+                <form id="contactform" method="post" action="#" enctype="multipart/form-data">
+                    <div class="row">
+
+                        <div id="ShowAlert" class="alert alert-danger background-danger" style="display:none">
+                            <span class="closeBtn" onclick="closeAlertEnquiry(); return false">&times;</span>
+                            <strong>!</strong>
+                        </div>
+                        <div class="col-md-3"></div>
+                        <div class="col-md-6">
+                            <span>
+                                Order No. *
+
+                                <input id="orderno" name="email" type="text" value="" placeholder="" required="required" style="background:none;">
+                            </span>
+                            <span>
+                                Photography Category<br />
+
+                                <select id="ddlCustomers"></select>
+
+                            </span>
+                            <br /><br />
+                            <span>
+                                Title of Photography *
+                                <input id="title" name="company" type="text" value="" placeholder="" required="required" style="background:none;">
+
+                            </span>
+                           
+                                <div class="col-md-12">
+                                    <span>
+                                        Upload Photos *
+                                        <input id="uploadfiles" type="file" class="custom-file-input" multiple name="FileUpload1">
+
+                                        
+                                    </span>  <br>
+                                    <div style="width:1000px; background-color:white; height:250px; overflow:scroll; overflow-x: scroll; overflow-y: scroll;">
+                                        <div class="row" style="width:1000px;">
+                                            <div class="container12"></div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                @*<input id="uploadfiles" name="upload" type="file" multiple value="" placeholder="" required="required" style="border:1px solid #d8e7ef;padding:8px;width:100%;background:none;">*@
+                           
+                            <br />
+                            <span>
+                                Select one Option to get photographer
+                            </span>
+                            <br />
+                            <span>
+                                <label for="chkYes">
+                                    <input type="radio" id="chkYes" name="chkPassPort" checked="checked" value="yes" />
+                                    Photographer Name
+                                </label>
+                                <label for="chkNo">
+                                    <input type="radio" id="chkNo" name="chkPassPort" value="yes" />
+                                    Studio Name
+                                </label>
+                            </span>
+                            <br /><br />
+                                  <span>
+                                      Photographer Name
+                                      <input id="photographername" name="yearofexperience" type="text" value="" placeholder="" required="required" style="background:none;">
+                                      <input type="hidden" id="photographerid"  />
+                                      <input name="submit" type="button" id="phobtn" class="submit" value="Validate" onclick="EmailBind()">
+                                  </span>
+                            <center>
+                                <span>OR</span><br><br>
+                            </center>
+                            <span>
+                                Photographer Studio Name
+                                <input id="studioname" name="yearofexperience" type="text" value="" placeholder="" disabled="disabled" required="required" style="background:none;">
+                                <input type="hidden" id="studioid"  />
+                                <input name="submit" type="button" id="stubtn" class="submit" value="Validate" disabled="disabled" onclick="EmailBind()">
+                            </span>
+                            <span>
+
+                                <input id="email" name="yearofexperience" type="text" value=""  placeholder="" disabled="disabled" readonly="readonly" required="required" style="background:none;">
+                            </span>
+
+                            @*<span>
+            <input id="CityName" type="text" placeholder="U.S. state name" onchange="GetHardcodded()">
+            <input id="autocomplete2-value" type="hidden" name="code">
+        </span>*@
+                            <center>
+                                <span class="form-submit">
+                                    <input name="submit" type="button" id="submit" class="submit" value="SUBMIT" onclick="OnSubmit()">
+
+                                </span>
+                                <div id="divLoader" style="display:none;">
+                                    <img src="~/Images/ajax-loader.gif" alt="Loader" />
+                                </div>
+                            </center>
+                        </div>
+                        <div class="col-md-3"></div>
+
+                        <br><br>
+                        <div class="loading-overlay"></div>
+                    </div>
+                    <!-- /.row -->
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <!-- /.flat-row -->
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-widgets">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="widget widget_text">
+                            <div class="textwidget">
+                                <p style="text-align:justify;">Pixthon is one stop solution for the professional photographers. We are always happy to help in the best possible way.</p>
+                                <p style="text-align:justify;">Be it photo books, album designing or website designing, Pixthon has everything sorted for you.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.col-md-4 -->
+                    <div class="col-md-4">
+                        <div class="widget widget_nav_menu">
+                            <div class="menu-footer-menu-container">
+                                <ul class="ft-menu">
+                                    <li><a href="#">About</a></li>
+                                    <li><a href="#">Training Programs</a></li>
+                                    <li><a href="#">Company History</a></li>
+                                    <li><a href="#">Leadership Team</a></li>
+                                    <li><a href="#">What We Do</a></li>
+                                    <li><a href="#">Awards &amp; Recognition</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.col-md-4 -->
+                    <div class="col-md-4">
+                        <div class="widget widget_mc4wp_form_widget">
+                            <form class="ft-form">
+                                <p>
+                                    <label>Monthly Tips &amp; strategies for accelerating revenue.</label>
+                                    <input type="text" name="EMAIL" placeholder="Your email address">
+                                </p>
+                                <p>
+                                    <input type="submit" value="Submit">
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- /.col-md-4 -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container -->
+        </div>
+        <!-- /.footer-content -->
+        <div class="footer-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="social-links">
+                            <a href="#" target="_blank">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                            <a href="#" target="_blank">
+                                <i class="fa fa-facebook-official"></i>
+                            </a>
+                            <a href="#" target="_blank">
+                                <i class="fa fa-google-plus"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- /.col-md-12 -->
+                    <div class="col-md-12">
+                        <div class="copyright">
+                            <div class="copyright-content">
+                                Copyright © 2020 | Design By <a href="#">Pixthon</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.col-md-12 -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container -->
+        </div>
+        <!-- /.footer-content -->
+    </footer>
+    <!-- Go Top -->
+    <a class="go-top">
+        <i class="fa fa-chevron-up"></i>
+    </a>
+
+    <!-- Javascript -->
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery.easing.js"></script>
+    <script src="~/Content/js/sweetalert.min.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/owl.carousel.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery-waypoints.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery.fancybox.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery.cookie.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/gmap3.min.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/parallax.js"></script>
+    <!-- <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/switcher.js"></script> -->
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/smoothscroll.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery-validate.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/main.js"></script>
+    <!-- Revolution Slider -->
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery.themepunch.tools.min.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery.themepunch.revolution.min.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/slider.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            if (sessionStorage.getItem('Email') != null) {
+                console.log('Session', sessionStorage.getItem('Email'));
+               // $('#customopt').append(sessionStorage.getItem('Email'))
+                $('#customopt').append("<a class='btn btn-success' style='margin-right: 14px;' href='/ChangePassword/Index'>Change Password</a><a class='btn btn-success' href='#' onclick='Signout()'><span>Sign Out</span></a>");
+
+
+               
+            } else {
+                window.location.href = '@Url.Action("Index", "Login")';
+            }
+
+            $("#uploadfiles").change(function () {
+                var fileData = new FormData();
+                var files = $("#uploadfiles").get(0).files;
+
+                var photographerid = $('#photographerid').val();
+                fileData.append('PhotographerID', photographerid);
+
+                for (var i = 0; i < files.length; i++) {
+                    fileData.append("uploadfiles", files[i]);
+                    $('.container12').append("<div class='col-md-2'><div class='content' id='content_" + count + "' ><img class='imageheight' src='" + files[i] + "'  style='float: left; display: inline; padding: 10px;' /><a class='delete  button scheme2' id='delete_" + count + "' style='margin-left:10px;width:140px;'>Delete</a></div></div>");
+                }
+               
+               
+
+
+                //$.ajax({
+                //    type: "POST",
+                //    url: "/Registration/UploadImage",
+                //    dataType: "json",
+                //    contentType: false, // Not to set any content header
+                //    processData: false, // Not to process data
+                //    data: fileData,
+                //    success: function (result, status, xhr) {
+                //        alert(result);
+                //        console.log(result)
+                //        var total_file = document.getElementById("imageportfolio").files.length;
+
+
+                //        for (var i = 0; i < result.length; i++) {
+
+                //            var count = $('.container12 .content').length;
+                //            count = Number(count) + 1;
+                //            //$('#divimage').append("<img src='" + URL.createObjectURL(event.target.files[i]) + "'>");
+                //            //console.log(event.target.files[i])
+
+                //            $('.container12').append("<div class='col-md-2'><div class='content' id='content_" + count + "' ><img class='imageheight' src='" + result[i] + "'  style='float: left; display: inline; padding: 10px;' /><a class='delete  button scheme2' id='delete_" + count + "' style='margin-left:10px;width:140px;'>Delete</a></div></div>");
+                //        }
+
+                //    },
+                //    error: function (xhr, status, error) {
+                //        alert(status);
+                //    }
+                //});
+
+            });
+
+            // Remove Image
+            $('.container12').on('click', '.content .delete', function () {
+
+                var id = this.id;
+                var split_id = id.split('_');
+                var num = split_id[1];
+
+                // Get image source
+                var imgElement_src = $('#content_' + num + ' img').attr("src");
+                var deleteFile = confirm("Do you really want to Delete?");
+                if (deleteFile == true) {
+                    // AJAX request
+                    $.ajax({
+                        url: '/Registration/DeleteImage',
+                        type: 'post',
+                        data: { path: imgElement_src, PhotographerID: $('#photographerid').val() },
+                        success: function (response) {
+
+                            // Remove
+                            if (response == 1) {
+                                $('#content_' + num).remove();
+                            }
+                        }
+                    });
+                }
+            });
+
+            var ddlCustomers = $("#ddlCustomers");
+            ddlCustomers.empty().append('<option selected="selected" value="0" disabled = "disabled">Loading.....</option>');
+            $.ajax({
+                type: "POST",
+                url: "/Home/GetPhotographyCategories",
+                data: '{}',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    ddlCustomers.empty().append('<option selected="selected" value="0">Please select</option>');
+                    $.each(response, function () {
+                        ddlCustomers.append($("<option></option>").val(this['Value']).html(this['Text']));
+                    });
+                },
+                failure: function (response) {
+                    alert(response.responseText);
+                },
+                error: function (response) {
+                    alert(response.responseText);
+                }
+            });
+
+            $("input[name='chkPassPort']").click(function () {
+                if ($("#chkYes").is(":checked")) {
+                    $("#photographername").removeAttr("disabled");
+                    $("#photographername").focus();
+                    $("#studioname").attr("disabled", "disabled");
+                    $("#phobtn").removeAttr("disabled");
+                    $("#stubtn").attr("disabled", "disabled");
+                    $("#studioname").val("");
+                    $("#studioid").val("");
+                    $("#email").val("");
+
+                } else {
+                    $("#photographername").attr("disabled", "disabled");
+                    $("#studioname").removeAttr("disabled");
+                    $("#studioname").focus();
+                    $("#phobtn").attr("disabled", "disabled");
+                    $("#stubtn").removeAttr("disabled");
+                    $("#photographername").val("");
+                    $("#photographerid").val("");
+                    $("#email").val("");
+                }
+            });
+            
+            $("#photographername").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: "/Home/GetPhotographers",
+                        type: "POST",
+                        dataType: "json",
+                        data: { Prefix: request.term },
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return { label: item.N.PhotographerName, value: item.N.PhotographerID };
+                            }))
+
+                        }
+                    })
+                },
+                focus: function (event, ui) {
+                    // prevent autocomplete from updating the textbox
+                    event.preventDefault();
+                    // manually update the textbox
+                    $(this).val(ui.item.label);
+                    $("#photographername").val(ui.item.label);
+                },
+                select: function (event, ui) {
+                    // prevent autocomplete from updating the textbox
+                    event.preventDefault();
+                    // manually update the textbox and hidden field
+                    $(this).val(ui.item.label);
+                    $("#photographername").val(ui.item.label);
+                    $("#photographerid").val(ui.item.value);
+
+                }
+              
+            });
+
+            $("#studioname").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: "/Home/GetStudio",
+                        type: "POST",
+                        dataType: "json",
+                        data: { Prefix: request.term },
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return { label: item.N.StudioName, value: item.N.PhotographerID };
+                            }))
+
+                        }
+                    })
+                },
+                focus: function (event, ui) {
+                    // prevent autocomplete from updating the textbox
+                    event.preventDefault();
+                    // manually update the textbox
+                    $(this).val(ui.item.label);
+                    $("#studioname").val(ui.item.label);
+                },
+                select: function (event, ui) {
+                    // prevent autocomplete from updating the textbox
+                    event.preventDefault();
+                    // manually update the textbox and hidden field
+                    $(this).val(ui.item.label);
+                    $("#studioname").val(ui.item.label);
+                    $("#studioid").val(ui.item.value);
+                    
+                }
+
+            });
+            
+        });  
+
+        function EmailBind() {
+            var fileData = new FormData();
+            if ($("#chkYes").is(":checked")) {
+                var photographername = $('#photographername').val();
+                fileData.append('PhotographerName', photographername);
+                var GetEmail = "GetEmailPhotographer";
+
+            } else {
+                var studioname = $('#studioname').val();
+                fileData.append('StudioName', studioname);
+                var GetEmail = "GetEmailStudio";
+            }
+            $.ajax({
+                type: "POST",
+                url: "/Home/"+GetEmail,
+                dataType: "json",
+                contentType: false, // Not to set any content header
+                processData: false, // Not to process data
+                data: fileData,
+                success: function (result, status, xhr) {
+                    if (result.status =="Success")
+                        $('#email').val(result.email);
+                    if (result.status == "Invalid") {
+                        $("#email").val("");
+                        swal("Email Not Found!", "Photographer is not Registered!", "error");
+                    }
+                        
+                    
+                    
+                },
+                error: function (xhr, status, error) {
+                    $('#divLoader').hide();
+                    swal("Try Again!", "Error Occured While Photographer Registration!", "error");
+                }
+            });
+
+        }
+        function OnSubmit() {
+
+            var fileData = new FormData();
+
+
+            var isvalid = Validation();
+            if (isvalid == false) {
+                return;
+            }
+
+            $('#divLoader').show();
+
+            //Upload Images
+
+            var uploadfiles = $("#uploadfiles").get(0).files;
+            for (var i = 0; i < uploadfiles.length; i++) {
+                fileData.append("UploadFiles", uploadfiles[i]);
+            }
+
+            var orderno = $('#orderno').val();
+            fileData.append('OrderNo', orderno);
+            var title = $('#title').val();
+            fileData.append('Title', title);
+
+            if ($("#chkYes").is(":checked")) {
+                var photographername = $('#photographerid').val();
+                fileData.append('PhotographerId', photographername);
+                var email = $("#email").val();
+                fileData.append('PhotographerId', photographername);
+
+            } else {
+                var studioid = $('#studioid').val();
+                fileData.append('PhotographerId', studioid);
+            }
+
+            var title = $('#title').val();
+            fileData.append('Title', title);
+
+
+            var photocategory = $('#ddlCustomers').val();
+            fileData.append('PhotographyCategoriesID', photocategory);
+
+
+            for (var key of fileData.entries()) {
+                console.log(key[0] + ',' + key[1])
+            }
+
+            $.ajax({
+                type: "POST",
+                url: "/Home/ImageUpload",
+                dataType: "json",
+                contentType: false, // Not to set any content header
+                processData: false, // Not to process data
+                data: fileData,
+                success: function (result, status, xhr) {
+                    $('#divLoader').hide();
+
+                    if (result.result == "Redirect") {
+                        swal("Thank you!", "Photos Uploaded Sucessfully!", "success");
+                        location.reload(true);
+                    } else if (result.result = "ALready a Member") {
+                        swal("Try Again!", "Failed To Upload Photos!", "error");
+                    } else if (result.result = "Invalid Photographer") {
+                        swal("Sorry!", "Photographer is not Registered!", "error");
+                    } 
+                },
+                error: function (xhr, status, error) {
+                    $('#divLoader').hide();
+                    swal("Try Again!", "Error Occured While Photographer Registration!", "success");
+                }
+            });
+
+
+
+        }
+
+        function Validation() {
+
+
+
+            var msg = "";
+            var serialno = 0;
+            if ($("#orderno").val() == "") {
+                serialno++;
+                msg += '\n' + serialno + '. ' + 'Please Enter Order No';
+
+            }
+            if ($("#title").val() == "") {
+                serialno++;
+                msg += '\n' + serialno + '. ' + 'Please Enter Title';
+
+            }
+
+            if ($("#chkYes").is(":checked")) {
+                if ($("#photographername").val() == "") {
+                    serialno++;
+                    msg += '\n' + serialno + '. ' + 'Please Enter Name of Photographer and Validate';
+
+                } else if ($("#email").val() == "") {
+                    serialno++;
+                    msg += '\n' + serialno + '. ' + 'Please Choose valid Photographer';
+
+                }
+            }
+            if ($("#chkNo").is(":checked")) {
+                if ($("#studioname").val() == "") {
+                    serialno++;
+                    msg += '\n' + serialno + '. ' + 'Please Enter Name of Studio/COmpany and Validate';
+
+                } else if ($("#email").val() == "") {
+                    serialno++;
+                    msg += '\n' + serialno + '. ' + 'Please Choose valid Photographer';
+
+                }
+            }
+
+            if ($("#uploadfiles").val() == "") {
+                serialno++;
+                msg += '\n' + serialno + '. ' + 'Please select a file for Image PortFolio';
+
+            }
+           
+
+            if (serialno != 0) {
+                swal("Error", 'Please Fill the Required Details:' + msg, "error");
+                return false;
+            }
+
+        }
+
+        function ValidateMobileNo(inputtxt) {
+            var phoneno = /^\d{10}$/;
+            if (phoneno.test(inputtxt)) {
+                return true;
+            }
+            else {
+
+                return false;
+            }
+        }
+
+        function ValidateURL(url) {
+            //var url = document.getElementById("url").value;
+            var pattern = /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
+            if (pattern.test(url)) {
+
+                return true;
+            }
+
+            return false;
+        }
+
+        function ValidateEmail(mail) {
+            if ((/^\w+([\.-]?\w+)*@@\w+([\.-]?\w+)*(\.\w{2,3})+$/).test(mail)) {
+                return (true)
+            }
+
+            return (false)
+        }
+        function closeAlertEnquiry() {
+            document.getElementById('ShowAlert').style.display = "none";
+        }
+
+        function ShowAlertEnquiry(msg_body) {
+            var AlertMsg = $('#ShowAlert');
+            $(AlertMsg).find('strong').html(msg_body);
+            //$(AlertMsg).find('p').html(msg_body);
+            //$(AlertMsg).removeAttr('class');
+            //$(AlertMsg).addClass('alert alert-' + msg_type);
+            $(AlertMsg).show();
+            $('#EnquiryAlert').alert();
+        }
+
+              //  function GetHardcodded() {
+      //  console.log("Inside GetHardcodded");
+      //      var data = [
+      //          { value: "AL", label: "Alabama" },
+      //          { value: "AK", label: "Alaska" },
+      //          { value: "AZ", label: "Arizona" },
+      //          { value: "AR", label: "Arkansas" },
+      //          { value: "CA", label: "California" },
+      //          { value: "CO", label: "Colorado" },
+      //          { value: "CT", label: "Connecticut" },
+      //          { value: "DE", label: "Delaware" },
+      //          { value: "FL", label: "Florida" },
+      //          { value: "GA", label: "Georgia" },
+      //          { value: "HI", label: "Hawaii" },
+      //          { value: "ID", label: "Idaho" },
+      //          { value: "IL", label: "Illinois" },
+      //          { value: "IN", label: "Indiana" },
+      //          { value: "IA", label: "Iowa" },
+      //          { value: "KS", label: "Kansas" },
+      //          { value: "KY", label: "Kentucky" },
+      //          { value: "LA", label: "Louisiana" },
+      //          { value: "ME", label: "Maine" },
+      //          { value: "MD", label: "Maryland" },
+      //          { value: "MA", label: "Massachusetts" },
+      //          { value: "MI", label: "Michigan" },
+      //          { value: "MN", label: "Minnesota" },
+      //          { value: "MS", label: "Mississippi" },
+      //          { value: "MO", label: "Missouri" },
+      //          { value: "MT", label: "Montana" },
+      //          { value: "NE", label: "Nebraska" },
+      //          { value: "NV", label: "Nevada" },
+      //          { value: "NH", label: "New Hampshire" },
+      //          { value: "NJ", label: "New Jersey" },
+      //          { value: "NM", label: "New Mexico" },
+      //          { value: "NY", label: "New York" },
+      //          { value: "NC", label: "North Carolina" },
+      //          { value: "ND", label: "North Dakota" },
+      //          { value: "OH", label: "Ohio" },
+      //          { value: "OK", label: "Oklahoma" },
+      //          { value: "OR", label: "Oregon" },
+      //          { value: "PA", label: "Pennsylvania" },
+      //          { value: "RI", label: "Rhode Island" },
+      //          { value: "SC", label: "South Carolina" },
+      //          { value: "SD", label: "South Dakota" },
+      //          { value: "TN", label: "Tennessee" },
+      //          { value: "TX", label: "Texas" },
+      //          { value: "UT", label: "Utah" },
+      //          { value: "VT", label: "Vermont" },
+      //          { value: "VA", label: "Virginia" },
+      //          { value: "WA", label: "Washington" },
+      //          { value: "WV", label: "West Virginia" },
+      //          { value: "WI", label: "Wisconsin" },
+      //          { value: "WY", label: "Wyoming" }
+      //      ];
+      //console.log("Inside GetHardcodded", data);
+
+      //      console.log("Inside GetHardcodded", data);
+      //      $("#autocomplete2").autocomplete({
+      //          source: data,
+      //          focus: function (event, ui) {
+      //              // prevent autocomplete from updating the textbox
+      //               event.preventDefault();
+      //              // manually update the textbox
+      //              $(this).val(ui.item.label);
+      //              $("#autocomplete2").val(ui.item.label);
+      //          },
+      //          select: function (event, ui) {
+      //              // prevent autocomplete from updating the textbox
+      //              event.preventDefault();
+      //              // manually update the textbox and hidden field
+      //              $(this).val(ui.item.label);
+      //              $("#autocomplete2").val(ui.item.label);
+      //              $("#autocomplete2-value").val(ui.item.value);
+
+      //          }
+      //      });
+
+      //  }
+        //$("#CityName").autocomplete({
+            //    source: function (request, response) {
+            //        $.ajax({
+            //            url: "/Home/Index",
+            //            type: "POST",
+            //            dataType: "json",
+            //            data: { Prefix: request.term },
+            //            success: function (data) {
+            //                response($.map(data, function (item) {
+            //                    return { label: item.N.CityName, value: item.N.Id };
+            //                }))
+
+            //            }
+            //        })
+            //    },
+            //    focus: function (event, ui) {
+            //        // prevent autocomplete from updating the textbox
+            //        event.preventDefault();
+            //        // manually update the textbox
+            //        $(this).val(ui.item.label);
+            //        $("#CityName").val(ui.item.label);
+            //    },
+            //    select: function (event, ui) {
+            //        // prevent autocomplete from updating the textbox
+            //        event.preventDefault();
+            //        // manually update the textbox and hidden field
+            //        $(this).val(ui.item.label);
+            //        $("#CityName").val(ui.item.label);
+            //        $("#autocomplete2-value").val(ui.item.value);
+
+            //    }
+
+            //});
+      //  function GetPhotographer() {
+      //      $.ajax({
+      //          url: window.location.protocol + "//" + window.location.host + "/Home/GetPhotographers",
+      //          type: "POST",
+      //          dataType: 'json',
+      //          contentType: "application/json; charset=utf-8",
+      //          success: function (response) {
+
+      //              var data = response.response;
+      //              console.log(data);
+      //              $("#photographername").autocomplete({
+      //                  source: data,
+      //                  focus: function (event, ui) {
+      //                      // prevent autocomplete from updating the textbox
+      //                      event.preventDefault();
+      //                      // manually update the textbox
+      //                      console.log(ui.item.PhotographerName)
+      //                      $(this).val(ui.item.PhotographerName);
+      //                  },
+      //                  select: function (event, ui) {
+      //                      // prevent autocomplete from updating the textbox
+      //                      event.preventDefault();
+      //                      // manually update the textbox and hidden field
+      //                      console.log(ui.item.PhotographerID)
+      //                      $(this).val(ui.item.PhotographerName);
+      //                      $("#photographerid").val(ui.item.PhotographerID);
+      //                  }
+      //              });
+
+      //          },
+      //          error: function (response) {
+      //              alert(response);
+      //          }
+      //      });
+      //  }
+
+      //  function GetStudio() {
+      //      $.ajax({
+      //          url: window.location.protocol + "//" + window.location.host + "/Home/GetStudio",
+      //          type: "POST",
+      //          dataType: 'json',
+      //          contentType: "application/json; charset=utf-8",
+      //          success: function (response) {
+      //              var data = response.response;
+      //              console.log(data);
+      //              $("#studioname").autocomplete({
+      //                  source: data,
+      //                  focus: function (event, ui) {
+      //                      // prevent autocomplete from updating the textbox
+      //                      event.preventDefault();
+      //                      // manually update the textbox
+      //                      console.log(ui.item.StudioName)
+      //                      $(this).val(ui.item.StudioName);
+      //                  },
+      //                  select: function (event, ui) {
+      //                      // prevent autocomplete from updating the textbox
+      //                      event.preventDefault();
+      //                      // manually update the textbox and hidden field
+      //                      console.log(ui.item.PhotographerID)
+      //                      $(this).val(ui.item.StudioName);
+      //                      $("#photographerid").val(ui.item.PhotographerID);
+      //                  }
+      //              });
+
+
+
+      //          },
+      //          error: function (response) {
+      //              alert(response);
+      //          }
+      //      });
+      //  }
+        function Signout() {
+
+            sessionStorage.clear();
+            //Enter Login Page Location
+            window.location.href='@Url.Action("Index","Login")'
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*@{
+        /**/
+
+        ViewBag.Title = "UploadPDF";
+        @*Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <h2>UploadPDF</h2>*@
+
+
+@*<div class="upload-image-preview">
+
+    </div>*@
+@*<div>
+    @using (Html.BeginForm("ImageUpload", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.files, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.files, "", new { @type = "file", @multiple = "multiple" })
+                    @Html.ValidationMessageFor(model => model.files, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Upload" class="btn btn-primary" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10 text-success">
+                    @ViewBag.FileStatus
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-8">
+                    @Html.Action("FileDetails", "Home")*@
+
+@*</div>
+    </div>
+    </div>
+    }
+    </div>*@
+
+@*<div><input type="file" class="custom-file-input" id="FileUpload1" name="FileUpload1"> </div>*@
+
+@* <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#FileUpload1").change(function () {
+                var files = $("#FileUpload1").get(0).files;
+                var fileData = new FormData();
+
+                for (var i = 0; i < files.length; i++) {
+                    fileData.append("FileUpload1", files[i]);
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Home/Upload",
+                    dataType: "json",
+                    contentType: false, // Not to set any content header
+                    processData: false, // Not to process data
+                    data: fileData,
+                    success: function (result, status, xhr) {
+                        alert(result);
+                    },
+                    error: function (xhr, status, error) {
+                        alert(status);
+                    }
+                });
+                //Coded Added From Other Site
+                //if (this.files && this.files[0]) {
+                //    var reader = new FileReader();
+
+                //    reader.onload = function (e) {
+                //        var img = $('<img>').attr('src', e.target.result);
+                //        $('.upload-image-preview').html(img);
+                //    };
+
+                //    reader.readAsDataURL(this.files[0]);
+                //}
+            });
+
+
+        });
+    </script>*@
+

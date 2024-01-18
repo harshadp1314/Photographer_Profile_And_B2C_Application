@@ -1,0 +1,372 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<!-- Mirrored from themesflat.com/html/cosine/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 10 Jun 2020 14:01:36 GMT -->
+<head>
+    <!-- Basic Page Needs -->
+    <meta charset="utf-8">
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+    <title>Pixthon Admin Profile</title>
+
+    <meta name="author" content="themesflat.com">
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Bootstrap  -->
+    <link rel="stylesheet" type="text/css" href="~/Content/PhotographerProfile/stylesheets/bootstrap.css">
+
+    <!-- Theme Style -->
+    <link rel="stylesheet" type="text/css" href="~/Content/PhotographerProfile/stylesheets/style.css">
+
+    <!-- Responsive -->
+    <link rel="stylesheet" type="text/css" href="~/Content/PhotographerProfile/stylesheets/responsive.css">
+
+    <!-- Colors -->
+    <link rel="stylesheet" type="text/css" href="~/Content/PhotographerProfile/stylesheets/colors/color1.css" id="colors">
+
+    <!-- Animation Style -->
+    <link rel="stylesheet" type="text/css" href="~/Content/PhotographerProfile/stylesheets/animate.css">
+    <link href="~/Content/PhotographerProfile/stylesheets/icofont.css" rel="stylesheet" />
+
+    <link href="~/Content/DataTables/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+
+
+
+    <link href="~/Content/jquery-ui-1.11.css" rel="stylesheet" />
+
+
+
+    <!-- Favicon and touch icons  -->
+    <link href="~/Content/PhotographerProfile/images/logo.png" rel="shortcut icon" style="width:16px;height:16px;">
+
+    <!-- Session Timeout -->
+
+    <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+
+    <link href="~/Content/css/jquery-idle-hands.css" rel="stylesheet" />
+
+    <!-- Session Timeout -->
+
+    @*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.5.2/minty/bootstrap.min.css">*@
+
+
+</head>
+<body class="header-sticky page-loading">
+    @*<div class="loading-overlay"></div>*@
+    <!-- Boxed -->
+    <div class="boxed">
+        <div class="top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="flat-address">
+                            <div class="custom-info">
+                                <span style="font-size:14px;">Welcome To Pixthon Photographers Profile</span>
+                            </div>
+                        </div>
+                        <!-- /.flat-address -->
+                    </div>
+                    <!-- /.col-md-8 -->
+                    <div class="col-md-7">
+                        <div id="customopt" class="social-links">
+                            <i class="fa fa-reply"></i> sales@pixthon.com
+                            <i class="fa fa-phone"></i>  +91 7039851605
+                            &nbsp; <a href="https://www.facebook.com/Pixthoncom-339936090122683/" target="_blank">
+                                <i class="fa fa-facebook-official"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/company/pixthon-digital-solutions-pvt-ltd/" target="_blank">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                            <a href="https://www.instagram.com/pixthondigitalsolutions/" target="_blank">
+                                <i class="fa fa-instagram" style="background-color:lightseagreen"></i>
+                            </a>
+
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <div class="dropdown">
+                                    <button class="dropbtn">@User.Identity.Name</button>
+                                    <div class="dropdown-content">
+                                        @if (User.IsInRole("Admin") || User.IsInRole("SuperAdmin"))
+                                        {
+                                            <a href="/ChangePassword/Index">Change Password</a>
+                                            <a href="@Url.Action("Logout", "Login")" onclick="Signout()">Logout</a>
+                                        }
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="dropdown">
+                                    <button class="dropbtn">Account</button>
+                                    <div class="dropdown-content">
+
+                                        <a href="@Url.Action("Index","Login")">Login</a>
+                                        <a href="@Url.Action("Register","Login")">Register</a>
+
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
+
+                    </div>
+                    <!-- /.col-md-4 -->
+                </div>
+                <!-- /.row -->
+            </div><!-- /.container -->
+        </div><!-- /.top -->
+        <!-- Header -->
+        <header id="header" class="header clearfix">
+            <div class="header-wrap clearfix">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div id="logo" class="logo">
+                                <a href="http://pixthon.com/">
+                                    <img src="~/Content/PhotographerProfile/images/logo.png" alt="images" style="height:50px;">
+                                </a>
+                            </div>
+
+
+                        </div><!-- /.col-md-9 -->
+                        <!-- /.col-md-3 -->
+                    </div><!-- /.row -->
+                </div><!-- /.container -->
+            </div><!-- /.header-inner -->
+        </header><!-- /.header -->
+        <!-- Slider -->
+        <!-- added by srs -->
+        @if (User.Identity.IsAuthenticated)
+        {
+
+            <div class="flat-row pad-bottom0px">
+                <div class="container">
+                    <div class="row">
+
+                        <div style="width:90%; margin:0 auto" class="tablecontainer">
+                            @if (User.IsInRole("Admin") || User.IsInRole("SuperAdmin"))
+                            {
+                                <a class="popup btn btn-primary" href="/Admin/Index" style="margin-bottom:20px; margin-top:20px;">Photographer Details</a>
+                                <a class="popup btn btn-primary" href="/Admin/PhotoBookTable" style="margin-bottom:20px; margin-top:20px;">Photobook Details</a>
+                                <a class="popup btn btn-primary" href="/Admin/HiredPhotographers" style="margin-bottom:20px; margin-top:20px;">Hired Photographers</a>
+                            }
+                            @if (User.IsInRole("SuperAdmin"))
+                            {
+                                <a class="popup btn btn-primary" href="/Admin/AllowDeletePhotographerRequest" style="margin-bottom:20px; margin-top:20px;">Delete Photographer</a>
+                                <a class="popup btn btn-primary" href="/Admin/AllowDeletePhotoBookRequest" style="margin-bottom:20px; margin-top:20px;">Delete Photobook</a>
+
+                                <a class="popup btn btn-primary" href="/Admin/ManageAdmin" style="margin-bottom:20px; margin-top:20px;">Manage Admin</a>
+
+
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+    <!-- end -->
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-widgets">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="widget widget_text">
+                            <div class="textwidget">
+                                <p style="text-align:justify;">Pixthon is one stop solutions for the photography and customisaton products . We are always happy to help in the best possible way.</p>
+                                <p style="text-align:justify;">Be it photo books, album designing or website designing, Pixthon has everything sorted for you.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="widget widget_nav_menu">
+                            <div class="menu-footer-menu-container">
+                                <ul class="ft-menu">
+                                    <li><a href=@Url.Action("Index","PhotographerProfile")>View Photobook</li>
+                                    <li><a href=@Url.Action("Register","Login")>Registration</a></li>
+                                    <li><a href=@Url.Action("Index","Login")>Log In</a></li>
+                                    <li><a href=@Url.Action("Contact","Home")>Contact Us</a></li>
+
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="widget widget_mc4wp_form_widget">
+                            <address class="location">
+                                <i class="fa fa-map-marker"></i> <b>Pixthon Digital Solutions Pvt Ltd.</b><br>
+                                Plot No. 39/3, 16th Floor/1605,<br>
+                                Haware Infotech Park, Sector 30A,<br>
+                                Vashi, Navi Mumbai,<br>
+                                Maharashtra-400703
+                            </address>
+                            <i class="fa fa-phone"></i> <b>+91 7039851605</b> <br>
+                            <i class="fa fa-envelope"></i><b> sales@pixthon.com</b>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="social-links">
+
+                            <a href="https://www.facebook.com/Pixthoncom-339936090122683/" target="_blank">
+                                <i class="fa fa-facebook-official"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/company/pixthon-digital-solutions-pvt-ltd/" target="_blank">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                            <a href="https://www.instagram.com/pixthondigitalsolutions/" target="_blank">
+                                <i class="fa fa-instagram" style="background-color:lightseagreen"></i>
+                            </a>
+                        </div>
+                    </div><!-- /.col-md-12 -->
+                    <div class="col-md-12">
+                        <div class="copyright">
+                            <div class="copyright-content">
+                                © 2020 | Design By <a href="#">Pixthon</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer -->
+    <!-- Go Top -->
+    <a class="go-top">
+        <i class="fa fa-chevron-up"></i>
+    </a>
+
+
+
+    <!-- Javascript -->
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    
+    <!-- Session Timeout -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/basil.js/0.4.10/basil.min.js"></script>
+    <script src="~/Content/js/jquery-idle-hands.js"></script>
+
+    <!-- Session Timeout -->
+
+    <script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/DataTables/dataTables.bootstrap4.min.js"></script>
+
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/additional-methods.min.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery.easing.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/owl.carousel.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery-waypoints.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery.fancybox.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery.cookie.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/gmap3.min.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/parallax.js"></script>
+    <!-- <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/switcher.js"></script> -->
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/smoothscroll.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery-validate.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/main.js"></script>
+
+    <!-- Revolution Slider -->
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery.themepunch.tools.min.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery.themepunch.revolution.min.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/slider.js"></script>
+    <script>
+
+
+        $(document).ready(function () {
+
+            setCookie("username", sessionStorage.getItem('Email'), 365);
+            //setCookie(sessionStorage.getItem('Email'), user, 365);
+            console.log(localStorage.getItem('LocalEmail'));
+             if (sessionStorage.getItem('Email') != null) {
+                console.log('Session', sessionStorage.getItem('Email'));
+               // $('#customopt').append(sessionStorage.getItem('Email'))
+               //  $('#customopt').append("<a class='btn btn-success' style='margin-right: 14px;' href='/ChangePassword/Index'>Change Password</a>\<a class='btn btn-success' href='#' onclick='Signout()'><span>Sign Out</span></a>");
+
+            } else {
+                window.location.href = '@Url.Action("Index", "Login")';
+            }
+
+        });
+
+        //#region Session Timeout
+
+        $(function () {
+            $.idleHands({
+                //applicationId: 'my_application',
+                heartRate: 5, //Keep Page Alive For The Time Before The Session Expiration Warning Dialog Appears
+                inactivityDialogDuration: 300, //Time For Which Dialog Box Will Stay -300 seconds(5 Minutes)
+                inactivityLogoutUrl: '/Login/Index',
+                maxInactivitySeconds: 1800 //Max Idle Time - 1800 seconds=30 minutes
+            });
+        });
+
+
+        //#endregion
+
+
+
+        function setCookie(cname, cvalue, exdays) {
+            var d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            var expires = "expires=" + d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+
+        function Signout() {
+
+            sessionStorage.clear();
+            document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            //Enter Login Page Location
+            window.location.href='@Url.Action("Index","Login")'
+        }
+
+        //#region Disable Console
+
+        $(window).on('keydown', function (event) {
+            if (event.keyCode == 123) {
+                //alert('Entered F12');
+                return false;
+            }
+            else if (event.ctrlKey && event.shiftKey && event.keyCode == 73) {
+                //alert('Entered ctrl+shift+i')
+                return false;  //Prevent from ctrl+shift+i
+            }
+            else if (event.ctrlKey && event.keyCode == 73) {
+                //alert('Entered ctrl+shift+i')
+                return false;  //Prevent from ctrl+shift+i
+            }
+        });
+
+        $(document).on("contextmenu", function (e) {
+            //alert('Right Click Not Allowed')
+            e.preventDefault();
+        });
+        //#endregion
+
+    </script>
+</body>
+
+
+</html>

@@ -1,0 +1,562 @@
+﻿@model UploadMusic.Models.PhotographerProfileModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+
+<head>
+    <!-- Basic Page Needs -->
+    <meta charset="utf-8">
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+    <title>Pixthon Online Photobooks | Ebook </title>
+    <meta name="description" content="Share your work with Pixthon's Ebook and get visibility & increase your network. Contact us at sales@gmail.com">
+    <meta name="keyword" content="Online photobook, pixthon ebook, album design in Mumbai, Photo Album, Wedding album design, Wedding album, Album design, Photo print online">
+
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Bootstrap  -->
+    <link rel="stylesheet" type="text/css" href="~/Content/PhotographerProfile/stylesheets/bootstrap.css">
+
+    <!-- Theme Style -->
+    <link rel="stylesheet" type="text/css" href="~/Content/PhotographerProfile/stylesheets/style.css">
+
+    <!-- Responsive -->
+    <link rel="stylesheet" type="text/css" href="~/Content/PhotographerProfile/stylesheets/responsive.css">
+
+    <!-- Colors -->
+    <link rel="stylesheet" type="text/css" href="~/Content/PhotographerProfile/stylesheets/colors/color1.css" id="colors">
+    <!-- Session Timeout -->
+
+    <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/css/jquery-idle-hands.css" rel="stylesheet" />
+
+    <!-- Session Timeout -->
+    <!-- Animation Style -->
+    <link rel="stylesheet" type="text/css" href="~/Content/PhotographerProfile/stylesheets/animate.css">
+    <link href="~/Content/PhotographerProfile/stylesheets/icofont.css" rel="stylesheet" />
+    <link href="~/Content/sweetalert.min.css" rel="stylesheet" />
+
+
+    <!-- Favicon and touch icons  -->
+    <link href="~/Content/PhotographerProfile/images/logo.png" rel="shortcut icon" style="width:16px;height:16px;">
+
+    <!-- Session Timeout  -->
+    <link href="~/Content/jquery-ui-1.11.css" rel="stylesheet" />
+
+
+
+</head>
+<body class="header-sticky page-loading">
+    <div class="loading-overlay"></div>
+
+    <div class="boxed">
+        <!-- Header -->
+        <div class="top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10">
+                        <div class="flat-address">
+                            <div class="custom-info">
+                                <span style="font-size:14px;">Welcome To Pixthon Photographers Profile</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="social-links">
+                            @*<i class="fa fa-reply"></i> sales@pixthon.com
+                                <i class="fa fa-phone"></i>  +91 7039851605
+                                &nbsp;
+
+                                <a href="https://www.facebook.com/Pixthoncom-339936090122683/" target="_blank">
+                                    <i class="fa fa-facebook-official"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/company/pixthon-digital-solutions-pvt-ltd/" target="_blank">
+                                    <i class="fa fa-linkedin"></i>
+                                </a>
+                                <a href="https://www.instagram.com/pixthondigitalsolutions/" target="_blank">
+                                    <i class="fa fa-instagram" style="background-color:lightseagreen"></i>
+                                </a>*@
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <div class="dropdown">
+                                    <button class="dropbtn">@User.Identity.Name</button>
+                                    <div class="dropdown-content">
+                                        @if (User.IsInRole("Admin") || User.IsInRole("NonVerifiedPhotographer") || User.IsInRole("VerifiedPhotographer") || User.IsInRole("SuperAdmin"))
+                                        {
+                                            <a href="@Url.Action("Index","ChangePassword")">Change Password</a>
+                                            <a href="@Url.Action("Logout", "Login")" onclick="Signout()">Logout</a>
+                                        }
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="dropdown">
+                                    <button class="dropbtn">Account</button>
+                                    <div class="dropdown-content">
+
+                                        <a href="@Url.Action("Index","Login")">Login</a>
+                                        <a href="@Url.Action("Register","Login")">Register</a>
+
+                                    </div>
+                                </div>
+
+                            }
+
+                        </div>
+
+                    </div>
+                    <!-- /.col-md-4 -->
+                </div>
+                <!-- /.row -->
+            </div>
+        </div>
+        <!-- Header -->
+        <!-- Pixthon -->
+        <header id="header" class="header clearfix">
+            <div class="header-wrap clearfix">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div id="logo" class="logo">
+                                <a href="http://pixthon.com/">
+                                    <img src="~/Content/PhotographerProfile/images/logo.png" alt="images" style="height:50px;">
+                                </a>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Pixthon -->
+        <!-- Main Content -->
+        <div class="flat-row pad-bottom0px">
+            <div class="container">
+                <div class="row">
+                    <div class="flat-wrapper">
+                        <div class="flat-services">
+                            <div class="slotholder">
+                                <div class="tp-bgimg">
+                                    <h3 class="title" style="color:#fff;">View Photobooks Online</h3>
+                                    <!--  <div class="gr-button">
+                                        <a class="button" href="contact.html">Contact us</a>
+                                        <a class="button scheme2" href="portfolio.html">Case Studies</a>
+                                    </div>  -->
+                                </div>
+                            </div><!-- /.slotholder -->
+
+                            <div class="flat-divider d50px"></div>
+
+                            <div class="services-title">
+                                <h2 class="title color-themes1 no-margin-top">Best  Online PhotoBook</h2>
+                            </div>
+
+                            <div class="flat-divider d50px"></div>
+
+                            <div class="services-content clearfix">
+                                <div class="item-two-column">
+                                    <p style="text-align:justify;">
+                                        We probably know that the online photo book buyers will judge an e book by its cover. So it is very important for Pixthon to make a great impression.
+                                        When Pixthon creates an ebook we assure that you will have access to the most eye-catchy and
+                                        brilliant album designs which will make you stand out from others. We help you eternize all your best memories and moments which you care about the most.
+                                        <br>Our design experts put in all their efforts to make the photo book a prized possession for you and your family. We ensure that we give you our best talent and skilled
+                                        professionals who will make sure the design around what’s inside your ebook is completely out of the box and the best.
+                                    </p>
+
+                                </div>
+
+                                <div class="item-two-column">
+                                    @*<div id="ShowAlert" class="alert alert-dismissible" role="alert" style="display:none;">
+                                            <strong>Holy guacamole!</strong> <p></p>
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>*@
+
+                                    <div class="quick-form">
+                                        <h4>View Photobooks Online </h4>
+                                        <p>Give every page of your eBook a professional edge</p>
+                                        <p>
+
+                                            <div id="ShowAlert" class="alert alert-danger background-danger" style="display:none">
+                                                <span class="closeBtn" onclick="closeAlert(); return false">&times;</span>
+                                                <strong>!</strong>
+                                            </div>
+                                            <span>
+                                                @*@Html.TextBoxFor(m => m.objPhotoGrapherDetail.SecurityCode, new { placeholder = "Enter PIN", required = "required" })*@
+                                                <input id="SecurityCode" name="phone" type="text" value="" placeholder="Enter PIN" required="required">
+                                            </span>
+                                            <span class="form-submit"><input name="submit" type="button" id="submit" class="submit" value="View PhotoBook" onclick="Redirect()"></span>
+
+                                            <span id="divLoader" style="display:none;">
+                                                <img src="~/Images/ajax-loader.gif" alt="Loader" />
+                                            </span>
+
+
+
+                                        </p>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="flat-divider d50px"></div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Main Content -->
+    </div>
+
+    <!-- Footer -->
+    @if (User.Identity.IsAuthenticated)
+    {
+        <footer class="footer">
+            <div class="footer-widgets">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="widget widget_text">
+                                <div class="textwidget">
+                                    <p style="text-align:justify;">Pixthon is one stop solutions for the photography and customisaton products . We are always happy to help in the best possible way.</p>
+                                    <p style="text-align:justify;">Be it photo books, album designing or website designing, Pixthon has everything sorted for you.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="widget widget_nav_menu">
+                                <div class="menu-footer-menu-container">
+                                    <ul class="ft-menu">
+                                        <li><a href=@Url.Action("Index", "PhotographerProfile")>View Photobook</li>
+                                        <li><a href=@Url.Action("Register", "Login")>Registration</a></li>
+                                        <li><a href=@Url.Action("Index", "Login")>Log In</a></li>
+                                        <li><a href=@Url.Action("Contact", "Home")>Contact Us</a></li>
+
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="widget widget_mc4wp_form_widget">
+                                <address class="location">
+                                    <i class="fa fa-map-marker"></i> <b>Pixthon Digital Solutions Pvt Ltd.</b><br>
+                                    Plot No. 39/3, 16th Floor/1605,<br>
+                                    Haware Infotech Park, Sector 30A,<br>
+                                    Vashi, Navi Mumbai,<br>
+                                    Maharashtra-400703
+                                </address>
+                                <i class="fa fa-phone"></i> <b>+91 7039851605</b> <br>
+                                <i class="fa fa-envelope"></i><b> sales@pixthon.com</b>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="social-links">
+
+                                <a href="https://www.facebook.com/Pixthoncom-339936090122683/" target="_blank">
+                                    <i class="fa fa-facebook-official"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/company/pixthon-digital-solutions-pvt-ltd/" target="_blank">
+                                    <i class="fa fa-linkedin"></i>
+                                </a>
+                                <a href="https://www.instagram.com/pixthondigitalsolutions/" target="_blank">
+                                    <i class="fa fa-instagram" style="background-color:lightseagreen"></i>
+                                </a>
+                            </div>
+                        </div><!-- /.col-md-12 -->
+                        <div class="col-md-12">
+                            <div class="copyright">
+                                <div class="copyright-content">
+                                    © 2020 | Design By <a href="http://pixthon.com/">Pixthon</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    }
+    else
+    {
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="social-links" style="color:#fff;">
+
+                                <a href="@Url.Action("Index", "PhotographerProfile")" style="color: #fff;">View Photobook</a> | <a href="@Url.Action("Register", "Login")" style="color: #fff;">Registration</a> | <a href="@Url.Action("Index", "Login")" style="color: #fff;">Log In</a> | <a href="@Url.Action("Contact", "Home")" style="color: #fff;">Contact Us</a>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="copyright">
+                                <div class="copyright-content">
+                                    © 2020 | Powered By <a href="http://pixthon.com/" target="_blank">Pixthon Digital Solutions Pvt.Ltd.</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    }
+    <!-- Footer -->
+    <!-- Go Top -->
+    <a class="go-top">
+        <i class="fa fa-chevron-up"></i>
+    </a>
+    <!-- Go Top -->
+    <!-- Javascript -->
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="~/Content/js/jquery-ui.min.js"></script>
+    <!-- Session Timeout -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/basil.js/0.4.10/basil.min.js"></script>
+    <script src="~/Content/js/jquery-idle-hands.js"></script>
+
+    <!-- Session Timeout -->
+    <script src="~/Content/js/sweetalert.min.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery.easing.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/owl.carousel.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery-waypoints.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery.fancybox.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery.cookie.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/gmap3.min.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/parallax.js"></script>
+    <!-- <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/switcher.js"></script> -->
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/smoothscroll.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery-validate.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/main.js"></script>
+
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="~/Content/js/jquery-ui.min.js"></script>
+    <script src="~/Content/js/jquery.sessionTimeout.js"></script>
+
+    <!-- Revolution Slider -->
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery.themepunch.tools.min.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery.themepunch.revolution.min.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/slider.js"></script>
+    <script>
+        //#region Session Timeout
+
+        $(function () {
+            $.idleHands({
+                //applicationId: 'my_application',
+                heartRate: 5, //Keep Page Alive For The Time Before The Session Expiration Warning Dialog Appears
+                inactivityDialogDuration: 300, //Time For Which Dialog Box Will Stay -300 seconds(5 Minutes)
+                inactivityLogoutUrl: 'http://pixthon.com/',
+                maxInactivitySeconds: 1800 //Max Idle Time - 1800 seconds=30 minutes
+            });
+        });
+
+
+        //#endregion
+        
+
+        
+        function closeAlert() {
+            document.getElementById('ShowAlert').style.display = "none";
+        }
+        function ShowAlert(msg_body) {
+            var AlertMsg = $('#ShowAlert');
+            $(AlertMsg).find('strong').html(msg_body);
+            //$(AlertMsg).find('p').html(msg_body);
+            //$(AlertMsg).removeAttr('class');
+            //$(AlertMsg).addClass('alert alert-' + msg_type);
+            $(AlertMsg).show();
+            $('#ShowAlert').alert();
+        }
+        function Redirect() {
+            if ($('#SecurityCode').val() == "") {
+                //alert('Please Enter Security Code');
+                ShowAlert('Please Enter Security Code');
+
+
+                return false;
+
+            }
+            var SecurityCode = $('#SecurityCode').val();
+
+            console.log(SecurityCode);
+            $('#divLoader').show();
+            $.ajax({
+
+                type: "POST",
+                url: window.location.protocol + "//" + window.location.host + "/PhotographerProfile/Redirect",
+                data: { objSecurityCode: $('#SecurityCode').val() },
+                dataType: "json",
+                success: function (response) {
+                    $('#divLoader').hide();
+                    //console.log(response.url);
+
+
+                    // console.log(response.result);
+                    if (response.result == 'Redirect')
+                        window.location.href = response.url
+                    else if (response.result == 'CompleteProfile')
+                        swal("Failed", "Photographer Profile not completed", "warning");
+                    else {
+                        swal("Failed", "Incorrect Security Code.", "error");
+                        return;
+                    }
+
+
+                },
+                error: function (response) {
+                    $('#divLoader').hide();
+                    swal("Try Again", "Server timeout", "error");
+                    //console.log(response);
+                }
+            });
+        }
+
+        //#region Login
+        function Login() {
+
+            var fileData = new FormData();
+
+            var isvalid = Validation();
+            if (isvalid == false) {
+                return;
+            }
+
+            $('#divLoader').show();
+            var rememberme = document.getElementsByName("rememberme");
+            var isValid = false;
+            var count = 0;
+
+            for (var i = 0; i < rememberme.length; i++) {
+                if (rememberme[i].checked) {
+
+
+                    isValid = true;
+                    count++;
+                }
+
+            }
+
+
+
+
+
+            var email = $('#email').val();
+            fileData.append('Email', email);
+            var password = $('#password').val();
+            fileData.append('Password', password);
+
+            var rememberme = isValid;
+            fileData.append('RememberMe', rememberme);
+            var headers = { __RequestVerificationToken: $('input[name="__RequestVerificationToken"]').val() };
+            for (var key of fileData.entries()) {
+                console.log(key[0] + ',' + key[1])
+            }
+
+            $.ajax({
+                type: "POST",
+                headers: headers,
+                url: "/Login/GetLogin",
+                dataType: "json",
+                contentType: false, // Not to set any content header
+                processData: false, // Not to process data
+                //data: '{rating: ' + JSON.stringify(rating) + ',}'
+                data: fileData,
+                success: function (result, status, xhr) {
+                    $('#divLoader').hide();
+                    console.log(result.result);
+
+                    if (result.result == "Redirect") {
+                        //if ($('#rememberme').is(':checked')) {
+
+                        //    localStorage.setItem('Email', $('#email').val());
+                        //    localStorage.setItem('Password', $('#password').val());
+                        //    localStorage.setItem('chk_RememberMe', $('#rememberme').val());
+                        //}
+                        //else {
+                        //    localStorage.clear();
+                        //    localStorage.removeItem('Password');
+                        //    localStorage.removeItem('chk_RememberMe');
+                        //}
+                        sessionStorage.setItem('Email', result.email); //For Storing Encrypted Username in Session
+                        sessionStorage.setItem('Token', result.Token);
+                        window.location.href = result.url
+                    } else if (result.result == "Invalid") {
+                        ShowAlertEnquiry('Invalid Email or password');
+                    }
+
+
+                },
+                error: function (xhr, status, error) {
+                    $('#divLoader').hide();
+                    //alert("Error", status);
+                    swal("Try Again!", "Server Timeout!", "error");
+                }
+            });
+
+        }
+         //#endregion
+
+        //#region Logout
+
+        function Signout()
+        {
+            sessionStorage.clear();
+            //Enter Login Page Location
+            window.location.href='@Url.Action("Index","Login")'
+        }
+
+        //#endregion
+        ////#region Disable Console
+
+        $(window).on('keydown', function (event) {
+            if (event.keyCode == 123) {
+                //alert('Entered F12');
+                return false;
+            }
+            else if (event.ctrlKey && event.shiftKey && event.keyCode == 73) {
+                //alert('Entered ctrl+shift+i')
+                return false;  //Prevent from ctrl+shift+i
+            }
+            else if (event.ctrlKey && event.keyCode == 73) {
+                //alert('Entered ctrl+shift+i')
+                return false;  //Prevent from ctrl+shift+i
+            }
+        });
+
+        $(document).on("contextmenu", function (e) {
+            //alert('Right Click Not Allowed')
+            e.preventDefault();
+        });
+        ////#endregion
+
+    </script>
+</body>
+
+
+</html>

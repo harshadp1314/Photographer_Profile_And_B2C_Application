@@ -1,0 +1,214 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>UploadAudio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/scripts/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css" />
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            $('#dataTable').DataTable();
+
+            $("audio").on("play", function () {
+                $("audio").not(this).each(function (index, audio) {
+                    audio.pause();
+                });
+
+            });
+        });
+    </script>
+    <script src="Scripts/FileSaver.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+
+        window.onload = init;
+
+        var context; //AudioContext
+        var source; //Audio buffer
+
+        function init() {
+            if (!window.AudioContext) {
+                alert("Your browser does not support any Audio Context and cannot play back this audio");
+                return;
+            }
+            window.AudioContext = window.AudioContext || window.webkitAudioContext;
+
+            context = typeof AudioContext !== 'undefined' ? new AudioContext() : new webkitAudioContext();;
+
+            loadByteArray('http://myserver/WcfStreamAudioDemo.Host/AudioService.svc/mediabytes/ACDC_-_Back_In_Black-sample');
+        }
+
+        function loadByteArray(url) {
+            source = context.createBufferSource();
+            var request = new XMLHttpRequest();
+
+            request.overrideMimeType('text\/plain; charset=x-user-defined');
+            //request.responseType = 'arraybuffer';
+            request.open('GET', url, true);
+            //request.setRequestHeader("Content-Type", "audio/ogg");
+
+
+            request.onload = function () {
+                //console.log(request.response);
+                debugger;
+
+                var audioByteArray = request.response.replace('[', '').replace(']', '').split(',');
+                source = new ArrayBuffer(audioByteArray.length);
+
+                var audioByteArrayView = new Uint8Array(source);
+
+
+                for (var i = 0; i < audioByteArray.length; i++) {
+                    audioByteArrayView[i] = audioByteArray[i];
+                }
+
+                var blob = new Blob([audioByteArrayView], { type: "text/plain;charset=utf-8" });
+
+                var blobUrl = URL.createObjectURL(blob);
+
+                var audioCtrlFedByByteArray = document.getElementById("audioCtrlFedByByteArray");
+
+                audioCtrlFedByByteArray.setAttribute("src", blobUrl);
+
+
+
+                saveAs(blob, "ExampleReceived.ogg");
+
+                context.decodeAudioData(source,
+                    function (buffer) {
+                        //Play off the audio file automatically
+                        var innersource = context.createBufferSource();
+                        innersource.buffer = buffer;
+                        innersource.connect(context.destination);
+
+                        innersource.start(0);
+
+
+                        //Hook up the HTML 5 audio control using MediaElementSource connecting to the AudioContext
+                        var audioCtrlFedByByteArray = document.getElementById("audioCtrlFedByByteArray");
+
+                        var mediaSource = context.createMediaElementSource(audioCtrlFedByByteArray);
+                        mediaSource.connect(context.destination);
+                        audioCtrlFedByByteArray.play();
+
+                    },
+                    function (e) {
+                        console.log("Error with decoding audio data" + e.err);
+                    }
+                );
+
+            }
+
+            request.send();
+
+        }
+
+    </script>
+</head>
+<body>
+    <div class="container py-4">
+        <h3>WCF Sample Audio streaming example (<strong>byte[] array</strong>)</h3>
+
+        <p>Playing an audio file (.wav) using a custom WCF IDispatchMessageFormatter with REST (webHttpBinding).</p>
+
+        <audio id="audioCtrlFedByByteArray" controls>
+            <p>Your browser doesn't support HTML5 audio. Here is a <a href="http://myserver/WcfStreamAudioDemo.Host/AudioService.svc/mediabytes/ACDC_-_Back_In_Black-sample">link to the audio</a> instead.</p>
+        </audio>
+
+        <h3 class="text-center text-uppercase">How to upload and play audio from database in mvc5</h3>
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h6 class="text-uppercase">Audio List</h6>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <button style="margin-left: 27px;margin-bottom:10px;" type="button" class="btn btn-primary rounded-0" data-toggle="modal" data-target="#myModal">
+                        <i class="fa fa-plus-circle"></i> Add New
+                    </button>
+                    <div class="modal fade" id="myModal">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Upload New Audio File</h4>
+                                    <button type="button" class="close" data-dismiss="modal">×</button>
+                                </div>
+                                <div class="modal-body">
+                                    @using (Html.BeginForm("UploadAudio", "UploadSound", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                    {
+
+                                        <div class="form-group">
+                                            <label>Choose File:</label>
+                                            <div class="input-group">
+                                                <div class="custom-file">
+                                                    <input type="file" id="fileupload" name="fileupload" class="custom-file-input" />
+                                                    <label class="custom-file-label"></label>
+                                                </div>
+                                                <div class="input-group-append">
+                                                    <input type="submit" id="btnUpload" class="btn btn-secondary" value="Upload" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <table id="dataTable" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>File Size(MB)</th>
+                            <th>Play Audio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null)
+                        {
+                            foreach (var item in Model)
+                            {
+                                <tr>
+
+                                    <td>@item.ID</td>
+                                    <td>@item.Name</td>
+                                    <td>@item.FileSize</td>
+                                    <td>
+                                        @*<audio controls src="@Url.Action("UploadAudio", "UploadSound")" />
+                                        <audio controls>
+                                            <source src="@Url.Action("UploadAudio", "AudioBytes")" type="audio/wav">
+                                        </audio>*@
+                                        <video  autoplay name="media">
+                                            <source src="@Url.Action("AudioBytes", "UploadSound")" type="audio/wav">
+                                        </video>
+                                    </td>
+
+                                </tr>
+                            }
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

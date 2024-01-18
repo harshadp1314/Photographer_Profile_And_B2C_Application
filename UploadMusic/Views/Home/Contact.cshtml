@@ -1,0 +1,406 @@
+﻿@model UploadMusic.Models.PhotographerProfileModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<!-- Mirrored from themesflat.com/html/cosine/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 10 Jun 2020 14:01:36 GMT -->
+<head>
+    <!-- Basic Page Needs -->
+    <meta charset="utf-8">
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+    <title>Pixthon Online Photobooks | Ebook </title>
+    <meta name="description" content="Share your work with Pixthon's Ebook and get visibility & increase your network. Contact us at sales@gmail.com">
+    <meta name="keyword" content="Online photobook, pixthon ebook, album design in Mumbai, Photo Album, Wedding album design, Wedding album, Album design, Photo print online">
+
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Bootstrap  -->
+    <link rel="stylesheet" type="text/css" href="~/Content/PhotographerProfile/stylesheets/bootstrap.css">
+
+    <!-- Theme Style -->
+    <link rel="stylesheet" type="text/css" href="~/Content/PhotographerProfile/stylesheets/style.css">
+
+    <!-- Responsive -->
+    <link rel="stylesheet" type="text/css" href="~/Content/PhotographerProfile/stylesheets/responsive.css">
+
+    <!-- Colors -->
+    <link rel="stylesheet" type="text/css" href="~/Content/PhotographerProfile/stylesheets/colors/color1.css" id="colors">
+
+    <!-- Animation Style -->
+    <link rel="stylesheet" type="text/css" href="~/Content/PhotographerProfile/stylesheets/animate.css">
+    <link href="~/Content/sweetalert.min.css" rel="stylesheet" />
+    <!-- Favicon and touch icons  -->
+    <link href="~/Content/PhotographerProfile/images/logo.png" rel="shortcut icon" style="width:16px;height:16px;">
+
+</head>
+<body class="header-sticky page-loading">
+    <div class="loading-overlay">
+     </div>
+    
+    <div class="boxed">
+        <!-- Header -->
+        <div class="top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="flat-address">
+
+                            <div class="custom-info">
+                                <span style="font-size:14px;">Welcome To Pixthon Photographers Profile</span>
+
+                            </div>
+                        </div><!-- /.flat-address -->
+                    </div><!-- /.col-md-8 -->
+                    <div class="col-md-5">
+
+                        <div class="social-links">
+                            <i class="fa fa-reply"></i> sales@pixthon.com
+                            <i class="fa fa-phone"></i>  +91 7039851605
+                            &nbsp;
+
+                            <a href="https://www.facebook.com/Pixthoncom-339936090122683/" target="_blank">
+                                <i class="fa fa-facebook-official"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/company/pixthon-digital-solutions-pvt-ltd/" target="_blank">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                            <a href="https://www.instagram.com/pixthondigitalsolutions/" target="_blank">
+                                <i class="fa fa-instagram" style="background-color:lightseagreen"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Header -->
+        <!-- Pixthon -->
+        <header id="header" class="header clearfix">
+            <div class="header-wrap clearfix">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div id="logo" class="logo">
+                                <a href="http://pixthon.com/">
+                                    <img src="~/Content/PhotographerProfile/images/logo.png" alt="images" style="height:50px;">
+                                </a>
+                            </div>
+
+                        </div><!-- /.col-md-9 -->
+
+                    </div><!-- /.row -->
+                </div><!-- /.container -->
+            </div><!-- /.header-inner -->
+        </header>
+        <!-- Pixthon -->
+        <!-- Contact Form -->
+        <div class="flat-row pad-bottom20px">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="flat-contact-us style1">
+                            <h4 class="desc no-margin-top no-margin-bottom">Contact us by email</h4>
+                            <p style="text-align:justify;">Complete the contact form and one of our dedicated Sales Consultants will be in touch shortly.</p>
+                        </div>
+                        <div class="flat-divider d20px"></div>
+                        <div class="social-links">
+                            <a href="https://www.facebook.com/Pixthoncom-339936090122683/" target="_blank">
+                                <i class="fa fa-facebook-official"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/company/pixthon-digital-solutions-pvt-ltd/" target="_blank">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                            <a href="https://www.instagram.com/pixthondigitalsolutions/" target="_blank">
+                                <i class="fa fa-instagram" style="background-color:lightseagreen"></i>
+                            </a>
+                        </div>
+
+                        <div class="flat-divider d20px"></div>
+                        <div id="EnquiryAlert" class="alert alert-danger background-danger" style="display:none">
+                            <span class="closeBtn" onclick="closeAlertEnquiry(); return false">&times;</span>
+                            <strong>!</strong>
+                        </div>
+                    </div><!-- /.col-md-4 -->
+
+                    <div class="col-md-8">
+                        <form id="contactform" method="post" action="#">
+                            <div class="row">
+                                <div class="col-md-6">
+
+                                    <span><input id="custname" name="name" type="text" value="" placeholder="Name"></span>
+                                    <span><input id="custemail" name="email" type="email" value="" placeholder="Email"></span>
+                                    <span><input id="custphone" name="phone" type="text" value="" placeholder="Phone Number"></span>
+
+                                </div><!-- /.col-md-6 -->
+
+                                <div class="col-md-6">
+                                    <span><textarea id="custmsg" name="message" placeholder="Message"></textarea></span>
+                                    <span class="form-submit">
+                                        <input name="submit" type="submit" id="submit" class="submit" value="Send" onclick="Enquiry()">
+                                    </span>
+                                </div><!-- /.col-md-6 -->
+                            </div><!-- /.row -->
+                        </form>
+                    </div><!-- /.col-md-8 -->
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </div>
+        <!-- Contact Form -->
+        <!-- Map -->
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.957462896908!2d72.99722471325416!3d19.065607757257286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c7e136fd115b%3A0x48cb8f4c4a3ba7ce!2sPixthon%20Digital%20Solutions%20Pvt%20Ltd!5e0!3m2!1sen!2sin!4v1595496418657!5m2!1sen!2sin" width="100%" height="350" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        <!-- Map -->
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-widgets">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="widget widget_text">
+                                <div class="textwidget">
+                                    <p style="text-align:justify;">Pixthon is one stop solutions for the photography and customisaton products . We are always happy to help in the best possible way.</p>
+                                    <p style="text-align:justify;">Be it photo books, album designing or website designing, Pixthon has everything sorted for you.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="widget widget_nav_menu">
+                                <div class="menu-footer-menu-container">
+                                    <ul class="ft-menu">
+                                        <li><a href=@Url.Action("Index","PhotographerProfile")>View Photobook</li>
+                                        <li><a href=@Url.Action("Register","Login")>Registration</a></li>
+                                        <li><a href=@Url.Action("Index","Login")>Log In</a></li>
+                                        <li><a href=@Url.Action("Contact","Home")>Contact Us</a></li>
+
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="widget widget_mc4wp_form_widget">
+                                <address class="location">
+                                    <i class="fa fa-map-marker"></i> <b>Pixthon Digital Solutions Pvt Ltd.</b><br>
+                                    Plot No. 39/3, 16th Floor/1605,<br>
+                                    Haware Infotech Park, Sector 30A,<br>
+                                    Vashi, Navi Mumbai,<br>
+                                    Maharashtra-400703
+                                </address>
+                                <i class="fa fa-phone"></i> <b>+91 7039851605</b> <br>
+                                <i class="fa fa-envelope"></i><b> sales@pixthon.com</b>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="social-links">
+
+                                <a href="https://www.facebook.com/Pixthoncom-339936090122683/" target="_blank">
+                                    <i class="fa fa-facebook-official"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/company/pixthon-digital-solutions-pvt-ltd/" target="_blank">
+                                    <i class="fa fa-linkedin"></i>
+                                </a>
+                                <a href="https://www.instagram.com/pixthondigitalsolutions/" target="_blank">
+                                    <i class="fa fa-instagram" style="background-color:lightseagreen"></i>
+                                </a>
+                            </div>
+                        </div><!-- /.col-md-12 -->
+                        <div class="col-md-12">
+                            <div class="copyright">
+                                <div class="copyright-content">
+                                    © 2020 | Design By <a href="#">Pixthon</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Footer -->
+        <!-- Go Top -->
+        <a class="go-top">
+            <i class="fa fa-chevron-up"></i>
+        </a>
+        <!-- Go Top -->
+    </div>
+
+    <!-- Javascript -->
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery.min.js"></script>
+    <script src="~/Content/js/sweetalert.min.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery.easing.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/owl.carousel.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery-waypoints.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery.fancybox.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery.cookie.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/gmap3.min.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/parallax.js"></script>
+    <!-- <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/switcher.js"></script> -->
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/smoothscroll.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery-validate.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/main.js"></script>
+    <!-- Revolution Slider -->
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery.themepunch.tools.min.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery.themepunch.revolution.min.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/slider.js"></script>
+    <script>
+        $(document).ready(function () {
+            //#region Session Timeout
+
+            $.sessionTimeout({
+                // custom warning message
+                message: 'Your session is about to expire.',
+
+                // keep alive url
+                keepAliveUrl: '/Home/Contact',
+
+                // request type
+                //keepAliveAjaxRequestType: 'POST',
+
+                // redirect url
+                redirUrl: '/Login/Index',
+
+                // logout url
+                logoutUrl: '/Login/Index',
+
+                // 25 minutes
+                warnAfter: 1500000,
+
+                // 30 minutes
+                redirAfter: 1800000,
+
+                // appends time stamp to keep alive url to prevent caching
+                appendTime: true
+            });
+
+            //#endregion
+        })
+
+         function Enquiry() {
+
+            console.log("In Enquiry");
+            var isvalid = Validation1();
+            if (isvalid == false) {
+                return;
+            }
+                        $.ajax({
+                            url: '@Url.Action("ContactSubmit", "Home")',
+                            type: 'POST',
+                            data: "{EmailDetailsModel:{CustName: '" + $('#custname').val() + "',CustEmail:'" + $('#custemail').val() + "',CustPhone:'" + $('#custphone').val() + "',CustMsg:'" + $('#custmsg').val() + "',Category:'',PhotographerID:''}}",
+                            dataType: 'json',
+                            contentType: 'application/json; charset=utf-8',
+                            error: function (xhr) {
+                                alert('Error: ' + xhr.statusText);
+                            },
+                            success: function (result) {
+                                console.log(result)
+
+
+                                var msg_type;
+                                var msg_title;
+                                if (result.Message == 'Email Sent Successfully') {
+                                    swal("Success!", "Email Sent Successfully!", "success");
+                                    msg_title = 'Success';
+                                    msg_type = "success";
+                                } else {
+                                    swal("Failed!", "Email Sending Fail", "error");
+                                    msg_title = 'Error!!!';
+                                    msg_type = "danger";
+                                }
+
+                                //ShowAlert(msg_title, result.message, msg_type);
+                                //$('#ShowAlert').alert();
+                            },
+                            async: true,
+                            processData: false
+                        });
+
+        }
+
+        function closeAlertEnquiry() {
+            document.getElementById('EnquiryAlert').style.display = "none";
+        }
+
+        function ShowAlertEnquiry(msg_body) {
+            var AlertMsg = $('#EnquiryAlert');
+            $(AlertMsg).find('strong').html(msg_body);
+            //$(AlertMsg).find('p').html(msg_body);
+            //$(AlertMsg).removeAttr('class');
+            //$(AlertMsg).addClass('alert alert-' + msg_type);
+            $(AlertMsg).show();
+            $('#EnquiryAlert').alert();
+        }
+
+        function Validation1() {
+
+
+            //if ($('#custemail').val() == "") {
+            //    ShowAlertEnquiry('Please Provide your Email');
+            //    return false;
+            //}
+            if ($('#custname').val() == "") {
+                ShowAlertEnquiry('Please Enter Your Name');
+                return false;
+            }
+
+            if ($('#custphone').val() == "") {
+                ShowAlertEnquiry('Please Provide Your Mobile Number');
+                return false;
+            }
+
+            if ($('#custemail').val() != "") {
+                if (!ValidateEmail($('#custemail').val())) {
+                    ShowAlertEnquiry("You have entered an invalid email address!")
+                    return false;
+                }
+            }
+
+
+            else
+                return true;
+        }
+
+        function ValidateEmail(mail) {
+            if ((/^\w+([\.-]?\w+)*@@\w+([\.-]?\w+)*(\.\w{2,3})+$/).test(mail)) {
+                return (true)
+            }
+
+            return (false)
+        }
+        //#region Disable Console
+
+        $(window).on('keydown', function (event) {
+            if (event.keyCode == 123) {
+                //alert('Entered F12');
+                return false;
+            }
+            else if (event.ctrlKey && event.shiftKey && event.keyCode == 73) {
+                //alert('Entered ctrl+shift+i')
+                return false;  //Prevent from ctrl+shift+i
+            }
+            else if (event.ctrlKey && event.keyCode == 73) {
+                //alert('Entered ctrl+shift+i')
+                return false;  //Prevent from ctrl+shift+i
+            }
+        });
+
+        $(document).on("contextmenu", function (e) {
+            //alert('Right Click Not Allowed')
+            e.preventDefault();
+        });
+        //#endregion
+    </script>
+</body>
+</html>

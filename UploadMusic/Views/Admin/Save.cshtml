@@ -1,0 +1,61 @@
+﻿
+
+@model UploadMusic.Models.PhotoGrapherDetail
+<h2>Save</h2>
+@using (Html.BeginForm("SavePhotographer", "Admin", FormMethod.Post, new { id = "popupForm" }))
+{
+    if (Model != null && Model.photoGrapherDetails != null)
+    {
+        if (Model.photoGrapherDetails[0].PhotographerID > 0)
+        {
+            @Html.HiddenFor(a => a.photoGrapherDetails[0].PhotographerID)
+        }
+
+    }
+
+    <div class="form-group">
+        <label>Name</label>
+        @Html.TextBoxFor(a => a.photoGrapherDetails[0].PhotographerName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.PhotographerName)
+    </div>
+    <div class="form-group">
+        <label>PhoneNo</label>
+        @Html.TextBoxFor(a => a.photoGrapherDetails[0].PhoneNo, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.PhoneNo)
+    </div>
+    <div class="form-group">
+        <label>PhotographerAddress</label>
+        @Html.TextBoxFor(a => a.photoGrapherDetails[0].PhotographerAddress, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.PhotographerAddress)
+    </div>
+    <div class="form-group">
+        <label>Email</label>
+        @Html.TextBoxFor(a => a.photoGrapherDetails[0].PhotographerEmail, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.PhotographerEmail)
+    </div>
+    <div class="form-group">
+        <label>About</label>
+        @Html.TextBoxFor(a => a.photoGrapherDetails[0].About, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.About)
+    </div>
+    <div class="form-group">
+        <label>CurrentLocation</label>
+        @Html.TextBoxFor(a => a.photoGrapherDetails[0].CurrentLocation, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.CurrentLocation)
+    </div>
+    <div class="form-group">
+        <label>AlsoShootIn</label>
+        @Html.TextBoxFor(a => a.photoGrapherDetails[0].AlsoShootIn, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.AlsoShootIn)
+    </div>
+    <div class="form-group">
+        <label>ProductAndServices</label>
+        @Html.TextBoxFor(a => a.photoGrapherDetails[0].ProductAndServices, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.ProductAndServices)
+    </div>
+
+    <div>
+        <input type="submit" value="Save" />
+    </div>
+}
+

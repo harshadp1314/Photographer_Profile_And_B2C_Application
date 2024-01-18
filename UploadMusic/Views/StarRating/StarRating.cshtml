@@ -1,0 +1,606 @@
+﻿@model UploadMusic.Models.RatingModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+@{
+    ViewBag.Title = "StarRating";
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<!--<![endif]-->
+<head>
+    <!-- Basic Page Needs -->
+    <meta charset="utf-8">
+    <!--[if IE]>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+    <![endif]-->
+    <title>Photographers Rating Page | Pixthon</title>
+    <meta name="author" content="themesflat.com">
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- Bootstrap  -->
+    <link rel="stylesheet" type="text/css" href="~/Content/PhotographerProfile/stylesheets/bootstrap.css">
+
+    <!-- Theme Style -->
+    <link rel="stylesheet" type="text/css" href="~/Content/PhotographerProfile/stylesheets/style.css">
+    <!-- Responsive -->
+    <link rel="stylesheet" type="text/css" href="~/Content/PhotographerProfile/stylesheets/responsive.css">
+    <!-- Colors -->
+    <link rel="stylesheet" type="text/css" href="~/Content/PhotographerProfile/stylesheets/colors/color1.css" id="colors">
+    <!-- Session Timeout -->
+
+    <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/css/jquery-idle-hands.css" rel="stylesheet" />
+
+    <!-- Session Timeout -->
+    <!-- Animation Style -->
+    <link rel="stylesheet" type="text/css" href="~/Content/PhotographerProfile/stylesheets/animate.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+    <link href="~/Content/sweetalert.min.css" rel="stylesheet" />
+    <!-- Favicon and touch icons  -->
+    <link href="~/Content/PhotographerProfile/images/logo.png" rel="shortcut icon" style="width:16px;height:16px;">
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Session Timeout  -->
+    <link href="~/Content/jquery-ui-1.11.css" rel="stylesheet" />
+
+    <style>
+        .rating-container:hover .counter {
+            display: block;
+        }
+
+        .counter {
+            display: none;
+            float: right;
+            font-weight: bold;
+            margin-left: 173px;
+            margin-top: 1px;
+            padding-left: 174px;
+            padding-right: 0px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 5px;
+            position: absolute;
+            line-height: 11px;
+            top: 13%;
+            width: 30px;
+            height: 30px;
+        }
+
+        .rating-container .counter:before,
+        .rating-container .counter:before, .rating-container .counter ::before {
+            content: "";
+            width: 0;
+            height: 0;
+            top: 50%;
+            margin-top: -5px;
+            display: block;
+            border-color: transparent rgba(0, 0, 0, 0.8) transparent transparent;
+            border-width: 5px 5px 5px 0px;
+            left: -10px;
+            border-style: solid;
+            position: relative;
+        }
+    </style>
+</head>
+<body class="header-sticky page-loading">
+
+    <div class="boxed">
+        <!-- Header -->
+        <div class="top">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="flat-address">
+                            <div class="custom-info">
+                                <span style="font-size:14px;">Welcome To Pixthon Photographers Profile</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="social-links">
+                            <i class="fa fa-reply"></i> sales@pixthon.com
+                            <i class="fa fa-phone"></i>  +91 7039851605
+                            &nbsp; <a href="https://www.facebook.com/Pixthoncom-339936090122683/" target="_blank">
+                                <i class="fa fa-facebook-official"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/company/pixthon-digital-solutions-pvt-ltd/" target="_blank">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                            <a href="https://www.instagram.com/pixthondigitalsolutions/" target="_blank">
+                                <i class="fa fa-instagram" style="background-color:lightseagreen"></i>
+                            </a>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <div class="dropdown">
+                                    <button class="dropbtn">@User.Identity.Name</button>
+                                    <div class="dropdown-content">
+                                        @if (User.IsInRole("Admin") || User.IsInRole("NonVerifiedPhotographer") || User.IsInRole("VerifiedPhotographer") || User.IsInRole("SuperAdmin"))
+                                        {
+                                            <a href="/ChangePassword/Index">Change Password</a>
+                                            if (Model.SecurityCode != null || Model.SecurityCode != "")
+                                            {
+                                                <a href="@Url.Action("PhotographerProfile", "PhotographerProfile", new { obj1 = Model.SecurityCode })">View Photographer Profile</a>
+                                            }
+                                            else
+                                            {
+                                                @*<a href="@Url.Action("PhotographerProfile", "PhotographerProfile", new { PhotographerID = Model.EncodedPhotographerID })">View Photographer Profile</a>*@
+                                            }
+
+                                            <a href="@Url.Action("Logout", "Login")" onclick="Signout()">Logout</a>
+                                        }
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="dropdown">
+                                    <button class="dropbtn">Account</button>
+                                    <div class="dropdown-content">
+
+                                        <a href="@Url.Action("Index","Login")">Login</a>
+                                        <a href="@Url.Action("Register","Login")">Register</a>
+
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        <!-- Header -->
+        <!-- Pixthon -->
+        <header id="header" class="header clearfix">
+            <div class="header-wrap clearfix">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="logo" class="logo">
+                                <a href="http://pixthon.com/">
+                                    <img src="~/Content/PhotographerProfile/images/logo.png" alt="images" style="height:50px;">
+                                </a>
+                            </div>
+                        </div>
+                        <!-- /.col-md-9 -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.container -->
+            </div>
+            <!-- /.header-inner -->
+        </header>
+        <!-- Pixthon -->
+        <!-- Rating Form -->
+        <div class="flat-row pad-bottom20px">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="flat-contact-us style1">
+                            <h4 class="desc no-margin-top no-margin-bottom">Rate This Photographer</h4>
+                            <p>
+                                If you would like to rate this photographer, please send us a request by submitting your ratings below. Your rating will be published after verification by Pixthon team.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.HiddenFor(model => model.PhotographerID)
+                        @Html.HiddenFor(model => model.EncodedPhotographerID)
+                        @Html.HiddenFor(model => model.SecurityCode)
+
+
+                        @*<div class="flat-divider d20px"></div>*@
+                        <p class="comment-form-rating">
+                        </p>
+                        <div id="ShowAlert" class="alert alert-danger background-danger" style="display:none">
+                            <span class="closeBtn" onclick="closeAlertEnquiry(); return false">&times;</span>
+                            <strong>!</strong>
+                        </div>
+                        <label><b>Your Rating</b></label>
+                        <div class="rating-container">
+                            <div style="width: 600px; margin: 0px auto">
+                                <div id="rateYo"></div><div class="counter"></div>
+                            </div>
+                        </div>
+
+                        <br>
+
+                        <span><input id="author" name="author" type="text" value="" placeholder="Title of Comment & Reveiws*"></span>
+
+                        <span><textarea id="comment" name="message" placeholder="Share Your Thoughts*"></textarea></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <form id="contactform" method="post" action="#">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <!-- added -->
+                                    <div class="col-md-12">
+
+
+                                        <div style="width: 600px; margin: 50px auto"> </div>
+
+                                        <br /><br />
+
+
+                                        <span><input id="name" name="name" type="text" value="" placeholder="Commented By(Your Name)*"></span>
+                                        <span><input id="email" name="email" type="text" value="" placeholder="Commented By(Your Email)*"></span>
+                                        <span class="form-submit">
+                                            <input name="submit" type="button" id="submit" class="submit" value="Submit Rating" onclick="SubmitRating()">
+
+                                            <span id="divLoader" style="display:none;">
+                                                <img src="~/Images/ajax-loader.gif" alt="Loader" />
+                                            </span>
+                                            @*<input name="submit" type="submit" id="submit" class="submit" value="Submit Rating">*@
+                                        </span>
+                                        @*<span><a class="submit" href="@Url.Action("PhotographerProfile", "PhotographerProfile", new { PhotographerID = Model.EncodedPhotographerID })">Skip</a> </span>*@
+                                        <span><input name="submit" type="button" id="skip" class="submit" value="Skip" onclick="SkipBtn()"></span>
+                                    </div>
+                                    <!-- /.col-md-6 -->
+                                    <!-- /.col-md-6 -->
+                                </div>
+                                <!-- /.row -->
+                                <!-- end -->
+                            </div>
+                        </form>
+
+                    </div>
+                    <!-- /.row -->
+                    <div class="loading-overlay"></div>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- Rating Form -->
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-widgets">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="widget widget_text">
+                            <div class="textwidget">
+                                <p style="text-align:justify;">Pixthon is one stop solutions for the photography and customisaton products . We are always happy to help in the best possible way.</p>
+                                <p style="text-align:justify;">Be it photo books, album designing or website designing, Pixthon has everything sorted for you.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="widget widget_nav_menu">
+                            <div class="menu-footer-menu-container">
+                                <ul class="ft-menu">
+                                    <li><a href=@Url.Action("Index","PhotographerProfile")>View Photobook</li>
+                                    <li><a href=@Url.Action("Register","Login")>Registration</a></li>
+                                    <li><a href=@Url.Action("Index","Login")>Log In</a></li>
+                                    <li><a href=@Url.Action("Contact","Home")>Contact Us</a></li>
+
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="widget widget_mc4wp_form_widget">
+                            <address class="location">
+                                <i class="fa fa-map-marker"></i> <b>Pixthon Digital Solutions Pvt Ltd.</b><br>
+                                Plot No. 39/3, 16th Floor/1605,<br>
+                                Haware Infotech Park, Sector 30A,<br>
+                                Vashi, Navi Mumbai,<br>
+                                Maharashtra-400703
+                            </address>
+                            <i class="fa fa-phone"></i> <b>+91 7039851605</b> <br>
+                            <i class="fa fa-envelope"></i><b> sales@pixthon.com</b>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="social-links">
+
+                            <a href="https://www.facebook.com/Pixthoncom-339936090122683/" target="_blank">
+                                <i class="fa fa-facebook-official"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/company/pixthon-digital-solutions-pvt-ltd/" target="_blank">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                            <a href="https://www.instagram.com/pixthondigitalsolutions/" target="_blank">
+                                <i class="fa fa-instagram" style="background-color:lightseagreen"></i>
+                            </a>
+                        </div>
+                    </div><!-- /.col-md-12 -->
+                    <div class="col-md-12">
+                        <div class="copyright">
+                            <div class="copyright-content">
+                                © 2020 | Design By <a href="#">Pixthon</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer -->
+    <!-- Go Top -->
+    <a class="go-top">
+        <i class="fa fa-chevron-up"></i>
+    </a>
+    <!-- Go Top -->
+    <!-- Javascript -->
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="~/Content/js/jquery-ui.min.js"></script>
+    <!-- Session Timeout -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/basil.js/0.4.10/basil.min.js"></script>
+    <script src="~/Content/js/jquery-idle-hands.js"></script>
+
+    <!-- Session Timeout -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/bootstrap.min.js"></script>
+    <script src="~/Content/js/sweetalert.min.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery.easing.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/owl.carousel.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery-waypoints.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery.fancybox.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery.cookie.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/gmap3.min.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/parallax.js"></script>
+    <!-- <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/switcher.js"></script> -->
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/smoothscroll.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery-validate.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/main.js"></script>
+    <!-- ADDED -->
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/imagesloaded.min.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery.isotope.min.js"></script>
+    <!-- END -->
+    <!-- Revolution Slider -->
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery.themepunch.tools.min.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery.themepunch.revolution.min.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/slider.js"></script>
+    <!-- added for reveiws 20-06-20-->
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery.magnific-popup.min.js"></script>
+    <!-- end -->
+
+
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="~/Content/js/jquery-ui.min.js"></script>
+    <script src="~/Content/js/jquery.sessionTimeout.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            localStorage.clear();
+
+            //console.log(localStorage.getItem('Rating'))
+            $("#rateYo").rateYo({
+                rating: 0,
+                halfStar: true,
+                onChange: function (rating, rateYoInstance) {
+                    $(this).next().text(rating);
+                },
+                onSet: function (rating, rateYoInstance) {
+                    localStorage.setItem('Rating', rating)
+                }
+
+            })
+        });
+        //#region Session Timeout
+
+        $(function () {
+            $.idleHands({
+                //applicationId: 'my_application',
+                heartRate: 5, //Keep Page Alive For The Time Before The Session Expiration Warning Dialog Appears
+                inactivityDialogDuration: 300, //Time For Which Dialog Box Will Stay -300 seconds(5 Minutes)
+                inactivityLogoutUrl: 'http://pixthon.com/',
+                maxInactivitySeconds: 1800 //Max Idle Time - 1800 seconds=30 minutes
+            });
+        });
+
+
+        //#endregion
+        
+
+        function SkipBtn() {
+            window.location.href = "@Url.Action("PhotographerProfile", "PhotographerProfile", new { PhotographerID = Model.EncodedPhotographerID })";
+
+        }
+
+        function SubmitRating() {
+
+            var isvalid = Validation1();
+            if (isvalid == false) {
+                return;
+            }
+
+            // console.log("Inside Submit Handler")
+            // console.log(localStorage.getItem('Rating'))
+
+            if (localStorage.getItem('Rating') == null || localStorage.getItem('Rating')==0) {
+                ShowAlertEnquiry("Please rate this service provider.");
+                return false;
+            }
+            $('#divLoader').show();
+            var title = $('#author').val();
+            var email = $('#email').val();
+            var comment = $('#comment').val();
+            var photographerid=@Model.PhotographerID;
+            var name = $('#name').val();
+            var pincode = $('#SecurityCode').val();
+            $.ajax({
+                type: "POST",
+                url: window.location.protocol + "//" + window.location.host + "/StarRating/SaveRating",
+                data: "{NoOfStars: '" + localStorage.getItem('Rating') + "',Comment:'" + comment + "',CommentedBy:'" + email + "',Title:'" + title + "',PhotographerID:'" + photographerid + "',Name:'" + name + "',SecurityCode:'" + pincode+"'}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    $('#divLoader').hide();
+                    //console.log(response.url);
+                    if (response.result == "Redirect") {
+
+                        swal("Success!", "Rated Photographer Successfully !", "success");
+                        window.location.href = response.url
+                    }
+                    else if (response.result == "RateItself") {
+                        swal("Error!", "Photographer Cannot Rate Himself !", "error");
+                    } else if (response.result == "RatingExists") {
+                        swal("Error!", "You have already Rated this Photographer !", "error");
+                    }
+
+                },
+                error: function (response) {
+                    swal("Error!", "Failed to Rate Photographer!", "error");
+                    //alert(response);
+                }
+            });
+
+        }
+
+        function GetRating() {
+            //localStorage.clear();
+            var rating = {};
+            rating.PhotographerID = parseInt(1);
+
+            $.ajax({
+                url: window.location.protocol + "//" + window.location.host + "/StarRating/GetRatings",
+                type: "POST",
+                dataType: 'json',
+                contentType: "application/json; charset=utf-8",
+                data: '{rating: ' + JSON.stringify(rating) + '}',
+                success: function (response) {
+
+
+
+                    //localStorage.setItem('Rating', response.response.NoOfStars);
+                    //console.log("Response", response.response.NoOfStars);
+
+                    var mainRating = response.response.NoOfStars;
+                    //console.log("MainRating", mainRating)
+
+                    $("#rateYo").rateYo({
+
+                        rating: mainRating,// localStorage.getItem('Rating') == null ? 0 : localStorage.getItem('Rating'),
+                        console: console.log("RateYo", mainRating),
+                        halfStar: true,
+                        onChange: function (rating, rateYoInstance) {
+
+                            $(this).next().text(rating);
+
+                        },
+                        onSet: function (rating, rateYoInstance) {
+
+                            //localStorage.setItem('Rating', rating)
+                        }
+                    })
+                    //RateYo(mainRating);
+
+
+                },
+                error: function (response) {
+                    alert(response);
+                }
+            });
+
+        }
+
+        function Validation1() {
+            if ($('#author').val() == "") {
+                ShowAlertEnquiry('Please Enter Title of Comment');
+                return false;
+            }
+            if ($('#comment').val() == "") {
+                ShowAlertEnquiry('Please Share You Thoughts About Photographer');
+                return false;
+            }
+            if ($('#name').val() == "") {
+                ShowAlertEnquiry('Please Enter You Name');
+                return false;
+            }
+            if ($('#email').val() == "") {
+                ShowAlertEnquiry('Please Enter Your Email ID');
+                return false;
+            }
+
+            if (!ValidateEmail($('#email').val())) {
+                ShowAlertEnquiry("You have entered an invalid email address!")
+                return false;
+            }
+
+            else
+                return true;
+        }
+
+        function ValidateEmail(mail) {
+            if ((/^\w+([\.-]?\w+)*@@\w+([\.-]?\w+)*(\.\w{2,3})+$/).test(mail)) {
+                return (true)
+            }
+
+            return (false)
+        }
+        function closeAlertEnquiry() {
+            document.getElementById('ShowAlert').style.display = "none";
+        }
+
+        function ShowAlertEnquiry(msg_body) {
+            var AlertMsg = $('#ShowAlert');
+            $(AlertMsg).find('strong').html(msg_body);
+            //$(AlertMsg).find('p').html(msg_body);
+            //$(AlertMsg).removeAttr('class');
+            //$(AlertMsg).addClass('alert alert-' + msg_type);
+            $(AlertMsg).show();
+            $('#EnquiryAlert').alert();
+        }
+
+        //#region Disable Console
+
+        $(window).on('keydown', function (event) {
+            if (event.keyCode == 123) {
+                //alert('Entered F12');
+                return false;
+            }
+            else if (event.ctrlKey && event.shiftKey && event.keyCode == 73) {
+                //alert('Entered ctrl+shift+i')
+                return false;  //Prevent from ctrl+shift+i
+            }
+            else if (event.ctrlKey && event.keyCode == 73) {
+                //alert('Entered ctrl+shift+i')
+                return false;  //Prevent from ctrl+shift+i
+            }
+        });
+
+        $(document).on("contextmenu", function (e) {
+            //alert('Right Click Not Allowed')
+            e.preventDefault();
+        });
+        //#endregion
+
+
+    </script>
+</body>
+</html>
+
+
+

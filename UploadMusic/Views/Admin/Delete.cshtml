@@ -1,0 +1,52 @@
+﻿
+
+@model UploadMusic.Models.PhotoGrapherDetail
+
+@using (Html.BeginForm("Delete", "Admin", FormMethod.Post, new { id = "popupForm" }))
+{
+    @Html.HiddenFor(a => a.photoGrapherDetails[0].PhotographerID)
+    <div class="form-group">
+        <label>Name</label>
+        <p>@Model.photoGrapherDetails[0].PhotographerName</p>
+    </div>
+
+    <div class="form-group">
+        <label>PhoneNo</label>
+        <p>@Model.photoGrapherDetails[0].PhoneNo</p>
+    </div>
+
+    <div class="form-group">
+        <label>PhotographerAddress</label>
+        <p>@Model.photoGrapherDetails[0].PhotographerAddress</p>
+    </div>
+
+    <div class="form-group">
+        <label>Email</label>
+        <p>@Model.photoGrapherDetails[0].PhotographerEmail</p>
+    </div>
+
+    <div class="form-group">
+        <label>About</label>
+        <p>@Model.photoGrapherDetails[0].About</p>
+    </div>
+
+    <div class="form-group">
+        <label>CurrentLocation</label>
+        <p>@Model.photoGrapherDetails[0].CurrentLocation</p>
+    </div>
+
+    <div class="form-group">
+        <label>AlsoShootIn</label>
+        <p>@Model.photoGrapherDetails[0].AlsoShootIn</p>
+    </div>
+
+    <div class="form-group">
+        <label>ProductAndServices</label>
+        <p>@Model.photoGrapherDetails[0].ProductAndServices</p>
+    </div>
+
+    <div>
+        <input type="submit" value="Delete" />
+    </div>
+}
+

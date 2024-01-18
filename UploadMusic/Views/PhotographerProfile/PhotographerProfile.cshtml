@@ -1,0 +1,1144 @@
+﻿@model UploadMusic.Models.PhotographerProfileModel
+@*@model UploadMusic.Models.EmailDetailsModel*@
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+
+<head>
+
+    <meta charset="utf-8">
+
+    <title>Photographer's Profile | Pixthon Ebook </title>
+    <meta name="description" content="Here is the information about the best photographers along with their mesmerizing work. For professional photographers to register contact at sales@pixthon.com">
+    <meta name="keyword" content="Pixthon Ebook, Photographers in Mumbai,  Photographers in Kolkata, Photographers in Nagpur, Best photographer in Pune,  Best photographer in   Navi Mumbai, Wedding photographer in Mumbai, Wedding photographer in Kolkata, Wedding photographer in West Bengal, Best photographer in Assam">
+    <meta name="author" content="themesflat.com">
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Bootstrap  -->
+    <link rel="stylesheet" type="text/css" href="~/Content/PhotographerProfile/stylesheets/bootstrap.css">
+
+    <!-- Theme Style -->
+    <link rel="stylesheet" type="text/css" href="~/Content/PhotographerProfile/stylesheets/style.css">
+
+    <!-- Responsive -->
+    <link rel="stylesheet" type="text/css" href="~/Content/PhotographerProfile/stylesheets/responsive.css">
+    <link href="~/Content/sweetalert.min.css" rel="stylesheet" />
+    <!-- Colors -->
+    <link rel="stylesheet" type="text/css" href="~/Content/PhotographerProfile/stylesheets/colors/color1.css" id="colors">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+    <!-- Session Timeout -->
+
+    <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/css/jquery-idle-hands.css" rel="stylesheet" />
+
+    <!-- Session Timeout -->
+    <!-- Animation Style -->
+    <link rel="stylesheet" type="text/css" href="~/Content/PhotographerProfile/stylesheets/animate.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+
+    <!-- Favicon and touch icons  -->
+    <link href="~/Content/PhotographerProfile/images/logo.png" rel="shortcut icon" style="width:16px;height:16px;">
+
+    <!-- Session Timeout  -->
+    <link href="~/Content/jquery-ui-1.11.css" rel="stylesheet" />
+
+
+
+    <style>
+        .rating-container:hover .counter {
+            display: block;
+        }
+
+        .counter {
+            display: none;
+            float: right;
+            font-weight: bold;
+            margin-left: 173px;
+            margin-top: 0px;
+            padding-left: 174px;
+            padding-right: 0px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 5px;
+            position: absolute;
+            line-height: 11px;
+            top: 19%;
+            width: 30px;
+            height: 30px;
+        }
+
+        .rating-container .counter:before,
+        .rating-container .counter:before, .rating-container .counter ::before {
+            content: "";
+            width: 0;
+            height: 0;
+            top: 50%;
+            margin-top: -5px;
+            display: block;
+            border-color: transparent rgba(0, 0, 0, 0.8) transparent transparent;
+            border-width: 5px 5px 5px 0px;
+            left: -10px;
+            border-style: solid;
+            position: relative;
+        }
+    </style>
+
+</head>
+<body class="header-sticky page-loading">
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v9.0" nonce="KSQr8Yx3"></script>
+    <div class="boxed">
+        <!--Header-->
+        <div class="top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="flat-address">
+                            <div class="custom-info">
+                                <span style="font-size:18px;color:white;"><strong>Welcome To @Model.objPhotoGrapherDetail.PhotographerName Profile</strong></span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-4">
+                        <div id="customopt" class="social-links">
+                            @{
+                                var photograpgerid = Model.objPhotoGrapherDetail.EncodedPhotographerID;
+                            }
+                            <a href="javascript:fbshareCurrentPage()"  alt="Share on Facebook">Facebook</a>
+                            <div class="fb-share-button" data-layout="button_count" data-size="small">
+                           <a  href="javascript:fbshareCurrentPage()" class="fb-xfbml-parse-ignore">Share</a>
+                        </div>
+                            @*<i class="fa fa-reply"></i> sales@pixthon.com
+        <i class="fa fa-phone"></i>  +91 7039851605*@
+                            &nbsp;
+                            @*<a href="https://www.facebook.com/Pixthoncom-339936090122683/" target="_blank">
+
+            <i class="fa fa-facebook-official"></i>
+        </a>
+        <a href="https://www.linkedin.com/company/pixthon-digital-solutions-pvt-ltd/" target="_blank">
+            <i class="fa fa-linkedin"></i>
+        </a>
+        <a href="https://www.instagram.com/pixthondigitalsolutions/" target="_blank">
+            <i class="fa fa-instagram" style="background-color:lightseagreen"></i>
+        </a>*@
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <div class="dropdown">
+                                    <button class="dropbtn">@User.Identity.Name</button>
+                                    <div class="dropdown-content">
+                                        @if (User.IsInRole("Admin") || User.IsInRole("NonVerifiedPhotographer") || User.IsInRole("VerifiedPhotographer") || User.IsInRole("SuperAdmin"))
+                                        {
+                                            <a href="@Url.Action("Index","ChangePassword")">Change Password</a>
+                                            <a href="@Url.Action("Registration", "Registration", new { id = Model.objPhotoGrapherDetail.EncodedPhotographerID })">Edit Profile</a>
+                                            <a href="@Url.Action("Logout", "Login")" onclick="Signout()">Logout</a>
+                                        }
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="dropdown">
+                                    <button class="dropbtn">Account</button>
+                                    <div class="dropdown-content">
+
+                                        <a href="@Url.Action("Index","Login")">Login</a>
+                                        <a href="@Url.Action("Register","Login")">Register</a>
+
+                                    </div>
+                                </div>
+
+                            }
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        <!--Header-->
+        <!--Pixthon-->
+        <header id="header" class="header clearfix">
+            <div class="header-wrap clearfix">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div id="logo" class="logo">
+                                <a href="http://pixthon.com/">
+                                    <img src="~/Content/PhotographerProfile/images/logo.png" alt="images" style="height:50px;">
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!--Pixthon-->
+        <!-- Slider -->
+        <div class="tp-banner-container">
+            <div class="tp-banner">
+                <ul>
+                    <li data-transition="random-static" data-slotamount="7" data-masterspeed="1000" data-saveperformance="on">
+
+                        <img src="data:image/png;base64,@Convert.ToBase64String(@Model.objPhotoGrapherDetail.Cover, 0)" alt="slider-image" />
+                        <div class="tp-caption sfl title-slide center" data-x="40" data-y="111" data-speed="1000" data-start="1000" data-easing="Power3.easeInOut">
+                            @Model.objPhotoGrapherDetail.StudioName
+                        </div>
+                        <div class="tp-caption sfr desc-slide center" data-x="40" data-y="272" data-speed="1000" data-start="1500" data-easing="Power3.easeInOut">
+                            @*<i class="fa fa-map"> Location: @Model.objPhotoGrapherDetail.CurrentLocation</i>*@
+                        </div>
+                        @*@if (Model.objPhotoGrapherDetail.SecurityCode != null && Model.objPhotoGrapherDetail.SecurityCode != "")
+                            {
+                                <div class="tp-caption sfl flat-button-slider bg-button-slider-15416e" data-x="40" data-y="323" data-speed="1000" data-start="2000" data-easing="Power3.easeInOut"><a href="@Url.Action("ViewEBook", "Home", new { PinCode = Model.objPhotoGrapherDetail.SecurityCode })">View Ebook</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-chevron-right"></i></div>
+                            }
+
+                            <div class="tp-caption sfr flat-button-slider" data-x="268" data-y="323" data-speed="1000" data-start="2000" data-easing="Power3.easeInOut" data-toggle="modal" data-target="#modalLoginForm"><a href="#">Contact us</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-chevron-right"></i></div>*@
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- Slider -->
+        <!--OverAll Rating  -->
+        <div class="flat-row pad-top40px pad-bottom40px">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <div class="col-md-4">
+                            <div class="product-rating">
+                                <div class="star-rating">
+                                    <h5 style="margin-top:0px;">
+                                        OVERALL RATINGS
+
+                                    </h5>
+                                    <div id="rateYo"></div>
+                                </div>
+                            </div>
+                            <h3 class="no-margin-top no-margin-bottom f-size16px"><label id="avgRating"> </label> <a class="link" href="#"><label id="mainRating"></label></a></h3>
+                            <div id="ShowAlert" class="alert alert-danger background-danger" role="alert" style="display:none">
+                                <span class="closeBtn" onclick="closeAlert(); return false">&times;</span>
+                                <strong>!</strong>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="product-rating">
+                                @if (Model.objPhotoGrapherDetail.SecurityCode != null && Model.objPhotoGrapherDetail.SecurityCode != "")
+                                {
+                                    <a class="button sm" href="@Url.Action("ViewEBook", "Home", new { PinCode = Model.objPhotoGrapherDetail.SecurityCode })">View Ebook</a>
+                                }
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="product-rating">
+                                @*<div class="tp-caption sfr flat-button-slider" data-x="268" data-y="323" data-speed="1000" data-start="2000" data-easing="Power3.easeInOut" data-toggle="modal" data-target="#modalLoginForm"><a href="#">Contact us</a></div>*@
+                                <a class="button sm" href="#" data-toggle="modal" data-target="#modalLoginForm">Contact Us</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--OverAll Rating END -->
+        <!--PhotoBooks   -->
+        @if (Model.Photobook != null)
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                if (User.IsInRole("Admin") || User.IsInRole("NonVerifiedPhotographer") || User.IsInRole("VerifiedPhotographer") || User.IsInRole("SuperAdmin"))
+                {
+                    <div class="flat-row pad-top0px">
+                        <div class="container">
+                            <div class="row">
+                                <div class="flat-wrapper">
+                                    <div class="flat-imagebox clearfix">
+
+                                        @foreach (var photobooks in Model.Photobook)
+                                        {
+                                            <div class="item-three-column">
+                                                <div class="imagebox">
+                                                    <div class="box-wrapper">
+                                                        <div class="box-image">
+                                                            <img src="data:image/png;base64,@Convert.ToBase64String(photobooks.PhotoFileBytes, 0)" alt="images" class="profile-photobook">
+
+                                                        </div>
+                                                        <div class="box-header">
+                                                            <h5 class="box-title">
+                                                                <a href="#"><i class="fa fa-eye" aria-hidden="true" style="font-size:15px;"></i> Views @photobooks.NoofViews</a>
+                                                            </h5>
+                                                        </div>
+                                                        <div class="box-content">
+                                                            <div class="box-desc" style="text-align:justify;">@photobooks.Title </div>
+                                                            <a class="button style1" href="@Url.Action("ViewEBook", "Home", new { PinCode = photobooks.SecurityCode })">View PhotoBook</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+
+                                    </div><!-- /.flat-imagebox -->
+                                </div><!-- /.flat-wrapper -->
+                            </div><!-- /.row -->
+                        </div><!-- /.container -->
+                    </div>
+                }
+            }
+        }
+
+        <!--PhotoBooks End  -->
+        <!-- Portfolio Photographer Information -->
+        <div class="flat-row pad-bottom0px background-20242e">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="title-section style1">
+                            <h3 class="title" style="color:#333;"><span>ABOUT PHOTOGRAPHER</span></h3>
+                        </div>
+                        <div class="list-about">
+                            <p style="color:#333;text-align:justify;">@Model.objPhotoGrapherDetail.About</p>
+                        </div>
+                        <!-- /.list-about -->
+                        <!-- added 24-06-20 -->
+                        <h5>Studio Name :</h5> @Model.objPhotoGrapherDetail.StudioName
+                        <h5>Photographer Name :</h5> @Model.objPhotoGrapherDetail.PhotographerName
+                        <h5>Logo Of Company :</h5> <img src="@Model.objPhotoGrapherDetail.Logo" height="175" width="175">
+                        @if (Model.objPhotoGrapherDetail.OwnerPhotograph != null)
+                        {
+                            <h5>Photographer Photo :</h5> <img src="@Model.objPhotoGrapherDetail.OwnerPhotograph" height="175" width="175">
+                        }
+
+                        <h5>Preferred Location for Photoshoot :</h5>
+                        @Model.objPhotoGrapherDetail.AlsoShootIn
+                        <h5>Team Size : </h5>@Model.objPhotoGrapherDetail.TeamSize
+                        <h5>Email Id :</h5>@Model.objPhotoGrapherDetail.PhotographerEmail
+                        <h5>Website :</h5>
+                        @Model.objPhotoGrapherDetail.Website
+                        <div class="social-links">
+                            <h5>
+                                Follow :
+
+                                @if (Model.objPhotoGrapherDetail.InstagramLink != "" && Model.objPhotoGrapherDetail.InstagramLink != null)
+                                {
+                                    <a href="@Model.objPhotoGrapherDetail.InstagramLink"><i class="fa fa-instagram"></i></a>
+                                }
+                                @if (Model.objPhotoGrapherDetail.FacebookLink != "" && Model.objPhotoGrapherDetail.FacebookLink != null)
+                                {
+                                    <a href="@Model.objPhotoGrapherDetail.FacebookLink"><i class="fa fa-facebook-official"></i></a>
+                                }
+                                @if (Model.objPhotoGrapherDetail.YoutubeLink != "" && Model.objPhotoGrapherDetail.YoutubeLink != null)
+                                {
+                                    <a href="@Model.objPhotoGrapherDetail.YoutubeLink"><i class="fa fa-youtube-play"></i></a>
+                                }
+
+                            </h5>
+                        </div>
+                        <h5>Contact Details :</h5>
+                        @Model.objPhotoGrapherDetail.PhoneNo
+
+                        <h5>Address : </h5>
+                        @Model.objPhotoGrapherDetail.PhotographerAddress
+                        <div id="output"></div>
+                        @*<iframe src="@Model.objPhotoGrapherDetail.GoogleMap" width="400" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>*@
+                        @*@Html.Raw(Model.objPhotoGrapherDetail.GoogleMap)*@
+                        @*<iframe style="width:400px;height:300px" src="@Model.objPhotoGrapherDetail.GoogleMap"></iframe>*@
+                        <br>
+                    </div>
+                    <!-- /.col-md-6 -->
+                    <div class="col-md-6">
+                        <div class="title-section style1">
+                            <h3 class="title"><span>Services</span></h3>
+                        </div>
+
+                        @*<p>We capture those light, laughter moments and the serious ones, the chaos and confusion so that you can relive the scenes one by one, long after the wedding is over.</p>*@
+                        <ul class="flat-list style1">
+                            @if (Model.objPhotoGrapherDetail.ServiceOffered != null)
+                            {
+                                foreach (var services in Model.objPhotoGrapherDetail.ServiceOffered)
+                                {
+                                    <li>@services</li>
+                                }
+                            }
+                        </ul>
+                        <h5>Products :</h5>
+                        @if (Model.objPhotoGrapherDetail.Product != null)
+                        {
+                            <ul class="flat-list style1">
+
+                                @foreach (var product in Model.objPhotoGrapherDetail.Product)
+                                {
+                                    if (product != "")
+                                    {
+                                        <li>@product</li>
+                                    }
+
+                                }
+
+                            </ul>
+                        }
+                        <h5>Language Known : </h5>
+                        @Model.objPhotoGrapherDetail.LanguageKnown
+                        @{
+                            var year = "";
+                            if (Model.objPhotoGrapherDetail.YearOfExperience == "1")
+                            {
+                                year = " Year";
+                            }
+                            else
+                            {
+                                year = " Years";
+                            }
+                            <h5>Years Of Experience : </h5>@Model.objPhotoGrapherDetail.YearOfExperience @year
+
+                        }
+                        <h5>Equipment :  </h5>
+                        @{
+                            foreach (string product in Model.objPhotoGrapherDetail.Equipments)
+                            {
+                                if (product != "" || product != null)
+                                {
+                                    @product
+                                }
+                            }
+
+                        }
+
+                        <h5>Award or Achievement(if Any) :</h5>
+                        @Model.objPhotoGrapherDetail.Achievement
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Portfolio Photographer Information -->
+    </div>
+    <br><br>
+    <!-- Portfolio -->
+    <div class="flat-tabs">
+        <ul class="menu-tabs">
+            <li class="active"><a href="#">Photos</a></li>
+            <li><a href="#">Videos</a></li>
+            <li><a href="#">Ratings</a></li>
+        </ul>
+        <div class="content-tab">
+            <!-- Start Photos Section -->
+            <div class="content-inner">
+                <div class="container">
+                    <div class="row">
+                        <div class="flat-wrapper">
+                            <div class="flat-iconbox clearfix">
+                                @if (Model.PortFoliosImages != null)
+                                {
+                                    foreach (var images in Model.PortFoliosImages)
+                                    {
+
+                                        <div class="item-three-column">
+                                            <img src="@images.ImagesFile" alt="images" class="imageport">
+                                            @*<img src="data:image/png;base64,@Convert.ToBase64String(images.ImagesFileBytes, 0)" alt="images">*@
+                                        </div>
+
+                                    }
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Photos Section -->
+            <!-- Start videos section -->
+            <div class="content-inner">
+                <div class="container">
+                    <div class="row">
+                        <div class="flat-wrapper">
+                            <div class="flat-iconbox clearfix">
+                                @if (Model.PortFoliosVideos != null)
+                                {
+                                    foreach (var images in Model.PortFoliosVideos)
+                                    {
+                                        <div class="col-md-6">
+                                            @*@Html.Raw(images.VideosFile)*@
+                                            <iframe width="560" height="315" src="@images.VideosFile" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                            @*<iframe width="420" height="345" src="@images.VideosFile"></iframe>*@
+                                            @*<video controls width="100%" height="240">
+                                                    <source type="video/webm" src="@images.VideosFile" />
+                                                    @*<source type="video/webm" src="data:video/webm;base64,@Convert.ToBase64String(images.VideosFileBytes, 0)" />
+                                                </video>*@
+                                        </div>
+
+
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Video Section -->
+            <!-- start rating section -->
+            <div class="content-inner">
+                <div class="woocommerce-reviews">
+                    <p>If you would like to rate this photographer, please send us a request by submitting your ratings below. Your rating will be published after verification by Pixthon team.</p>
+                    <a href="@Url.Action("StarRating","StarRating",new { PhotographerID = Model.objPhotoGrapherDetail.EncodedPhotographerID,PinCode=Model.objPhotoGrapherDetail.SecurityCode })" class="btn btn-info btn-lg" style="background-color:#18ba60;">RATE THIS PHOTOGRAPHER</a>
+                    </p>
+                    <div id="comments">
+                        <ul class="commentlist">
+                            @if (Model.objrating != null)
+                            {
+                                foreach (var comment in Model.objrating)
+                                {
+                                    <li>
+                                        <div class="comment_container">
+                                            @comment.Name
+                                            <div class="comment-text">
+                                                <div class="star-rating">
+
+
+
+
+
+                                                    @for (var starcount = 1; starcount <= ((int)comment.NoOfStars); starcount++)
+                                                    {
+                                                        <span><i class="fa fa-star"></i></span>
+
+                                                    }
+
+                                                    @{
+                                                        var v = comment.NoOfStars.ToString();
+
+
+
+                                                        if (v.IsInt() == false)
+                                                        {
+                                                            <span><i class="fa fa-star-half-o"></i></span>
+                                                            for (var starcount = 1; starcount <= 5 - ((int)comment.NoOfStars) - 1; starcount++)
+                                                            {
+
+                                                                <span><i class="fa fa-star-o"></i></span>
+                                                            }
+                                                        }
+                                                        else
+                                                        {
+                                                            for (var starcount = 1; starcount <= 5 - ((int)comment.NoOfStars); starcount++)
+                                                            {
+
+                                                                <span><i class="fa fa-star-o"></i></span>
+                                                            }
+                                                        }
+
+
+
+                                                    }
+
+                                                </div>
+                                                <p class="meta">
+                                                    <strong>@comment.Title</strong> – <span>@comment.CommentedOn</span> :
+                                                </p>
+                                                <div class="description">
+                                                    @comment.Comment
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                }
+                            }
+
+
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!--End start rating section -->
+        </div>
+    </div>
+    <!-- Portfolio -->
+    <!-- Enquiry Modal  -->
+    <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold">Enquire Now</h4>
+                    <button class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body mx-3">
+                    <div id="EnquiryAlert" class="alert alert-danger background-danger" style="display:none">
+                        <span class="closeBtn" onclick="closeAlertEnquiry(); return false">&times;</span>
+                        <strong>!</strong>
+                    </div>
+                    <div class="md-form mb-5">
+                        <label data-error="wrong" data-success="right" for="defaultForm-email">Name :</label>
+                        <input type="text" id="custname" class="form-control validate">
+                    </div>
+                    <div class="md-form mb-4">
+                        <label data-error="wrong" data-success="right" for="defaultForm-pass">Email Id :</label>
+                        <input type="text" id="custemail" class="form-control validate">
+                    </div>
+                    <div class="md-form mb-4">
+                        <label data-error="wrong" data-success="right" for="defaultForm-pass">Phone No :</label>
+                        <input type="text" id="custphone" class="form-control validate">
+                    </div>
+                    <br>
+                    <div class="md-form mb-4">
+                        <label data-error="wrong" data-success="right" for="defaultForm-pass">Photography Category</label>
+                        <select id="ddlCustomers"></select>
+                    </div>
+                    <br>
+                    <div class="md-form mb-4">
+                        <label data-error="wrong" data-success="right" for="defaultForm-pass">Message :</label>
+                        <span><textarea name="message" id="custmsg" placeholder="Write us a message" required="required" style="background:none;border-radius:5px;"></textarea></span>
+
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center">
+                        <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button class="btn btn-warning" onclick="Enquiry()">Send Enquiry</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--End Enquiry Modal  -->
+    <!-- Old Rating Modal -->
+    <div class="modal fade" id="modalLoginForm1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <!-- <h4 class="modal-title w-100 font-weight-bold">Enquiry Now</h4> -->
+                    <button class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body mx-3">
+                    <form id="commentform" class="comment-form">
+                        <p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> Required fields are marked <span class="required">*</span></p>
+                        <p class="comment-form-rating">
+                            <label>Your Rating</label>
+                        </p>
+
+                        <div class="rating-container">
+                            <div style="width: 600px; margin: 30px auto">
+                                <div id="rateYo"></div><div class="counter"></div>
+                            </div>
+                        </div>
+
+                        <p class="comment-form-author">
+                            <label for="author">Title of Comment & Reveiws <span class="required">*</span></label>
+                            <input id="author" name="author" type="text">
+
+                        </p>
+                        <p class="comment-form-comment">
+                            <label>Share Your Thoughts <span class="required">*</span></label>
+                            <textarea id="comment"></textarea>
+                        </p>
+                        <p class="comment-form-email">
+                            <label for="email">Commented By(Email) <span class="required">*</span></label>
+                            <input id="email" name="email" type="email">
+                        </p>
+                        <p class="form-submit">
+                            @*<button class="button" name="submit"  id="submit"  onclick="SubmitRating()">
+                                    Submit Rating
+                                </button>*@
+                            <input name="submit" type="button" id="submit" class="submit" value="Submit Rating" onclick="SubmitRating()">
+
+                        </p>
+                    </form>
+                </div>
+                <!-- <div class="modal-footer d-flex justify-content-center">
+                   <button class="btn btn-default">Submit</button>
+                   </div> -->
+            </div>
+        </div>
+    </div>
+    <!-- Old Rating Modal -->
+    <!-- Footer -->
+    @if (User.Identity.IsAuthenticated)
+    {
+        <footer class="footer">
+            <div class="footer-widgets">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="widget widget_text">
+                                <div class="textwidget">
+                                    <p style="text-align:justify;">Pixthon is one stop solutions for the photography and customisaton products . We are always happy to help in the best possible way.</p>
+                                    <p style="text-align:justify;">Be it photo books, album designing or website designing, Pixthon has everything sorted for you.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="widget widget_nav_menu">
+                                <div class="menu-footer-menu-container">
+                                    <ul class="ft-menu">
+                                        <li><a href=@Url.Action("Index", "PhotographerProfile")>View Photobook</li>
+                                        <li><a href=@Url.Action("Register", "Login")>Registration</a></li>
+                                        <li><a href=@Url.Action("Index", "Login")>Log In</a></li>
+                                        <li><a href=@Url.Action("Contact", "Home")>Contact Us</a></li>
+
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="widget widget_mc4wp_form_widget">
+                                <address class="location">
+                                    <i class="fa fa-map-marker"></i> <b>Pixthon Digital Solutions Pvt Ltd.</b><br>
+                                    Plot No. 39/3, 16th Floor/1605,<br>
+                                    Haware Infotech Park, Sector 30A,<br>
+                                    Vashi, Navi Mumbai,<br>
+                                    Maharashtra-400703
+                                </address>
+                                <i class="fa fa-phone"></i> <b>+91 7039851605</b> <br>
+                                <i class="fa fa-envelope"></i><b> sales@pixthon.com</b>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="social-links">
+
+                                <a href="https://www.facebook.com/Pixthoncom-339936090122683/" target="_blank">
+                                    <i class="fa fa-facebook-official"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/company/pixthon-digital-solutions-pvt-ltd/" target="_blank">
+                                    <i class="fa fa-linkedin"></i>
+                                </a>
+                                <a href="https://www.instagram.com/pixthondigitalsolutions/" target="_blank">
+                                    <i class="fa fa-instagram" style="background-color:lightseagreen"></i>
+                                </a>
+                            </div>
+                        </div><!-- /.col-md-12 -->
+                        <div class="col-md-12">
+                            <div class="copyright">
+                                <div class="copyright-content">
+                                    © 2020 | Design By <a href="http://pixthon.com/">Pixthon</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    }
+    else
+    {
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="social-links" style="color:#fff;">
+
+                                <a href="@Url.Action("Index", "PhotographerProfile")" style="color: #fff;">View Photobook</a> | <a href="@Url.Action("Register", "Login")" style="color: #fff;">Registration</a> | <a href="@Url.Action("Index", "Login")" style="color: #fff;">Log In</a> | <a href="@Url.Action("Contact", "Home")" style="color: #fff;">Contact Us</a>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="copyright">
+                                <div class="copyright-content">
+                                    © 2020 | Powered By <a href="http://pixthon.com/" target="_blank">Pixthon Digital Solutions Pvt.Ltd.</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    }
+    <!-- Footer -->
+    <!-- Go Top -->
+    <a class="go-top">
+        <i class="fa fa-chevron-up"></i>
+    </a>
+    <!-- Go Top -->
+    <!-- Javascript -->
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="~/Content/js/jquery-ui.min.js"></script>
+    <!-- Session Timeout -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/basil.js/0.4.10/basil.min.js"></script>
+    <script src="~/Content/js/jquery-idle-hands.js"></script>
+
+    <!-- Session Timeout -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/bootstrap.min.js"></script>
+    <script src="~/Content/js/sweetalert.min.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery.easing.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/owl.carousel.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery-waypoints.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery.fancybox.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery.cookie.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/gmap3.min.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/parallax.js"></script>
+    <!-- <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/switcher.js"></script> -->
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/smoothscroll.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery-validate.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/main.js"></script>
+    <!-- ADDED -->
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/imagesloaded.min.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery.isotope.min.js"></script>
+    <!-- END -->
+    <!-- Revolution Slider -->
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery.themepunch.tools.min.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery.themepunch.revolution.min.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/slider.js"></script>
+    <!--End Javascript -->
+
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="~/Content/js/jquery-ui.min.js"></script>
+    <script src="~/Content/js/jquery.sessionTimeout.js"></script>
+    <script language="javascript">
+        function fbshareCurrentPage() {
+            
+            window.open("https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(window.location.href) + "&t=" + document.title, '',
+                'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');
+            return false;
+        }
+    </script>
+    <script>
+
+        function setCookie(cname, cvalue, exdays) {
+            var d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            var expires = "expires=" + d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+        $(document).ready(function () {
+
+            if (sessionStorage.getItem('Email') != null) {
+                setCookie("username", sessionStorage.getItem('Email'), 365);
+                console.log('Session', sessionStorage.getItem('Email'));
+               // $('#customopt').append(sessionStorage.getItem('Email'))
+               // $('#customopt').append("<a class='btn btn-success' style='margin-right: 14px;' href='/ChangePassword/Index'>Change Password</a><a class='btn btn-success' style='margin-right: 14px;' href='@Url.Action("Registration", "Registration", new { id = Model.objPhotoGrapherDetail.EncodedPhotographerID })'><span>Edit Profile</span></a><a class='btn btn-success' href='#' onclick='Signout()'><span>Sign Out</span></a>");
+
+
+                //window.location.href = '@Url.Action("Index", "Login")';
+            } else {
+
+            }
+
+
+
+            //var str = "https://www.google.com/maps/place/Pixthon+Digital+Solutions+Pvt+Ltd/&#6419.0656027,72.9994134,15z/data=!4m5!3m4!1s0x0:0x48cb8f4c4a3ba7ce!8m2!3d19.0656027!4d72.9994134";
+            var str = "@Model.objPhotoGrapherDetail.GoogleMap";
+            var res = str.replace("@@", "&#64");
+            var matches = res.match(/\/&#64([\d\.,-]+)z\//)[1];
+            //var matches = str.match(/\/&#64([\d\.,-]+)z\//)[1];
+            var splits = matches.split(',');
+            var lat = splits[0];
+            var long = splits[1];
+            var zoom = splits[2];
+            var url = 'http://maps.google.com/maps?q=' + lat + ',' + long + '&z=' + zoom + '&output=embed';
+            console.log(url);
+            $('#output').html('<iframe style = "width:500px;height:300px" src = ' + url + '></iframe>');
+            console.log("ready!");
+            var ddlCustomers = $("#ddlCustomers");
+            ddlCustomers.empty().append('<option selected="selected" value="0" disabled = "disabled">Loading.....</option>');
+            $.ajax({
+                type: "POST",
+                url: "/Home/GetPhotographyCategories",
+                data: '{}',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    ddlCustomers.empty().append('<option selected="selected" value="0">Please select</option>');
+                    $.each(response, function () {
+                        ddlCustomers.append($("<option></option>").val(this['Value']).html(this['Text']));
+                    });
+                },
+                failure: function (response) {
+                    alert(response.responseText);
+                },
+                error: function (response) {
+                    alert(response.responseText);
+                }
+            });
+            GetRating();
+        });
+        //#region Session Timeout
+
+        $(function () {
+            $.idleHands({
+                //applicationId: 'my_application',
+                heartRate: 5, //Keep Page Alive For The Time Before The Session Expiration Warning Dialog Appears
+                inactivityDialogDuration: 300, //Time For Which Dialog Box Will Stay -300 seconds(5 Minutes)
+                inactivityLogoutUrl: 'http://pixthon.com/',
+                maxInactivitySeconds: 1800 //Max Idle Time - 1800 seconds=30 minutes
+            });
+        });
+
+
+        //#endregion
+
+
+        $("#rateYo").rateYo({
+            rating: 0,
+            halfStar: true,
+            onChange: function (rating, rateYoInstance) {
+
+                $(this).next().text(rating);
+
+            },
+            onSet: function (rating, rateYoInstance) {
+
+                localStorage.setItem('Rating', rating)
+
+            }
+
+        })
+
+        function SubmitRating() {
+
+            console.log(localStorage.getItem('Rating'))
+
+            if (localStorage.getItem('Rating') == null) {
+                alert("Please rate this service provider.");
+                return false;
+            }
+            var title = $('#author').val();
+            var email = $('#email').val();
+            var comment = $('#comment').val();
+            var photographerid=@Model.objPhotoGrapherDetail.PhotographerID
+
+            $.ajax({
+                type: "POST",
+                url: window.location.protocol + "//" + window.location.host + "/StarRating/SaveRating",
+                    data: "{NoOfStars: '" + localStorage.getItem('Rating') + "',Comment:'" + comment + "',CommentedBy:'" + email + "',Title:'" + title + "',PhotographerID:'" + photographerid + "'}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    console.log(response);
+                    localStorage.clear()
+                    alert('Rating Successful');
+                },
+                error: function (response) {
+                    alert(response);
+                }
+            });
+        }
+
+        //Overall Rating for Photographer
+        function GetRating() {
+            //localStorage.clear();
+            var rating = {};
+            rating.PhotographerID = @Model.objPhotoGrapherDetail.PhotographerID
+            $.ajax({
+                url: window.location.protocol + "//" + window.location.host + "/PhotographerProfile/GetRatings",
+                type: "POST",
+                dataType: 'json',
+                contentType: "application/json; charset=utf-8",
+                data: '{rating: ' + JSON.stringify(rating) + '}',
+                success: function (response) {
+
+
+                    //localStorage.setItem('Rating', response.response.NoOfStars);
+                    console.log("Response", response.response.NoOfStars);
+
+                    var mainRating = response.response.NoOfStars;
+                    console.log("MainRating", mainRating)
+                    if (mainRating == 0) {
+                        $('#avgRating').text(' NOT YET RATED ');
+                    } else {
+                        $('#avgRating').text(' AVERAGE RATING ');
+                        $('#mainRating').text(mainRating);
+                    }
+
+                    //var rating = getRandomRating();
+                    $("#rateYo").rateYo("rating", mainRating);
+
+                    // Getter
+                    var ratedFill = $("#rateYo").rateYo("option", "ratedFill"); //returns "#E74C3C"
+
+                    // Setter
+                    $("#rateYo").rateYo("option", "ratedFill", "#18ba60"); //returns a jQuery Element
+
+                    // Getter
+                    var readOnly = $("#rateYo").rateYo("option", "readOnly"); //returns true
+
+                    // Setter
+                    $("#rateYo").rateYo("option", "readOnly", true); //returns a jQuery Element
+
+
+                },
+                error: function (response) {
+                    console.log(response);
+                }
+            });
+        }
+        //Overall Rating for Photographer
+
+        //Enquiry for Photographer
+        function Enquiry() {
+
+            console.log("In Enquiry");
+            var isvalid = Validation1();
+            if (isvalid == false) {
+                return;
+            }
+                        $.ajax({
+                            url: '@Url.Action("Enquiry", "PhotographerProfile")',
+                            type: 'POST',
+                            data: "{EmailDetailsModel:{CustName: '" + $('#custname').val() + "',CustEmail:'" + $('#custemail').val() + "',CustPhone:'" + $('#custphone').val() + "',CustMsg:'" + $('#custmsg').val() + "',Category:'" + $('#ddlCustomers').val() + "',PhotographerID:'" +@Model.objPhotoGrapherDetail.PhotographerID+ "'}}",
+                            dataType: 'json',
+                            contentType: 'application/json; charset=utf-8',
+                            error: function (xhr) {
+                                alert('Error: ' + xhr.statusText);
+                            },
+                            success: function (result) {
+                                console.log(result)
+                                $('#modalLoginForm').modal('hide');
+
+                                var msg_type;
+                                var msg_title;
+                                if (result.Message == 'Email Sent Successfully') {
+                                    swal("Success!", "Email Sent Successfully!", "success");
+                                    msg_title = 'Success';
+                                    msg_type = "success";
+                                } else {
+                                    swal("Failed!", "Email Sending Fail", "error");
+                                    msg_title = 'Error!!!';
+                                    msg_type = "danger";
+                                }
+
+                                //ShowAlert(msg_title, result.message, msg_type);
+                                //$('#ShowAlert').alert();
+                            },
+                            async: true,
+                            processData: false
+                        });
+
+        }
+        //Enquiry for Photographer
+
+        function ShowAlert(msg_title, msg_body, msg_type) {
+            var AlertMsg = $('div[role="alert"]');
+            $(AlertMsg).find('strong').html(msg_title);
+            $(AlertMsg).find('p').html(msg_body);
+            $(AlertMsg).removeAttr('class');
+            $(AlertMsg).addClass('background-' + msg_type);
+            $(AlertMsg).show();
+        }
+
+        function closeAlert() {
+            document.getElementById('ShowAlert').style.display = "none";
+        }
+        function closeAlertEnquiry() {
+            document.getElementById('EnquiryAlert').style.display = "none";
+        }
+
+        function ShowAlertEnquiry(msg_body) {
+            var AlertMsg = $('#EnquiryAlert');
+            $(AlertMsg).find('strong').html(msg_body);
+            //$(AlertMsg).find('p').html(msg_body);
+            //$(AlertMsg).removeAttr('class');
+            //$(AlertMsg).addClass('alert alert-' + msg_type);
+            $(AlertMsg).show();
+            $('#EnquiryAlert').alert();
+        }
+
+        function Validation1() {
+
+
+        if ($('#custemail').val() == "") {
+                ShowAlertEnquiry('Please Provide your Email');
+                return false;
+        }
+        if ($('#custname').val() == "") {
+                ShowAlertEnquiry('Please Enter Your Name');
+                return false;
+        }
+        if ($('#To').val() == "") {
+            ShowAlertEnquiry('Please Provide your Email');
+            return false;
+        }
+        if ($('#custphone').val() == "") {
+            ShowAlertEnquiry('Please Provide Your Mobile Number');
+            return false;
+        }
+
+        if ($('#ddlCustomers').val() == "0") {
+            ShowAlertEnquiry('Please Provide Your Mobile Number');
+            return false;
+        }
+        if (!ValidateEmail($('#custemail').val())) {
+                ShowAlertEnquiry("You have entered an invalid email address!")
+                return false;
+            }
+
+            else
+                return true;
+        }
+
+        function ValidateEmail(mail)
+         {
+            if ((/^\w+([\.-]?\w+)*@@\w+([\.-]?\w+)*(\.\w{2,3})+$/).test(mail))
+           {
+              return (true)
+            }
+
+            return (false)
+         }
+
+        function Signout()
+        {
+            sessionStorage.clear();
+            //Enter Login Page Location
+            window.location.href='@Url.Action("Index","Login")'
+        }
+        //#region Disable Console
+
+        //$(window).on('keydown', function (event) {
+        //    if (event.keyCode == 123) {
+        //        //alert('Entered F12');
+        //        return false;
+        //    }
+        //    else if (event.ctrlKey && event.shiftKey && event.keyCode == 73) {
+        //        //alert('Entered ctrl+shift+i')
+        //        return false;  //Prevent from ctrl+shift+i
+        //    }
+        //    else if (event.ctrlKey && event.keyCode == 73) {
+        //        //alert('Entered ctrl+shift+i')
+        //        return false;  //Prevent from ctrl+shift+i
+        //    }
+        //});
+
+        //$(document).on("contextmenu", function (e) {
+        //    //alert('Right Click Not Allowed')
+        //    e.preventDefault();
+        //});
+        //#endregion
+
+
+    </script>
+</body>
+</html>
+
+
+
+
+

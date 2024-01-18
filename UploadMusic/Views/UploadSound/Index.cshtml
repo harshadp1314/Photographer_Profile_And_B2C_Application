@@ -1,0 +1,113 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>UploadAudio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/scripts/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css" />
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            $('#dataTable').DataTable();
+
+            $("audio").on("play", function () {
+                $("audio").not(this).each(function (index, audio) {
+                    audio.pause();
+                });
+
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="container py-4">
+        <h3 class="text-center text-uppercase">How to upload and play audio from database in mvc5</h3>
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h6 class="text-uppercase">Audio List</h6>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <button style="margin-left: 27px;margin-bottom:10px;" type="button" class="btn btn-primary rounded-0" data-toggle="modal" data-target="#myModal">
+                        <i class="fa fa-plus-circle"></i> Add New
+                    </button>
+                    <div class="modal fade" id="myModal">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Upload New Audio File</h4>
+                                    <button type="button" class="close" data-dismiss="modal">×</button>
+                                </div>
+                                <div class="modal-body">
+                                    @using (Html.BeginForm("UploadAudio", "UploadSound", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                    {
+
+                                        <div class="form-group">
+                                            <label>Choose File:</label>
+                                            <div class="input-group">
+                                                <div class="custom-file">
+                                                    <input type="file" id="fileupload" name="fileupload" class="custom-file-input" />
+                                                    <label class="custom-file-label"></label>
+                                                </div>
+                                                <div class="input-group-append">
+                                                    <input type="submit" id="btnUpload" class="btn btn-secondary" value="Upload" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <table id="dataTable" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>File Size(MB)</th>
+                            <th>Play Audio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null)
+                        {
+                            foreach (var item in Model)
+                            {
+                                <tr>
+
+                                    <td>@item.ID</td>
+                                    <td>@item.Name</td>
+                                    <td>@item.FileSize</td>
+                                    <td>
+                                        <audio controls>
+                                            <source src="@Url.Content(@item.FilePath)" type="audio/ogg">
+                                        </audio>
+                                    </td>
+
+                                </tr>
+                            }
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

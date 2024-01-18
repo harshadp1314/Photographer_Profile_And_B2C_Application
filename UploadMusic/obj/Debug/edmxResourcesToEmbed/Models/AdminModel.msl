@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PixthonPhotographyModelStoreContainer" CdmEntityContainer="PixthonPhotographyEntities">
+    <EntitySetMapping Name="Tbl_ImagePortFolio">
+      <EntityTypeMapping TypeName="PixthonPhotographyModel.Tbl_ImagePortFolio">
+        <MappingFragment StoreEntitySet="Tbl_ImagePortFolio">
+          <ScalarProperty Name="ImagePortFolioID" ColumnName="ImagePortFolioID" />
+          <ScalarProperty Name="ImageBytes" ColumnName="ImageBytes" />
+          <ScalarProperty Name="PhotographerID" ColumnName="PhotographerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_PhotographerProfile">
+      <EntityTypeMapping TypeName="PixthonPhotographyModel.Tbl_PhotographerProfile">
+        <MappingFragment StoreEntitySet="Tbl_PhotographerProfile">
+          <ScalarProperty Name="PhotographerID" ColumnName="PhotographerID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+          <ScalarProperty Name="PhotographerAddress" ColumnName="PhotographerAddress" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="About" ColumnName="About" />
+          <ScalarProperty Name="CurrentLocation" ColumnName="CurrentLocation" />
+          <ScalarProperty Name="AlsoShootIn" ColumnName="AlsoShootIn" />
+          <ScalarProperty Name="ProductAndServices" ColumnName="ProductAndServices" />
+          <ScalarProperty Name="PaymentOption" ColumnName="PaymentOption" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="Equipments" ColumnName="Equipments" />
+          <ScalarProperty Name="CoverImage" ColumnName="CoverImage" />
+          <ScalarProperty Name="ServiceDescription" ColumnName="ServiceDescription" />
+          <ScalarProperty Name="StudioName" ColumnName="StudioName" />
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
+          <ScalarProperty Name="TeamSize" ColumnName="TeamSize" />
+          <ScalarProperty Name="Website" ColumnName="Website" />
+          <ScalarProperty Name="Product" ColumnName="Product" />
+          <ScalarProperty Name="ServiceOffered" ColumnName="ServiceOffered" />
+          <ScalarProperty Name="LanguageKnown" ColumnName="LanguageKnown" />
+          <ScalarProperty Name="YearOfExperience" ColumnName="YearOfExperience" />
+          <ScalarProperty Name="Achievement" ColumnName="Achievement" />
+          <ScalarProperty Name="OwnerPhotograph" ColumnName="OwnerPhotograph" />
+          <ScalarProperty Name="FacebookLink" ColumnName="FacebookLink" />
+          <ScalarProperty Name="InstagramLink" ColumnName="InstagramLink" />
+          <ScalarProperty Name="GoogleMap" ColumnName="GoogleMap" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_VideoPortFolio">
+      <EntityTypeMapping TypeName="PixthonPhotographyModel.Tbl_VideoPortFolio">
+        <MappingFragment StoreEntitySet="Tbl_VideoPortFolio">
+          <ScalarProperty Name="VideoPortFolioID" ColumnName="VideoPortFolioID" />
+          <ScalarProperty Name="VideoBytes" ColumnName="VideoBytes" />
+          <ScalarProperty Name="PhotographerID" ColumnName="PhotographerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

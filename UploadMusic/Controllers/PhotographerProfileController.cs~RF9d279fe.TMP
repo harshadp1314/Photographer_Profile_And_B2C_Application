@@ -1,0 +1,399 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using UploadMusic.Models;
+using UploadMusic.Utility;
+
+namespace UploadMusic.Controllers
+{
+    public class PhotographerProfileController : Controller
+    {
+        // GET: PhotographerProfile
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        public ActionResult Redirect(string objSecurityCode)
+        {
+            string ConnectionString = string.Empty;
+            string url = string.Empty;
+            string result = string.Empty;
+            try
+            {
+                ConnectionString = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
+
+                #region Passing Parameters To Stored Procedure
+
+
+                PhotoGrapherDetail obj = new PhotoGrapherDetail();
+
+                obj = GetPhotographerDetails(objSecurityCode,null);
+                if(obj.PhotographerID != 0)
+                {
+
+                    result = "Redirect";
+                    url = Url.Action("PhotographerProfile", "PhotographerProfile", new {  obj1 = objSecurityCode });
+                }
+                else
+                {
+                    result = "Error";
+                    url = Url.Action("Index", "PhotographerProfile");
+                }
+
+
+                #endregion
+
+            }
+            catch (Exception ex)
+            {
+                string Message = ex.Message;
+            }
+            return Json(new { result = result, url = url });
+            
+        }
+
+        [Route("PhotographerProfileRoute")]
+        [HttpPost]
+        public ActionResult PhotographerProfile(PhotoGrapherDetail obj1) //string obj1,int? PhotographerID
+        {
+            PhotographerProfileModel obj = new PhotographerProfileModel();
+           
+
+            obj.objPhotoGrapherDetail=GetPhotographerDetails(obj1.SecurityCode, obj1.PhotographerID);
+            
+            obj.objrating = GetComments(obj.objPhotoGrapherDetail.PhotographerID);
+            obj.PortFoliosImages = GetPortFolioOfPhotographer_Images(obj.objPhotoGrapherDetail.PhotographerID);
+            obj.PortFoliosVideos = GetPortFolioOfPhotographer_Videos(obj.objPhotoGrapherDetail.PhotographerID);
+            return View(obj);
+        }
+        public PhotoGrapherDetail GetPhotographerDetails(string SecurityCode,int? PhotographerID)
+        {
+            PhotoGrapherDetail obj = new PhotoGrapherDetail();
+            string constr = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Connection = con;
+                    if (PhotographerID == 0 || PhotographerID == null)
+                    {
+
+                        cmd.CommandText = "GetPhotographerProfile_SecurityCode";
+                        cmd.Parameters.AddWithValue("@SecurityCode", SecurityCode);
+
+                        con.Open();
+                        using (SqlDataReader sdr = cmd.ExecuteReader())
+                        {
+                            while (sdr.Read())
+                            {
+                                obj.Logo = Convert.ToString(sdr["Logo"]);
+                                obj.Title = Convert.ToString(sdr["Title"]);
+                                obj.Cover = (byte[])(sdr["CoverByte"]); ;
+                                obj.PhotographerName = Convert.ToString(sdr["Name"]);
+                                obj.About = Convert.ToString(sdr["About"]);
+                                obj.AlsoShootIn = Convert.ToString(sdr["AlsoShootIn"]);
+                                obj.CoverImage = Convert.ToString(sdr["CoverImage"]); ;
+                                obj.CurrentLocation = Convert.ToString(sdr["CurrentLocation"]);
+                                obj.Equipments = Convert.ToString(sdr["Equipments"]).Split(',');
+                                obj.PaymentOption = Convert.ToString(sdr["PaymentOption"]).Split(',');
+                                obj.PhotographerAddress = Convert.ToString(sdr["PhotographerAddress"]);
+                                obj.ProductAndServices = Convert.ToString(sdr["ProductAndServices"]).Split(',');
+                                obj.ServiceDescription = Convert.ToString(sdr["ServiceDescription"]);
+                                obj.SecurityCode = Convert.ToString(sdr["SecurityCode"]);
+                                obj.PhotographerID = Convert.ToInt32(sdr["PhotographerID"]);
+                                obj.StudioName = Convert.ToString(sdr["StudioName"]);
+                                obj.TeamSize = Convert.ToString(sdr["TeamSize"]);
+                                obj.PhotographerEmail = Convert.ToString(sdr["Email"]);
+                                obj.PhoneNo = Convert.ToString(sdr["PhoneNo"]);
+                                obj.ServiceOffered = Convert.ToString(sdr["ServiceOffered"]).Split(',');
+                                obj.Product = Convert.ToString(sdr["Product"]).Split(',');
+                                obj.LanguageKnown = Convert.ToString(sdr["LanguageKnown"]);
+                                obj.YearOfExperience = Convert.ToString(sdr["YearOfExperience"]);
+                                obj.Achievement = Convert.ToString(sdr["Achievement"]);
+                                obj.Website = Convert.ToString(sdr["Website"]);
+                                obj.FacebookLink = Convert.ToString(sdr["FacebookLink"]);
+                                obj.InstagramLink = Convert.ToString(sdr["InstagramLink"]);
+                                obj.GoogleMap = Convert.ToString(sdr["GoogleMap"]);
+
+                            }
+
+                        }
+
+                    }
+                    else
+                    {
+                        
+                        obj.PhotographerID = Convert.ToInt32(PhotographerID);
+                        cmd.CommandText = "GetPhotographerProfile_PhotographerID";
+                        cmd.Parameters.AddWithValue("@PhotographerID", obj.PhotographerID);
+
+                        con.Open();
+                        using (SqlDataReader sdr = cmd.ExecuteReader())
+                        {
+                            while (sdr.Read())
+                            {
+                                obj.Cover = (byte[])(sdr["CoverByte"]); ;
+                                obj.Logo = Convert.ToString(sdr["Logo"]);
+                                obj.PhotographerName = Convert.ToString(sdr["Name"]);
+                                obj.About = Convert.ToString(sdr["About"]);
+                                obj.AlsoShootIn = Convert.ToString(sdr["AlsoShootIn"]);
+                                obj.CoverImage = Convert.ToString(sdr["CoverImage"]); ;
+                                obj.CurrentLocation = Convert.ToString(sdr["CurrentLocation"]);
+                                obj.Equipments = Convert.ToString(sdr["Equipments"]).Split(',');
+                                obj.PaymentOption = Convert.ToString(sdr["PaymentOption"]).Split(',');
+                                obj.PhotographerAddress = Convert.ToString(sdr["PhotographerAddress"]);
+                                obj.ProductAndServices = Convert.ToString(sdr["ProductAndServices"]).Split(',');
+                                obj.ServiceDescription = Convert.ToString(sdr["ServiceDescription"]);
+                                obj.PhotographerID = Convert.ToInt32(sdr["PhotographerID"]);
+                                obj.StudioName = Convert.ToString(sdr["StudioName"]);
+                                obj.TeamSize = Convert.ToString(sdr["TeamSize"]);
+                                obj.PhotographerEmail = Convert.ToString(sdr["Email"]);
+                                obj.PhoneNo = Convert.ToString(sdr["PhoneNo"]);
+                                obj.ServiceOffered = Convert.ToString(sdr["ServiceOffered"]).Split(',');
+                                obj.Product = Convert.ToString(sdr["Product"]).Split(',');
+                                obj.LanguageKnown = Convert.ToString(sdr["LanguageKnown"]);
+                                obj.YearOfExperience = Convert.ToString(sdr["YearOfExperience"]);
+                                obj.Achievement = Convert.ToString(sdr["Achievement"]);
+                                obj.Website = Convert.ToString(sdr["Website"]);
+                                obj.FacebookLink = Convert.ToString(sdr["FacebookLink"]);
+                                obj.InstagramLink = Convert.ToString(sdr["InstagramLink"]);
+                                obj.GoogleMap = Convert.ToString(sdr["GoogleMap"]);
+
+                            }
+
+                        }
+                    }
+
+
+                   
+                    con.Close();
+                }
+
+            }
+            return obj;
+        }
+
+        public List<RatingModel> GetComments(int PhotographerID)
+        {
+            List<RatingModel> rate = new List<RatingModel>();
+            string constr = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
+            string ConnectionString = string.Empty;
+
+            try
+            {
+                ConnectionString = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
+
+                #region Passing Parameters To Stored Procedure
+
+                using (SqlConnection objSqlConnection = new SqlConnection(ConnectionString))
+                {
+                    objSqlConnection.Open();
+                    SqlCommand objSqlCommand = new SqlCommand("GetRatings", objSqlConnection);
+                    objSqlCommand.CommandType = CommandType.StoredProcedure;
+
+                    objSqlCommand.Parameters.AddWithValue("@P_PhotographerID", PhotographerID);
+
+                    SqlParameter @P_SuccessFlag = new SqlParameter("@P_SUCCESSFLAG", SqlDbType.VarChar, 10);
+                    @P_SuccessFlag.Direction = ParameterDirection.Output;
+                    objSqlCommand.Parameters.Add(@P_SuccessFlag);
+
+                    SqlParameter @P_SuccessMessage = new SqlParameter("@P_SUCCESSMESSAGE", SqlDbType.VarChar, 30);
+                    @P_SuccessMessage.Direction = ParameterDirection.Output;
+                    objSqlCommand.Parameters.Add(@P_SuccessMessage);
+
+                    //adapt.Fill(dt);
+
+                    using (SqlDataReader rd = objSqlCommand.ExecuteReader())
+                    {
+                        while (rd.Read())
+                        {
+             
+rate.Add(new RatingModel {
+    NoOfStars= Convert.ToDouble(rd["NoOfStars"]),
+    Comment = Convert.ToString(rd["Comment"]),
+    CommentedBy= Convert.ToString(rd["CommentedBy"]),
+    CommentedOn= Convert.ToDateTime(rd["CommentedOn"]),
+    Title= Convert.ToString(rd["Title"]),
+    Name= Convert.ToString(rd["Name"]),
+});
+                            
+                            
+                        }
+
+                    }
+                    objSqlConnection.Close();
+
+
+                }
+
+                #endregion
+
+            }
+            catch (Exception ex)
+            {
+                string Message = ex.Message;
+            }
+            return rate;
+        }
+
+        public List<PortFolioModel> GetPortFolioOfPhotographer_Images(int PhotographerID)
+        {
+            List<PortFolioModel> portFolios = new List<PortFolioModel>();
+            string constr = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {   
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = "GetPhotographerPortfolio_Images";//"GetPhotographerPortfolio_Images";
+                    cmd.Connection = con;
+                   
+                    cmd.Parameters.AddWithValue("@PhotographerID", PhotographerID);
+                    con.Open();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+                            portFolios.Add(new PortFolioModel()
+                            {
+
+                                ImagesFile = Convert.ToString(sdr["ImagePath"])
+                            });
+                        }
+                    }
+                    con.Close();
+                }
+                
+
+
+                return portFolios;
+            }
+        }
+
+        public List<PortFolioModel> GetPortFolioOfPhotographer_Videos(int PhotographerID)
+        {
+            List<PortFolioModel> portFolios = new List<PortFolioModel>();
+            string constr = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = "GetPhotographerPortfolio_Videos";
+                    cmd.Connection = con;
+                    cmd.Parameters.AddWithValue("@PhotographerID", PhotographerID);
+                    con.Open();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+                            portFolios.Add(new PortFolioModel()
+                            {
+                                
+                                VideosFile = Convert.ToString(sdr["VideoPath"])
+                            });
+                        }
+                    }
+                    con.Close();
+                }
+
+
+
+                return portFolios;
+            }
+        }
+
+        public ActionResult Enquiry(PhotographerProfileModel objEmail)
+        {
+           
+            Utility.Utility utility = new Utility.Utility();
+            string msg = "";
+            string Emailmsg = "";
+            string Smsmsg = "";
+            try
+            {
+                #region For Sending Email
+                objEmail.EmailDetailsModel.From = "roshni.dahake13@gmail.com";
+                string mailbody = "You have an enquiry";
+                string Subject = "Customer Enquiry";
+                Emailmsg=utility.SendEmail(objEmail.EmailDetailsModel.To, objEmail.EmailDetailsModel.From,mailbody,Subject);
+                //return Json(new { message = "sent Successfully" });
+
+                #endregion
+
+                #region For Sending SMS
+                Smsmsg = utility.SendSMS(objEmail.EmailDetailsModel.Receipientno, objEmail.EmailDetailsModel.Msgtxt);
+
+
+                #endregion
+               
+            }
+            catch (Exception ex)
+            {
+                msg = "sent UNSuccessfully" ;
+            }
+            return Json(new { Message= Emailmsg,  Smsmsg });
+
+        }
+
+        
+        public ActionResult GetRatings(RatingModel rating)
+        {
+            string ConnectionString = string.Empty;
+
+            try
+            {
+                ConnectionString = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
+
+                #region Passing Parameters To Stored Procedure
+
+                using (SqlConnection objSqlConnection = new SqlConnection(ConnectionString))
+                {
+                    objSqlConnection.Open();
+                    SqlCommand objSqlCommand = new SqlCommand("OverallRating", objSqlConnection);
+                    objSqlCommand.CommandType = CommandType.StoredProcedure;
+
+                    objSqlCommand.Parameters.AddWithValue("@P_PhotographerID", rating.PhotographerID);//1
+
+                    SqlParameter @P_SuccessFlag = new SqlParameter("@P_SUCCESSFLAG", SqlDbType.VarChar, 10);
+                    @P_SuccessFlag.Direction = ParameterDirection.Output;
+                    objSqlCommand.Parameters.Add(@P_SuccessFlag);
+
+                    SqlParameter @P_SuccessMessage = new SqlParameter("@P_SUCCESSMESSAGE", SqlDbType.VarChar, 30);
+                    @P_SuccessMessage.Direction = ParameterDirection.Output;
+                    objSqlCommand.Parameters.Add(@P_SuccessMessage);
+
+                    //adapt.Fill(dt);
+
+                    using (SqlDataReader rd = objSqlCommand.ExecuteReader())
+                    {
+                        while (rd.Read())
+                        {
+                            rating.NoOfStars = Convert.ToDouble(rd["Average"]);
+                        }
+
+                    }
+                    objSqlConnection.Close();
+
+
+                }
+
+                #endregion
+
+            }
+            catch (Exception ex)
+            {
+                string Message = ex.Message;
+            }
+            return Json(new { response = rating }, JsonRequestBehavior.AllowGet);
+            //return View("GetRating",rating.NoOfStars);
+        }
+    }
+}

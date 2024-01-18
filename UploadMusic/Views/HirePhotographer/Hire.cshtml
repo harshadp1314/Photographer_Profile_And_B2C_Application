@@ -1,0 +1,769 @@
+﻿@model UploadMusic.Models.HireModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<head>
+    <!-- Basic Page Needs -->
+    <meta charset="utf-8">
+    <!--[if IE]>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+    <![endif]-->
+    <title>Upload PhotoBook | Pixthon</title>
+    <meta name="author" content="">
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- Bootstrap  -->
+    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="~/Content/PhotographerProfile/stylesheets/bootstrap.css">
+    <!-- Theme Style -->
+    <link rel="stylesheet" type="text/css" href="~/Content/PhotographerProfile/stylesheets/style.css">
+    <!-- Responsive -->
+    <link rel="stylesheet" type="text/css" href="~/Content/PhotographerProfile/stylesheets/responsive.css">
+    <!-- Colors -->
+    <link rel="stylesheet" type="text/css" href="~/Content/PhotographerProfile/stylesheets/colors/color1.css" id="colors">
+
+    <!-- Session Timeout -->
+
+    <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/css/jquery-idle-hands.css" rel="stylesheet" />
+
+    <!-- Session Timeout -->
+    <!-- Animation Style -->
+    <link rel="stylesheet" type="text/css" href="~/Content/PhotographerProfile/stylesheets/animate.css">
+    <link href="~/Content/sweetalert.min.css" rel="stylesheet" />
+    <link href="~/Content/PhotographerProfile/stylesheets/icofont.css" rel="stylesheet" />
+    @*<link href="~/Content/bootstrap-material-design.min.css" rel="stylesheet" />*@
+    <link href="~/Content/ripples.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-material-datetimepicker.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Favicon and touch icons  -->
+
+    <link href="~/Content/PhotographerProfile/images/logo.png" rel="shortcut icon">
+
+    <!-- For Datatable With Checkboxes  -->
+
+    <link href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet" />
+    <link href="~/Content/DataTables/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/Content/DatatableWithCheckbox/dataTables.checkboxes.css" rel="stylesheet" />
+
+    <!-- Session Timeout  -->
+    <link href="~/Content/jquery-ui-1.11.css" rel="stylesheet" />
+
+
+    <style>
+        span {
+            font-weight: bold;
+        }
+    </style>
+
+    <style type="text/css">
+        .custom-file-input {
+            color: transparent;
+        }
+
+        .custom-file-input {
+            color: transparent;
+        }
+
+            .custom-file-input::-webkit-file-upload-button {
+                visibility: hidden;
+            }
+
+            .custom-file-input::before {
+                content: 'Upload File';
+                color: black;
+                display: inline-block;
+                background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
+                border: 1px solid #999;
+                border-radius: 3px;
+                padding: 5px 8px;
+                outline: none;
+                white-space: nowrap;
+                -webkit-user-select: none;
+                cursor: pointer;
+                text-shadow: 1px 1px #fff;
+                font-weight: 700;
+                font-size: 10pt;
+            }
+
+            .custom-file-input:hover::before {
+                border-color: black;
+            }
+
+            .custom-file-input:active {
+                outline: 0;
+            }
+
+                .custom-file-input:active::before {
+                    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+                }
+
+        body {
+            /*padding: 20px;*/
+        }
+
+        #loadingImg {
+            display: none;
+        }
+
+        .upload-image-preview img {
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body class="header-sticky page-loading">
+
+    <div class="boxed">
+        <!-- Header -->
+        <div class="top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="flat-address">
+                            <div class="custom-info">
+                                <span style="font-size:14px;font-weight:normal;">Welcome To Pixthon Photographers Profile</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="social-links">
+                            <i class="fa fa-reply"></i> sales@pixthon.com
+                            <i class="fa fa-phone"></i>  +91 7039851605
+                            &nbsp;
+                            <a href="https://www.facebook.com/Pixthoncom-339936090122683/" target="_blank">
+                                <i class="fa fa-facebook-official"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/company/pixthon-digital-solutions-pvt-ltd/" target="_blank">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                            <a href="https://www.instagram.com/pixthondigitalsolutions/" target="_blank">
+                                <i class="fa fa-instagram" style="background-color:lightseagreen"></i>
+                            </a>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <div class="dropdown">
+                                    <button class="dropbtn">@User.Identity.Name</button>
+                                    <div class="dropdown-content">
+                                        @if (User.IsInRole("Admin"))
+                                        {
+                                            <a href="/ChangePassword/Index">Change Password</a>
+                                            <a href="@Url.Action("Logout", "Login")" onclick="Signout()">Logout</a>
+                                        }
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="dropdown">
+                                    <button class="dropbtn">Account</button>
+                                    <div class="dropdown-content">
+
+                                        <a href="@Url.Action("Index","Login")">Login</a>
+                                        <a href="@Url.Action("Register","Login")">Register</a>
+
+                                    </div>
+                                </div>
+                            }
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Header -->
+    </div>
+    <!-- Pixthon -->
+    <header id="header" class="header clearfix">
+        <div class="header-wrap clearfix">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <div id="logo" class="logo">
+                            <a href="http://pixthon.com/">
+                                <img src="~/Content/PhotographerProfile/images/logo.png" alt="images" style="height:50px;">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Pixthon -->
+    <!-- Main Content -->
+
+    <div class="flat-row pad-bottom20px" style="padding-bottom:0px;">
+        <center><h2 style="margin-top:0px;margin-bottom:40px;">Hire Photographer</h2></center>
+
+        <div class="flat-tabs">
+            <ul class="menu-tabs">
+                <li class="active"><a href="#">Event Details</a></li>
+                <li><a href="#">Select Photographers</a></li>
+
+            </ul>
+            <div class="content-tab">
+
+                <div class="content-inner">
+                    <div class="container">
+
+                        <div class="col-md-12">
+
+                            <div class="row">
+
+                                <div id="ShowAlert" class="alert alert-danger background-danger" style="display:none">
+                                    <span class="closeBtn" onclick="closeAlertEnquiry(); return false">&times;</span>
+                                    <strong>!</strong>
+                                </div>
+                                <div class="col-md-3"></div>
+                                <div class="col-md-6">
+                                    <span>
+                                        Type Of event*
+
+                                        <input id="typeofevent" name="email" type="text" value="@Model.TypeOfEvent" placeholder="" required="required" style="background:none;">
+
+                                    </span>
+                                    <span>
+                                        Date of Event*<br />
+
+
+
+                                    </span>
+                                    <div class="form-control-wrapper">
+                                        <input type="text" id="dateofevent" class="form-control floating-label" placeholder="Date" value="@Model.DateOfEvent">
+                                    </div>
+                                    <br />
+                                    <span>
+                                        Timing of Event*<br />
+                                    </span>
+                                    <div class="form-control-wrapper">
+                                        <input type="text" id="timeofevent" class="form-control floating-label" placeholder="Time">
+                                    </div>
+                                    <span>
+                                        Place of Event *
+                                        <input id="placeofevent" name="company" type="text" value="@Model.PlaceOfEvent" placeholder="" required="required" style="background:none;">
+
+                                    </span>
+
+                                    <div class="col-md-12">
+                                        <span>
+                                            Type of Photography *
+                                            <select id="ddlCustomers">
+                                                <option value="0">Please select</option>
+                                                @foreach (var item in Model.TypeOfPhotohraphy)
+                                                {
+                                                    <option @item.Selected value="@item.Value">@item.Text</option>
+                                                }
+
+                                            </select>
+                                        </span>
+
+                                    </div>
+                                    <br />
+                                    <span>
+                                        Message
+                                        <textarea id="comment" name="message" placeholder="Share Your Thoughts*"></textarea>
+                                    </span>
+
+
+                                </div>
+                                <div class="col-md-3"></div>
+
+                                <br><br>
+                                <div class="loading-overlay"></div>
+                            </div>
+                            <!-- /.row -->
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- End Photos Section -->
+                <!-- Start videos section -->
+                <div class="content-inner">
+                    <div class="container">
+                        <div class="col-md-12">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div style="width:90%; margin:0 auto" class="tablecontainer">
+                                        <form id="frm-example" action="#">
+
+                                            <table id="myDatatable" class="table table-bordered table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th></th>
+                                                        <th>Company Name/Studio Name</th>
+                                                        <th>Photographer Information</th>
+                                                        <th>ViewProfile</th>
+                                                    </tr>
+                                                </thead>
+
+                                            </table>
+                                            <center>
+                                                <span class="form-submit">
+                                                    <input name="submit" type="button" id="submitbtn" class="submit" value="SUBMIT">
+
+                                                </span>
+                                                <div id="divLoader" style="display:none;">
+                                                    <img src="~/Images/ajax-loader.gif" alt="Loader" />
+                                                </div>
+                                            </center>
+                                            @*<p><button>Submit</button></p>*@
+                                            <p><b>Selected rows data:</b></p>
+                                            <pre id="example-console-rows"></pre>
+
+                                            <p><b>Form data as submitted to the server:</b></p>
+                                            <pre id="example-console-form"></pre>
+                                        </form>
+
+                                    </div>
+                                </div>
+
+
+                                <center>
+                                    @*<span class="form-submit">
+                                            <input name="submit" type="button" id="submit" class="submit" value="Finish" onclick="OnFinish()">
+
+                                        </span>*@
+                                    <div id="divLoader1" style="display:none;">
+                                        <img src="~/Images/ajax-loader.gif" alt="Loader" />
+                                    </div>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Video Section -->
+    </div>
+
+    <!-- Main Content -->
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-widgets">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="widget widget_text">
+                            <div class="textwidget">
+                                <p style="text-align:justify;">Pixthon is one stop solutions for the photography and customisaton products . We are always happy to help in the best possible way.</p>
+                                <p style="text-align:justify;">Be it photo books, album designing or website designing, Pixthon has everything sorted for you.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="widget widget_nav_menu">
+                            <div class="menu-footer-menu-container">
+                                <ul class="ft-menu">
+                                    <li><a href=@Url.Action("Index","PhotographerProfile")>View Photobook</li>
+                                    <li><a href=@Url.Action("Register","Login")>Registration</a></li>
+                                    <li><a href=@Url.Action("Index","Login")>Log In</a></li>
+                                    <li><a href=@Url.Action("Contact","Home")>Contact Us</a></li>
+
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="widget widget_mc4wp_form_widget">
+                            <address class="location">
+                                <i class="fa fa-map-marker"></i> <b>Pixthon Digital Solutions Pvt Ltd.</b><br>
+                                Plot No. 39/3, 16th Floor/1605,<br>
+                                Haware Infotech Park, Sector 30A,<br>
+                                Vashi, Navi Mumbai,<br>
+                                Maharashtra-400703
+                            </address>
+                            <i class="fa fa-phone"></i> <b>+91 7039851605</b> <br>
+                            <i class="fa fa-envelope"></i><b> sales@pixthon.com</b>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="social-links">
+
+                            <a href="https://www.facebook.com/Pixthoncom-339936090122683/" target="_blank">
+                                <i class="fa fa-facebook-official"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/company/pixthon-digital-solutions-pvt-ltd/" target="_blank">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                            <a href="https://www.instagram.com/pixthondigitalsolutions/" target="_blank">
+                                <i class="fa fa-instagram" style="background-color:lightseagreen"></i>
+                            </a>
+                        </div>
+                    </div><!-- /.col-md-12 -->
+                    <div class="col-md-12">
+                        <div class="copyright">
+                            <div class="copyright-content">
+                                © 2020 | Design By <a href="#">Pixthon</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer -->
+    <!-- Go Top -->
+    <a class="go-top">
+        <i class="fa fa-chevron-up"></i>
+    </a>
+    <!-- Go Top -->
+    <!-- Javascript -->
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery.min.js"></script>
+    <script src="~/Content/moment-with-locales.min.js"></script>
+    <script src="~/Content/bootstrap-material-datetimepicker.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="~/Content/js/jquery-ui.min.js"></script>
+    <!-- Session Timeout -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/basil.js/0.4.10/basil.min.js"></script>
+    <script src="~/Content/js/jquery-idle-hands.js"></script>
+
+    <!-- Session Timeout -->
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery.easing.js"></script>
+    <script src="~/Content/js/sweetalert.min.js"></script>
+    <script src="~/Content/ripples.min.js"></script>
+    @*<script src="~/Content/material.min.js"></script>*@
+    <script src="~/Content/material-design-lite-1.3.0-material.min.js"></script>
+
+    <!-- Javascript For Datatable With Checkboxes -->
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="~/Content/DatatableWithCheckbox/bootstrap.min.js"></script>*@
+    <script src="~/Content/DatatableWithCheckbox/datatables.min.js"></script>
+    <script src="~/Content/DatatableWithCheckbox/dataTables.bootstrap.min.js"></script>
+    <script src="~/Content/DatatableWithCheckbox/dataTables.checkboxes.min.js"></script>
+
+
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/owl.carousel.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery-waypoints.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery.fancybox.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery.cookie.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/gmap3.min.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/parallax.js"></script>
+    <!-- <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/switcher.js"></script> -->
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/smoothscroll.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery-validate.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/main.js"></script>
+    <!-- Revolution Slider -->
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery.themepunch.tools.min.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/jquery.themepunch.revolution.min.js"></script>
+    <script type="text/javascript" src="~/Content/PhotographerProfile/javascript/slider.js"></script>
+
+    <script type="text/javascript">
+        $('#dateofevent').bootstrapMaterialDatePicker({ weekStart: 0, time: false, minDate: new Date() });
+        $('#timeofevent').bootstrapMaterialDatePicker
+            ({
+                date: false,
+                shortTime: false,
+                format: 'HH:mm'
+            });
+        //$('#date-format').bootstrapMaterialDatePicker({ format: 'dddd DD MMMM YYYY - HH:mm' });
+
+        //$('#date-format').bootstrapMaterialDatePicker().on('change', function (e, date) {
+        //    console.log("Date", e.target.value.split('-')[0]);// do something
+        //    console.log("Time", e.target.value.split('-')[1]);
+        //});
+
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            if (sessionStorage.getItem('Email') != null) {
+                console.log('Session', sessionStorage.getItem('Email'));
+
+
+
+
+                var table = $('#myDatatable').DataTable({
+                    'ajax': '/HirePhotographer/GetPhotographerData',
+                    "columns": [
+                        { "data": "PhotographerID", "autoWidth": true },
+                        { "data": "PhotographerName", "autoWidth": true },
+                        { "data": "PhotographerAddress", "autoWidth": true },
+
+                        {
+                            "data": "EncodedPhotographerID", "width": "50px", "render": function (data) {
+                                return '<a class="popup" href="/PhotographerProfile/PhotographerProfile?PhotographerID=' + data + '">View Profile</a>';
+                            }
+                        }
+
+                    ],
+                    "scrollX": true,
+                    'columnDefs': [
+                        {
+                            'targets': 0,
+                            'checkboxes': {
+                                'selectRow': true
+                            }
+                        }
+                    ],
+                    'select': {
+                        'style': 'multi'
+                    },
+                    'order': [[1, 'asc']]
+                });
+
+                $('#submitbtn').on('click', function (e) {
+                    var form = this;
+
+                    var rows_selected = table.column(0).checkboxes.selected();
+
+                    // Iterate over all selected checkboxes
+                    $.each(rows_selected, function (index, rowId) {
+                        // Create a hidden element
+                        $(form).append(
+                            $('<input>')
+                                .attr('type', 'hidden')
+                                .attr('name', 'id[]')
+                                .val(rowId)
+                        );
+                    });
+
+                    // FOR DEMONSTRATION ONLY
+                    // The code below is not needed in production
+
+                    // Output form data to a console
+                    $('#example-console-rows').text(rows_selected.join(","));
+
+                    // Output form data to a console
+                    $('#example-console-form').text($(form).serialize());
+
+                    // Remove added elements
+                    $('input[name="id\[\]"]', form).remove();
+
+                    // Prevent actual form submission
+                   // e.preventDefault();
+                    var fileData = new FormData();
+                    $.urlParam = function (name) {
+                        var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+                        return results[1] || 0;
+                    }
+                    console.log($.urlParam('pn'));
+                    var isvalid = Validation();
+                    if (isvalid == false) {
+                        return;
+                    }
+
+                    $('#divLoader').show();
+
+
+
+                    var typeofevent = $('#typeofevent').val();
+                    fileData.append('TypeOfEvent', typeofevent);
+
+                    var dateofevent = $('#dateofevent').val();
+                    fileData.append('DateOfEvent', dateofevent);
+
+                    var comment = $('#comment').val();
+                    fileData.append('Message', comment);
+
+                    var photocategory = $('#ddlCustomers').val();
+                    fileData.append('PhotographyCategoriesID', photocategory);
+
+                    var timeofevent = $('#timeofevent').val();
+                    fileData.append('TimeOfEvent', timeofevent);
+
+                    var placeofevent = $('#placeofevent').val();
+                    fileData.append('PlaceOfEvent', placeofevent);
+
+                    var selectedphotographers=$('#example-console-rows').html();
+                    fileData.append('selectedphotographers', selectedphotographers);
+
+                    var email='@User.Identity.Name';
+                        fileData.append('Email', email);
+
+                    fileData.append('Parameter', $.urlParam('pn'));
+
+                    for (var key of fileData.entries()) {
+                        console.log(key[0] + ',' + key[1])
+                    }
+
+                    $.ajax({
+                        type: "POST",
+                        url: "/HirePhotographer/Hire",
+                        dataType: "json",
+                        contentType: false, // Not to set any content header
+                        processData: false, // Not to process data
+                        data: fileData,
+                        success: function (result, status, xhr) {
+                            $('#divLoader').hide();
+
+                            if (result.result == "Redirect") {
+                                swal("Thank you!", "Photos Uploaded Sucessfully!", "success");
+                                location.reload(true);
+                            } else if (result.result = "ALready a Member") {
+                                swal("Try Again!", "Failed To Upload Photos!", "error");
+                            } else if (result.result = "Invalid Photographer") {
+                                swal("Sorry!", "Photographer is not Registered!", "error");
+                            } else if (result.result == "Invalid") {
+                                swal("Invalid!", "Photographer is not Registered or Invalid Email!", "error");
+                            }
+                        },
+                        error: function (xhr, status, error) {
+                            $('#divLoader').hide();
+                            swal("Try Again!", "Error Occured While Photographer Registration!", "error");
+                        }
+                    });
+                });
+
+            } else {
+                window.location.href = '@Url.Action("Index", "Login")';
+            }
+
+        });
+
+        //#region Session Timeout
+
+        $(function () {
+            $.idleHands({
+                //applicationId: 'my_application',
+                heartRate: 5, //Keep Page Alive For The Time Before The Session Expiration Warning Dialog Appears
+                inactivityDialogDuration: 300, //Time For Which Dialog Box Will Stay -300 seconds(5 Minutes)
+                inactivityLogoutUrl: '/Login/Index',
+                maxInactivitySeconds: 1800 //Max Idle Time - 1800 seconds=30 minutes
+            });
+        });
+
+
+        //#endregion
+
+        function OnSubmit() {
+
+
+
+
+
+        }
+
+        function Validation() {
+
+            var msg = "";
+            var serialno = 0;
+
+            if ($("#typeofevent").val() == "") {
+                serialno++;
+                msg += '\n' + serialno + '. ' + 'Please Enter Order No';
+
+            }
+            if ($("#dateofevent").val() == "") {
+                serialno++;
+                msg += '\n' + serialno + '. ' + 'Please Enter Title';
+
+            }
+            if ($("#ddlCustomers").val() == "0") {
+                serialno++;
+                msg += '\n' + serialno + '. ' + 'Select Category';
+
+            }
+            if ($("#comment").val() == "") {
+                serialno++;
+                msg += '\n' + serialno + '. ' + 'Select PhotoBookSize';
+
+            }
+            if ($("#timeofevent").val() == "") {
+                serialno++;
+                msg += '\n' + serialno + '. ' + 'Please Enter Order No';
+
+            }
+            if ($("#placeofevent").val() == "") {
+                serialno++;
+                msg += '\n' + serialno + '. ' + 'Please Enter Title';
+
+            }
+
+
+
+            if (serialno != 0) {
+                swal("Error", 'Please Fill the Required Details:' + msg, "error");
+                return false;
+            }
+
+        }
+
+        function ValidateMobileNo(inputtxt) {
+            var phoneno = /^\d{10}$/;
+            if (phoneno.test(inputtxt)) {
+                return true;
+            }
+            else {
+
+                return false;
+            }
+        }
+
+
+
+        function ValidateEmail(mail) {
+            if ((/^\w+([\.-]?\w+)*@@\w+([\.-]?\w+)*(\.\w{2,3})+$/).test(mail)) {
+                return (true)
+            }
+
+            return (false)
+        }
+
+        function closeAlertEnquiry() {
+            document.getElementById('ShowAlert').style.display = "none";
+        }
+
+        function ShowAlertEnquiry(msg_body) {
+            var AlertMsg = $('#ShowAlert');
+            $(AlertMsg).find('strong').html(msg_body);
+            //$(AlertMsg).find('p').html(msg_body);
+            //$(AlertMsg).removeAttr('class');
+            //$(AlertMsg).addClass('alert alert-' + msg_type);
+            $(AlertMsg).show();
+            $('#EnquiryAlert').alert();
+        }
+
+
+        function Signout() {
+
+            sessionStorage.clear();
+            document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            //Enter Login Page Location
+            window.location.href='@Url.Action("Index","Login")'
+        }
+        //#region Disable Console
+
+        $(window).on('keydown', function (event) {
+            if (event.keyCode == 123) {
+                //alert('Entered F12');
+                return false;
+            }
+            else if (event.ctrlKey && event.shiftKey && event.keyCode == 73) {
+                //alert('Entered ctrl+shift+i')
+                return false;  //Prevent from ctrl+shift+i
+            }
+            else if (event.ctrlKey && event.keyCode == 73) {
+                //alert('Entered ctrl+shift+i')
+                return false;  //Prevent from ctrl+shift+i
+            }
+        });
+
+        $(document).on("contextmenu", function (e) {
+            //alert('Right Click Not Allowed')
+            e.preventDefault();
+        });
+        //#endregion
+    </script>
+</body>
+</html>
