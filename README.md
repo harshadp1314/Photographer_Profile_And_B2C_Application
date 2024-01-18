@@ -13,9 +13,12 @@ A significant aspect of the project involved implementing a secure photo upload 
 As part of the project, a Business-to-Customer (B2C) initiative was undertaken to facilitate direct connections between customers and businesses. This strategic move has led to a 30% increase in personalized design and merchandise orders. The project has effectively transformed into a thriving e-commerce platform, creating a dynamic marketplace for photographers and customers.
 
 ## Technologies Used
-### C#: The primary programming language used for building the backend logic of the application.
-### Rest APIs: Utilized to create scalable and interoperable services for communication between different modules of the application.
-### JavaScript and jQuery: Employed for enhancing the frontend interactivity and user experience.
+### C#: 
+The primary programming language used for building the backend logic of the application.
+### Rest APIs: 
+Utilized to create scalable and interoperable services for communication between different modules of the application.
+### JavaScript and jQuery: 
+Employed for enhancing the frontend interactivity and user experience.
 
 ## Getting Started
 To run the Photographer Profile project locally, follow these steps:
